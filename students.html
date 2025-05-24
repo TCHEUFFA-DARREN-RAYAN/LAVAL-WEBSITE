@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students - Laval Bilingual High School</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/dropdown-fix.css">
+    <style>
+        .page-banner {
+            background-image: url('images/students-banner.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .page-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .page-banner .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .page-banner h1 {
+            color: white;
+            font-size: 3rem;
+            font-weight: 700;
+        }
+        
+        .student-resources {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .resource-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .resource-icon {
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .resource-icon i {
+            font-size: 3rem;
+        }
+        
+        .resource-content {
+            padding: 20px;
+        }
+        
+        .resource-content h3 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .resource-content p {
+            margin-bottom: 20px;
+            color: var(--dark-color);
+        }
+        
+        .resource-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-color);
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .resource-link i {
+            margin-left: 5px;
+            transition: transform 0.3s;
+        }
+        
+        .resource-link:hover {
+            color: #003da6;
+        }
+        
+        .resource-link:hover i {
+            transform: translateX(5px);
+        }
+        
+        .student-life {
+            margin-top: 60px;
+        }
+        
+        .life-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .life-item {
+            display: flex;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .life-image {
+            flex: 0 0 40%;
+        }
+        
+        .life-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .life-content {
+            flex: 0 0 60%;
+            padding: 25px;
+        }
+        
+        .life-content h3 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .life-content p {
+            margin-bottom: 0;
+            color: var(--dark-color);
+        }
+        
+        .calendar-section {
+            margin-top: 60px;
+            background-color: #f8f9fa;
+            padding: 50px 0;
+            border-radius: 8px;
+        }
+        
+        .calendar-container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+        
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .calendar-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .calendar-nav {
+            display: flex;
+            align-items: center;
+        }
+        
+        .calendar-nav button {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            cursor: pointer;
+            padding: 5px 10px;
+            transition: color 0.3s;
+        }
+        
+        .calendar-nav button:hover {
+            color: #003da6;
+        }
+        
+        .calendar-month {
+            margin: 0 15px;
+            font-weight: 500;
+        }
+        
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+        }
+        
+        .calendar-day-header {
+            text-align: center;
+            font-weight: 500;
+            padding: 10px;
+            color: var(--dark-color);
+        }
+        
+        .calendar-day {
+            height: 80px;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            padding: 5px;
+            position: relative;
+        }
+        
+        .calendar-day.other-month {
+            background-color: #f8f9fa;
+            color: #adb5bd;
+        }
+        
+        .calendar-day.today {
+            background-color: rgba(0, 70, 173, 0.1);
+            border-color: var(--primary-color);
+        }
+        
+        .day-number {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .event-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+        
+        .event-academic {
+            background-color: #0046ad;
+        }
+        
+        .event-sports {
+            background-color: #28a745;
+        }
+        
+        .event-cultural {
+            background-color: #fd7e14;
+        }
+        
+        .event-holiday {
+            background-color: #dc3545;
+        }
+        
+        .calendar-legend {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin: 0 15px;
+        }
+        
+        .legend-item span {
+            font-size: 0.9rem;
+            margin-left: 5px;
+        }
+        
+        .event-list {
+            margin-top: 30px;
+        }
+        
+        .event-list h4 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        .event-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .event-item:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .event-date {
+            flex: 0 0 100px;
+            font-weight: 500;
+        }
+        
+        .event-name {
+            flex: 1;
+        }
+        
+        .event-type {
+            flex: 0 0 100px;
+            text-align: right;
+        }
+        
+        @media (max-width: 992px) {
+            .student-resources {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .life-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .student-resources {
+                grid-template-columns: 1fr;
+            }
+            
+            .life-item {
+                flex-direction: column;
+            }
+            
+            .life-image {
+                flex: 0 0 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <header class="site-header">
+            <div class="header-contain">
+                <div class="header-content">
+                    <a href="index.html">
+                        <!-- logo section -->
+                        <div class="nav-logo">
+                            <div class="logo-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div class="logo-text">
+                                <h1 data-i18n="schoolName">Laval School</h1>
+                                <p>Excellence in Education</p>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="nav-toggle" id="navToggle"> <!-- 3 button for phone view-->
+                        <span></span> <span></span><span></span>
+                    </div>
+                    
+                    <nav class="main-nav" id="mainNav">
+                        <ul class="nav-menu">
+                            <li><a href="index.html" data-i18n="navigation.home">Home</a></li>
+                            <li><a href="about.html" data-i18n="navigation.about">About</a></li>
+                            <li><a href="staff.html" data-i18n="navigation.staff">Staff & Faculty</a></li>
+                            <li class="dropdown">
+                                <a href="academics/overview.html" data-i18n="navigation.academics">Academics</a>
+                                <div class="dropdown-content">
+                                    <a href="academics/overview.html" data-i18n="navigation.overview">Overview</a>
+                                    <a href="academics/curriculum.html" data-i18n="navigation.curriculum">Curriculum & Exams</a>
+                                    <a href="academics/results.html" data-i18n="navigation.results">Results</a>
+                                </div>
+                            </li>
+                            <li><a href="admissions.html" data-i18n="navigation.admissions">Admissions</a></li>
+                            <li class="dropdown">
+                                <a href="books/anglophone.html" data-i18n="navigation.books">Books & Materials</a>
+                                <div class="dropdown-content">
+                                    <a href="books/anglophone.html" data-i18n="navigation.anglophone">Anglophone Section</a>
+                                    <a href="books/francophone.html" data-i18n="navigation.francophone">Francophone Section</a>
+                                </div>
+                            </li>
+                            <li><a href="students.html" class="active" data-i18n="navigation.students">Students</a></li>
+                            <li><a href="gallery.html" data-i18n="navigation.gallery">Gallery</a></li>
+                            <li><a href="alumni.html" data-i18n="navigation.alumni">Alumni</a></li>
+                            <li><a href="faq.html" data-i18n="navigation.faq">FAQ</a></li>
+                            <li><a href="contact.html" data-i18n="navigation.contact">Contact</a></li>
+                        </ul>
+                    </nav>
+                    
+                    <div class="language-toggle">
+                        <button class="lang-btn active" data-lang="en">EN</button>
+                        <button class="lang-btn" data-lang="fr">FR</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <!-- Banner Section -->
+            <section class="page-banner">
+                <div class="container">
+                    <h1 data-i18n="navigation.students">Students</h1>
+                </div>
+            </section>
+
+            <!-- Student Resources Section -->
+            <section class="section">
+                <div class="container">
+                    <div class="section-title">
+                        <h2 data-i18n="students.resourcesTitle">Student Resources</h2>
+                        <p data-i18n="students.resourcesIntro">Access the tools and resources you need to succeed in your academic journey at Laval Bilingual High School.</p>
+                    </div>
+                    
+                    <div class="student-resources">
+                        <div class="resource-card">
+                            <div class="resource-icon">
+                                <i class="fas fa-book-open"></i>
+                            </div>
+                            <div class="resource-content">
+                                <h3 data-i18n="students.libraryResource">Library Resources</h3>
+                                <p data-i18n="students.libraryDesc">Access our extensive collection of books, journals, and digital resources to support your studies.</p>
+                                <a href="#" class="resource-link" data-i18n="students.libraryLink">Access Library Catalog <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        
+                        <div class="resource-card">
+                            <div class="resource-icon">
+                                <i class="fas fa-laptop"></i>
+                            </div>
+                            <div class="resource-content">
+                                <h3 data-i18n="students.onlinePortal">Student Portal</h3>
+                                <p data-i18n="students.portalDesc">Log in to check your grades, assignments, and communicate with teachers and peers.</p>
+                                <a href="#" class="resource-link" data-i18n="students.portalLink">Go to Student Portal <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        
+                        <div class="resource-card">
+                            <div class="resource-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <div class="resource-content">
+                                <h3 data-i18n="students.calendar">Academic Calendar</h3>
+                                <p data-i18n="students.calendarDesc">Stay updated with important dates, exams, and school events throughout the year.</p>
+                                <a href="#calendar" class="resource-link" data-i18n="students.calendarLink">View Calendar <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        
+                        <div class="resource-card">
+                            <div class="resource-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="resource-content">
+                                <h3 data-i18n="students.clubs">Clubs & Activities</h3>
+                                <p data-i18n="students.clubsDesc">Explore the various extracurricular activities and clubs available to enrich your school experience.</p>
+                                <a href="#" class="resource-link" data-i18n="students.clubsLink">Discover Clubs <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        
+                        <div class="resource-card">
+                            <div class="resource-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div class="resource-content">
+                                <h3 data-i18n="students.academic">Academic Support</h3>
+                                <p data-i18n="students.academicDesc">Access tutoring services, study guides, and academic resources to help you excel in your studies.</p>
+                                <a href="#" class="resource-link" data-i18n="students.academicLink">Get Support <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        
+                        <div class="resource-card">
+                            <div class="resource-icon">
+                                <i class="fas fa-hands-helping"></i>
+                            </div>
+                            <div class="resource-content">
+                                <h3 data-i18n="students.counseling">Counseling Services</h3>
+                                <p data-i18n="students.counselingDesc">Speak with our counselors about academic planning, career guidance, or personal concerns.</p>
+                                <a href="#" class="resource-link" data-i18n="students.counselingLink">Schedule Appointment <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Student Life Section -->
+            <section class="section student-life">
+                <div class="container">
+                    <div class="section-title">
+                        <h2 data-i18n="students.lifeTitle">Student Life</h2>
+                        <p data-i18n="students.lifeIntro">Life at Laval Bilingual High School extends beyond the classroom. Discover the vibrant community and diverse experiences that make our school special.</p>
+                    </div>
+                    
+                    <div class="life-grid">
+                        <div class="life-item">
+                            <div class="life-image">
+                                <img src="images/student-life-1.jpg" alt="Student Council">
+                            </div>
+                            <div class="life-content">
+                                <h3 data-i18n="students.council">Student Council</h3>
+                                <p data-i18n="students.councilDesc">Our student council plays a vital role in school governance, organizing events, and representing student interests. Elections are held annually, giving students the opportunity to develop leadership skills and make a positive impact on our school community.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="life-item">
+                            <div class="life-image">
+                                <img src="images/student-life-2.jpg" alt="Sports Teams">
+                            </div>
+                            <div class="life-content">
+                                <h3 data-i18n="students.sports">Sports Teams</h3>
+                                <p data-i18n="students.sportsDesc">Our competitive sports teams participate in regional and national tournaments. From soccer and basketball to swimming and tennis, there are opportunities for athletes of all levels to participate, develop skills, and experience the rewards of teamwork and dedication.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="life-item">
+                            <div class="life-image">
+                                <img src="images/student-life-3.jpg" alt="Arts & Culture">
+                            </div>
+                            <div class="life-content">
+                                <h3 data-i18n="students.arts">Arts & Culture</h3>
+                                <p data-i18n="students.artsDesc">Express yourself through our vibrant arts programs, including drama productions, music ensembles, visual arts exhibitions, and literary publications. Our annual Arts Festival showcases student creativity and talent across multiple disciplines.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="life-item">
+                            <div class="life-image">
+                                <img src="images/student-life-4.jpg" alt="Community Service">
+                            </div>
+                            <div class="life-content">
+                                <h3 data-i18n="students.service">Community Service</h3>
+                                <p data-i18n="students.serviceDesc">We encourage students to make a difference through community service initiatives. From local volunteering to international service trips, these experiences foster empathy, social responsibility, and global citizenship while making a positive impact on communities in need.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Calendar Section -->
+            <section id="calendar" class="section calendar-section">
+                <div class="container">
+                    <div class="section-title">
+                        <h2 data-i18n="students.calendarTitle">School Calendar</h2>
+                        <p data-i18n="students.calendarIntro">Stay informed about important dates, events, and activities throughout the academic year.</p>
+                    </div>
+                    
+                    <div class="calendar-container">
+                        <div class="calendar-header">
+                            <div class="calendar-title" data-i18n="students.calendarHeading">Academic Calendar</div>
+                            <div class="calendar-nav">
+                                <button id="prevMonth"><i class="fas fa-chevron-left"></i></button>
+                                <div class="calendar-month" id="currentMonth">May 2025</div>
+                                <button id="nextMonth"><i class="fas fa-chevron-right"></i></button>
+                            </div>
+                        </div>
+                        
+                        <div class="calendar-grid">
+                            <div class="calendar-day-header" data-i18n="students.sunday">Sun</div>
+                            <div class="calendar-day-header" data-i18n="students.monday">Mon</div>
+                            <div class="calendar-day-header" data-i18n="students.tuesday">Tue</div>
+                            <div class="calendar-day-header" data-i18n="students.wednesday">Wed</div>
+                            <div class="calendar-day-header" data-i18n="students.thursday">Thu</div>
+                            <div class="calendar-day-header" data-i18n="students.friday">Fri</div>
+                            <div class="calendar-day-header" data-i18n="students.saturday">Sat</div>
+                            
+                            <!-- Calendar days will be generated by JavaScript -->
+                        </div>
+                        
+                        <div class="calendar-legend">
+                            <div class="legend-item">
+                                <span class="event-dot event-academic"></span>
+                                <span data-i18n="students.academic">Academic</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="event-dot event-sports"></span>
+                                <span data-i18n="students.sports">Sports</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="event-dot event-cultural"></span>
+                                <span data-i18n="students.cultural">Cultural</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="event-dot event-holiday"></span>
+                                <span data-i18n="students.holiday">Holiday</span>
+                            </div>
+                        </div>
+                        
+                        <div class="event-list">
+                            <h4 data-i18n="students.upcomingEvents">Upcoming Events</h4>
+                            <div id="eventsList">
+                                <!-- Events will be generated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-col">
+                        <h3 data-i18n="footer.about">About Us</h3>
+                        <p data-i18n="footer.aboutText">Laval Bilingual High School is committed to providing quality education in both English and French, preparing students for global opportunities.</p>
+                        <div class="footer-social">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h3 data-i18n="footer.quickLinks">Quick Links</h3>
+                        <ul>
+                            <li><a href="about.html" data-i18n="navigation.about">About</a></li>
+                            <li><a href="academics/overview.html" data-i18n="navigation.academics">Academics</a></li>
+                            <li><a href="admissions.html" data-i18n="navigation.admissions">Admissions</a></li>
+                            <li><a href="gallery.html" data-i18n="navigation.gallery">Gallery</a></li>
+                            <li><a href="contact.html" data-i18n="navigation.contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h3 data-i18n="footer.resources">Resources</h3>
+                        <ul>
+                            <li><a href="students.html" data-i18n="navigation.students">Students</a></li>
+                            <li><a href="books/anglophone.html" data-i18n="navigation.books">Books & Materials</a></li>
+                            <li><a href="faq.html" data-i18n="navigation.faq">FAQ</a></li>
+                            <li><a href="alumni.html" data-i18n="navigation.alumni">Alumni</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h3 data-i18n="footer.contactInfo">Contact Info</h3>
+                        <ul class="contact-info">
+                            <li>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span data-i18n="footer.address">123 Education Street, City, Country</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-phone"></i>
+                                <span data-i18n="footer.phone">+123 456 7890</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-envelope"></i>
+                                <span data-i18n="footer.email">info@lavalbilingual.edu</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-clock"></i>
+                                <span data-i18n="footer.hours">Mon-Fri: 7:30 AM - 4:30 PM</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p data-i18n="footer.copyright">© 2025 Laval Bilingual High School. All Rights Reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="js/translations.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Students page specific JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Calendar functionality
+            const calendarGrid = document.querySelector('.calendar-grid');
+            const currentMonthElement = document.getElementById('currentMonth');
+            const prevMonthButton = document.getElementById('prevMonth');
+            const nextMonthButton = document.getElementById('nextMonth');
+            const eventsListElement = document.getElementById('eventsList');
+            
+            // Current date
+            let currentDate = new Date();
+            let currentYear = currentDate.getFullYear();
+            let currentMonth = currentDate.getMonth();
+            
+            // Sample events data
+            const events = [
+                { date: new Date(2025, 4, 5), name: "Final Exams Begin", type: "academic" },
+                { date: new Date(2025, 4, 12), name: "Final Exams End", type: "academic" },
+                { date: new Date(2025, 4, 15), name: "Sports Day", type: "sports" },
+                { date: new Date(2025, 4, 20), name: "Art Exhibition", type: "cultural" },
+                { date: new Date(2025, 4, 25), name: "Graduation Ceremony", type: "academic" },
+                { date: new Date(2025, 4, 28), name: "School Holiday", type: "holiday" },
+                { date: new Date(2025, 5, 5), name: "Summer Break Begins", type: "holiday" },
+                { date: new Date(2025, 5, 10), name: "Summer School Registration", type: "academic" },
+                { date: new Date(2025, 5, 15), name: "Summer Sports Camp", type: "sports" },
+                { date: new Date(2025, 5, 20), name: "Music Festival", type: "cultural" }
+            ];
+            
+            // Generate calendar
+            function generateCalendar(year, month) {
+                // Clear previous calendar days
+                while (calendarGrid.children.length > 7) {
+                    calendarGrid.removeChild(calendarGrid.lastChild);
+                }
+                
+                // Update month display
+                const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                currentMonthElement.textContent = `${monthNames[month]} ${year}`;
+                
+                // Get first day of month and number of days
+                const firstDay = new Date(year, month, 1);
+                const lastDay = new Date(year, month + 1, 0);
+                const daysInMonth = lastDay.getDate();
+                
+                // Get day of week for first day (0 = Sunday, 6 = Saturday)
+                let startingDay = firstDay.getDay();
+                
+                // Generate previous month's days
+                const prevMonthLastDay = new Date(year, month, 0).getDate();
+                for (let i = startingDay - 1; i >= 0; i--) {
+                    const dayElement = document.createElement('div');
+                    dayElement.className = 'calendar-day other-month';
+                    dayElement.innerHTML = `<div class="day-number">${prevMonthLastDay - i}</div>`;
+                    calendarGrid.appendChild(dayElement);
+                }
+                
+                // Generate current month's days
+                const today = new Date();
+                for (let i = 1; i <= daysInMonth; i++) {
+                    const dayElement = document.createElement('div');
+                    dayElement.className = 'calendar-day';
+                    
+                    // Check if it's today
+                    if (year === today.getFullYear() && month === today.getMonth() && i === today.getDate()) {
+                        dayElement.classList.add('today');
+                    }
+                    
+                    dayElement.innerHTML = `<div class="day-number">${i}</div>`;
+                    
+                    // Add event indicators
+                    const dayEvents = events.filter(event => 
+                        event.date.getFullYear() === year && 
+                        event.date.getMonth() === month && 
+                        event.date.getDate() === i
+                    );
+                    
+                    if (dayEvents.length > 0) {
+                        const eventIndicators = document.createElement('div');
+                        eventIndicators.style.marginTop = '20px';
+                        
+                        dayEvents.forEach(event => {
+                            const indicator = document.createElement('div');
+                            indicator.style.display = 'flex';
+                            indicator.style.alignItems = 'center';
+                            indicator.style.marginBottom = '2px';
+                            indicator.innerHTML = `
+                                <span class="event-dot event-${event.type}"></span>
+                                <span style="font-size: 0.7rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${event.name}</span>
+                            `;
+                            eventIndicators.appendChild(indicator);
+                        });
+                        
+                        dayElement.appendChild(eventIndicators);
+                    }
+                    
+                    calendarGrid.appendChild(dayElement);
+                }
+                
+                // Calculate remaining cells to fill out the grid
+                const totalCells = 42; // 6 rows of 7 days
+                const remainingCells = totalCells - (startingDay + daysInMonth);
+                
+                // Generate next month's days
+                for (let i = 1; i <= remainingCells; i++) {
+                    const dayElement = document.createElement('div');
+                    dayElement.className = 'calendar-day other-month';
+                    dayElement.innerHTML = `<div class="day-number">${i}</div>`;
+                    calendarGrid.appendChild(dayElement);
+                }
+                
+                // Update events list
+                updateEventsList();
+            }
+            
+            // Update events list
+            function updateEventsList() {
+                eventsListElement.innerHTML = '';
+                
+                // Get upcoming events (current month and next month)
+                const upcomingEvents = events.filter(event => {
+                    return (
+                        (event.date.getFullYear() === currentYear && event.date.getMonth() >= currentMonth) ||
+                        (event.date.getFullYear() > currentYear)
+                    ) && (
+                        event.date >= new Date()
+                    );
+                }).sort((a, b) => a.date - b.date).slice(0, 5);
+                
+                if (upcomingEvents.length === 0) {
+                    eventsListElement.innerHTML = '<p>No upcoming events.</p>';
+                    return;
+                }
+                
+                upcomingEvents.forEach(event => {
+                    const eventItem = document.createElement('div');
+                    eventItem.className = 'event-item';
+                    
+                    const dateOptions = { month: 'short', day: 'numeric' };
+                    const formattedDate = event.date.toLocaleDateString('en-US', dateOptions);
+                    
+                    eventItem.innerHTML = `
+                        <div class="event-date">${formattedDate}</div>
+                        <div class="event-name">${event.name}</div>
+                        <div class="event-type">
+                            <span class="event-dot event-${event.type}"></span>
+                            <span>${event.type.charAt(0).toUpperCase() + event.type.slice(1)}</span>
+                        </div>
+                    `;
+                    
+                    eventsListElement.appendChild(eventItem);
+                });
+            }
+            
+            // Initialize calendar
+            generateCalendar(currentYear, currentMonth);
+            
+            // Previous month button
+            prevMonthButton.addEventListener('click', function() {
+                currentMonth--;
+                if (currentMonth < 0) {
+                    currentMonth = 11;
+                    currentYear--;
+                }
+                generateCalendar(currentYear, currentMonth);
+            });
+            
+            // Next month button
+            nextMonthButton.addEventListener('click', function() {
+                currentMonth++;
+                if (currentMonth > 11) {
+                    currentMonth = 0;
+                    currentYear++;
+                }
+                generateCalendar(currentYear, currentMonth);
+            });
+            
+            // Add translations for students page
+            if (!translations.en.students) {
+                translations.en.students = {
+                    resourcesTitle: "Student Resources",
+                    resourcesIntro: "Access the tools and resources you need to succeed in your academic journey at Laval Bilingual High School.",
+                    libraryResource: "Library Resources",
+                    libraryDesc: "Access our extensive collection of books, journals, and digital resources to support your studies.",
+                    libraryLink: "Access Library Catalog",
+                    onlinePortal: "Student Portal",
+                    portalDesc: "Log in to check your grades, assignments, and communicate with teachers and peers.",
+                    portalLink: "Go to Student Portal",
+                    calendar: "Academic Calendar",
+                    calendarDesc: "Stay updated with important dates, exams, and school events throughout the year.",
+                    calendarLink: "View Calendar",
+                    clubs: "Clubs & Activities",
+                    clubsDesc: "Explore the various extracurricular activities and clubs available to enrich your school experience.",
+                    clubsLink: "Discover Clubs",
+                    academic: "Academic Support",
+                    academicDesc: "Access tutoring services, study guides, and academic resources to help you excel in your studies.",
+                    academicLink: "Get Support",
+                    counseling: "Counseling Services",
+                    counselingDesc: "Speak with our counselors about academic planning, career guidance, or personal concerns.",
+                    counselingLink: "Schedule Appointment",
+                    lifeTitle: "Student Life",
+                    lifeIntro: "Life at Laval Bilingual High School extends beyond the classroom. Discover the vibrant community and diverse experiences that make our school special.",
+                    council: "Student Council",
+                    councilDesc: "Our student council plays a vital role in school governance, organizing events, and representing student interests. Elections are held annually, giving students the opportunity to develop leadership skills and make a positive impact on our school community.",
+                    sports: "Sports Teams",
+                    sportsDesc: "Our competitive sports teams participate in regional and national tournaments. From soccer and basketball to swimming and tennis, there are opportunities for athletes of all levels to participate, develop skills, and experience the rewards of teamwork and dedication.",
+                    arts: "Arts & Culture",
+                    artsDesc: "Express yourself through our vibrant arts programs, including drama productions, music ensembles, visual arts exhibitions, and literary publications. Our annual Arts Festival showcases student creativity and talent across multiple disciplines.",
+                    service: "Community Service",
+                    serviceDesc: "We encourage students to make a difference through community service initiatives. From local volunteering to international service trips, these experiences foster empathy, social responsibility, and global citizenship while making a positive impact on communities in need.",
+                    calendarTitle: "School Calendar",
+                    calendarIntro: "Stay informed about important dates, events, and activities throughout the academic year.",
+                    calendarHeading: "Academic Calendar",
+                    sunday: "Sun",
+                    monday: "Mon",
+                    tuesday: "Tue",
+                    wednesday: "Wed",
+                    thursday: "Thu",
+                    friday: "Fri",
+                    saturday: "Sat",
+                    cultural: "Cultural",
+                    holiday: "Holiday",
+                    upcomingEvents: "Upcoming Events"
+                };
+            }
+            
+            if (!translations.fr.students) {
+                translations.fr.students = {
+                    resourcesTitle: "Ressources pour les Élèves",
+                    resourcesIntro: "Accédez aux outils et ressources dont vous avez besoin pour réussir votre parcours académique au Lycée Bilingue Laval.",
+                    libraryResource: "Ressources de la Bibliothèque",
+                    libraryDesc: "Accédez à notre vaste collection de livres, revues et ressources numériques pour soutenir vos études.",
+                    libraryLink: "Accéder au Catalogue",
+                    onlinePortal: "Portail Étudiant",
+                    portalDesc: "Connectez-vous pour vérifier vos notes, devoirs et communiquer avec les enseignants et camarades.",
+                    portalLink: "Aller au Portail",
+                    calendar: "Calendrier Académique",
+                    calendarDesc: "Restez informé des dates importantes, examens et événements scolaires tout au long de l'année.",
+                    calendarLink: "Voir le Calendrier",
+                    clubs: "Clubs & Activités",
+                    clubsDesc: "Explorez les diverses activités parascolaires et clubs disponibles pour enrichir votre expérience scolaire.",
+                    clubsLink: "Découvrir les Clubs",
+                    academic: "Soutien Académique",
+                    academicDesc: "Accédez aux services de tutorat, guides d'étude et ressources académiques pour vous aider à exceller dans vos études.",
+                    academicLink: "Obtenir du Soutien",
+                    counseling: "Services de Conseil",
+                    counselingDesc: "Parlez avec nos conseillers de planification académique, d'orientation professionnelle ou de préoccupations personnelles.",
+                    counselingLink: "Prendre Rendez-vous",
+                    lifeTitle: "Vie Étudiante",
+                    lifeIntro: "La vie au Lycée Bilingue Laval s'étend au-delà de la salle de classe. Découvrez la communauté dynamique et les expériences diverses qui rendent notre école spéciale.",
+                    council: "Conseil des Élèves",
+                    councilDesc: "Notre conseil des élèves joue un rôle vital dans la gouvernance de l'école, l'organisation d'événements et la représentation des intérêts des élèves. Des élections sont organisées chaque année, donnant aux élèves l'opportunité de développer des compétences en leadership et d'avoir un impact positif sur notre communauté scolaire.",
+                    sports: "Équipes Sportives",
+                    sportsDesc: "Nos équipes sportives compétitives participent à des tournois régionaux et nationaux. Du football au basketball, en passant par la natation et le tennis, il existe des opportunités pour les athlètes de tous niveaux de participer, développer des compétences et expérimenter les récompenses du travail d'équipe et du dévouement.",
+                    arts: "Arts & Culture",
+                    artsDesc: "Exprimez-vous à travers nos programmes artistiques dynamiques, comprenant des productions théâtrales, des ensembles musicaux, des expositions d'arts visuels et des publications littéraires. Notre Festival des Arts annuel met en valeur la créativité et le talent des élèves dans plusieurs disciplines.",
+                    service: "Service Communautaire",
+                    serviceDesc: "Nous encourageons les élèves à faire une différence grâce à des initiatives de service communautaire. Des bénévolats locaux aux voyages de service internationaux, ces expériences favorisent l'empathie, la responsabilité sociale et la citoyenneté mondiale tout en ayant un impact positif sur les communautés dans le besoin.",
+                    calendarTitle: "Calendrier Scolaire",
+                    calendarIntro: "Restez informé des dates importantes, événements et activités tout au long de l'année académique.",
+                    calendarHeading: "Calendrier Académique",
+                    sunday: "Dim",
+                    monday: "Lun",
+                    tuesday: "Mar",
+                    wednesday: "Mer",
+                    thursday: "Jeu",
+                    friday: "Ven",
+                    saturday: "Sam",
+                    cultural: "Culturel",
+                    holiday: "Congé",
+                    upcomingEvents: "Événements à Venir"
+                };
+            }
+            
+            // Apply initial translations based on current language
+            const currentLang = localStorage.getItem('userLanguage') || 'en';
+            applyTranslations(currentLang);
+        });
+    </script>
+</body>
+</html>

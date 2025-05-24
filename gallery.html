@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Laval Bilingual High School</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/dropdown-fix.css">
+    <style>
+        .page-banner {
+            background-image: url('images/gallery-banner.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .page-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .page-banner .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .page-banner h1 {
+            color: white;
+            font-size: 3rem;
+            font-weight: 700;
+        }
+        
+        .gallery-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .tab-btn {
+            padding: 10px 20px;
+            background: none;
+            border: none;
+            border-bottom: 2px solid transparent;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 0 10px 10px;
+        }
+        
+        .tab-btn.active {
+            border-bottom-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            height: 250px;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-item-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover .gallery-item-overlay {
+            transform: translateY(0);
+        }
+        
+        .gallery-item-overlay h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .gallery-item-overlay p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            overflow: auto;
+        }
+        
+        .modal-content {
+            position: relative;
+            margin: auto;
+            padding: 0;
+            width: 80%;
+            max-width: 1200px;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-img {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+        }
+        
+        .modal-caption {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: white;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 16px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            z-index: 1001;
+        }
+        
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+        
+        .prev {
+            left: 0;
+        }
+        
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        
+        @media (max-width: 992px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .tab-btn {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <header class="site-header">
+            <div class="header-contain">
+                <div class="header-content">
+                    <a href="index.html">
+                        <!-- logo section -->
+                        <div class="nav-logo">
+                            <div class="logo-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div class="logo-text">
+                                <h1 data-i18n="schoolName">Laval School</h1>
+                                <p>Excellence in Education</p>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="nav-toggle" id="navToggle"> <!-- 3 button for phone view-->
+                        <span></span> <span></span><span></span>
+                    </div>
+                    
+                    <nav class="main-nav" id="mainNav">
+                        <ul class="nav-menu">
+                            <li><a href="index.html" data-i18n="navigation.home">Home</a></li>
+                            <li><a href="about.html" data-i18n="navigation.about">About</a></li>
+                            <li><a href="staff.html" data-i18n="navigation.staff">Staff & Faculty</a></li>
+                            <li class="dropdown">
+                                <a href="academics/overview.html" data-i18n="navigation.academics">Academics</a>
+                                <div class="dropdown-content">
+                                    <a href="academics/overview.html" data-i18n="navigation.overview">Overview</a>
+                                    <a href="academics/curriculum.html" data-i18n="navigation.curriculum">Curriculum & Exams</a>
+                                    <a href="academics/results.html" data-i18n="navigation.results">Results</a>
+                                </div>
+                            </li>
+                            <li><a href="admissions.html" data-i18n="navigation.admissions">Admissions</a></li>
+                            <li class="dropdown">
+                                <a href="books/anglophone.html" data-i18n="navigation.books">Books & Materials</a>
+                                <div class="dropdown-content">
+                                    <a href="books/anglophone.html" data-i18n="navigation.anglophone">Anglophone Section</a>
+                                    <a href="books/francophone.html" data-i18n="navigation.francophone">Francophone Section</a>
+                                </div>
+                            </li>
+                            <li><a href="students.html" data-i18n="navigation.students">Students</a></li>
+                            <li><a href="gallery.html" class="active" data-i18n="navigation.gallery">Gallery</a></li>
+                            <li><a href="alumni.html" data-i18n="navigation.alumni">Alumni</a></li>
+                            <li><a href="faq.html" data-i18n="navigation.faq">FAQ</a></li>
+                            <li><a href="contact.html" data-i18n="navigation.contact">Contact</a></li>
+                        </ul>
+                    </nav>
+                    
+                    <div class="language-toggle">
+                        <button class="lang-btn active" data-lang="en">EN</button>
+                        <button class="lang-btn" data-lang="fr">FR</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <!-- Banner Section -->
+            <section class="page-banner">
+                <div class="container">
+                    <h1 data-i18n="navigation.gallery">Gallery</h1>
+                </div>
+            </section>
+
+            <!-- Gallery Content -->
+            <section class="section">
+                <div class="container">
+                    <div class="section-title">
+                        <h2 data-i18n="gallery.title">School Life in Pictures</h2>
+                        <p data-i18n="gallery.intro">Explore our vibrant school community through these images capturing academic excellence, creative expression, athletic achievement, and memorable events.</p>
+                    </div>
+                    
+                    <div class="gallery-tabs">
+                        <button class="tab-btn active" id="allTab" data-i18n="gallery.all">All</button>
+                        <button class="tab-btn" id="academicsTab" data-i18n="gallery.academics">Academics</button>
+                        <button class="tab-btn" id="artsTab" data-i18n="gallery.arts">Arts & Culture</button>
+                        <button class="tab-btn" id="sportsTab" data-i18n="gallery.sports">Sports</button>
+                        <button class="tab-btn" id="eventsTab" data-i18n="gallery.events">Events</button>
+                        <button class="tab-btn" id="campusTab" data-i18n="gallery.campus">Campus</button>
+                    </div>
+                    
+                    <div class="tab-content active" id="allContent">
+                        <div class="gallery-grid">
+                            <!-- Academic Images -->
+                            <div class="gallery-item" data-category="academics">
+                                <img src="images/gallery-academics-1.jpg" alt="Science Lab">
+                                <div class="gallery-item-overlay">
+                                    <h3 data-i18n="gallery.scienceLab">Science Laboratory</h3>
+                                    <p data-i18n="gallery.scienceLabDesc">Students conducting experiments in our state-of-the-art science laboratory.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="gallery-item" data-category="academics">
+                                <img src="images/gallery-academics-2.jpg" alt="Library">
+                                <div class="gallery-item-overlay">
+                                    <h3 data-i18n="gallery.library">School Library</h3>
+                                    <p data-i18n="gallery.libraryDesc">Our extensive library offers resources in multiple languages.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="gallery-item" data-category="academics">
+                                <img src="images/gallery-academics-3.jpg" alt="Classroom">
+                                <div class="gallery-item-overlay">
+                                    <h3 data-i18n="gallery.classroom">Interactive Classroom</h3>
+                                    <p data-i18n="gallery.classroomDesc">Engaging learning environments with modern technology.</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Arts & Culture Images -->
+                            <div class="gallery-item" data-category="arts">
+                                <img src="images/gallery-arts-1.jpg" alt="Art Studio">
+                                <div class="gallery-item-overlay">
+                                    <h3 data-i18n="gallery.artStudio">Art Studio</h3>
+                                    <p data-i18n="gallery.artStudioDesc">Students expressing creativity in our well-equipped art studio.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="gallery-item" data-category="arts">
+                                <img src="images/gallery-arts-2.jpg" alt="School Play">
+                                <div class="gallery-item-overlay">
+                                    <h3 data-i18n="gallery.schoolPlay">Annual School Play</h3>
+                                    <p data-i18n="gallery.schoolPlayDesc">Students performing Shakespeare's 'A Midsummer Night's Dream'.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="gallery-item" data-category="arts">
+                                <img src="images/gallery-arts-3.jpg" alt="Music Room">
+                                <div class="gallery-item-overlay">
+                                    <h3 data-i18n="gallery.musicRoom">Music Room</h3>
+                                    <p data-i18n="gallery.musicRoomDesc">Our music program offers instruction in various instruments.</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Sports Images -->
+                            <div class="gallery-item" data-category="sports">
+                                <img src="images/gallery-sports-1.jpg" alt="Soccer Match">
+                                <div class="gallery-item-overlay">
+                                    <h3 data-i18n="gallery.soccerMatch">Soccer Championship</h3>
+                                    <p data-i18n="gallery.soccerMatchDesc">Our team celebrating victory in the regional finals.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="gallery-item" data-category="sports">
+                                <img src="images/gallery-sports-2.jpg" alt="Swimming Pool">
+                                <div class="gallery-item-overlay">
+                                    <h3 data-i18n="gallery.swimmingPool">Swimming Pool</h3>
+                                    <p data-i18n="gallery.swimmingPoolDesc">Our 25-meter pool hosts swimming lessons and competitions.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="gallery-item" data-category="sports">
+                                <img src="images/gallery-sports-3.jpg" alt="Basketball Court">
+                                <div class="gallery-item-overlay">
+                                    <h3 data-i18n="gallery.basketballCourt">Basketball Court</h3>
+                                    <p data-i18n="gallery.basketballCourtDesc">Indoor sports facilities for year-round athletic activities.</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Events Images -->
+                            <div class="gallery-item" data-category="events">
+                                <img src="images/gallery-events-1.jpg" alt="Graduation Ceremony">
+                                <div class="gallery-item-overlay">
+                                    <h3 data-i18n="gallery.graduation">Graduation Ceremony</h3>
+                                    <p data-i18n="gallery.graduationDesc">Celebrating the achievements of our graduating class.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="gallery-item" data-category="events">
+                                <img src="images/gallery-events-2.jpg" alt="International Day">
+                                <div class="gallery-item-overlay">
+                                    <h3 data-i18n="gallery.internationalDay">International Day</h3>
+                                    <p data-i18n="gallery.internationalDayDesc">Annual celebration of our diverse cultural community.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="gallery-item" data-category="events">
+                                <img src="images/gallery-events-3.jpg" alt="Science Fair">
+                                <div class="gallery-item-overlay">
+                                    <h3 data-i18n="gallery.scienceFair">Science Fair</h3>
+                                    <p data-i18n="gallery.scienceFairDesc">Students showcasing innovative research projects.</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Campus Images -->
+                            <div class="gallery-item" data-category="campus">
+                                <img src="images/gallery-campus-1.jpg" alt="School Building">
+                                <div class="gallery-item-overlay">
+                                    <h3 data-i18n="gallery.schoolBuilding">Main Building</h3>
+                                    <p data-i18n="gallery.schoolBuildingDesc">Our modern campus designed for optimal learning.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="gallery-item" data-category="campus">
+                                <img src="images/gallery-campus-2.jpg" alt="School Garden">
+                                <div class="gallery-item-overlay">
+                                    <h3 data-i18n="gallery.schoolGarden">School Garden</h3>
+                                    <p data-i18n="gallery.schoolGardenDesc">Outdoor spaces for relaxation and environmental education.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="gallery-item" data-category="campus">
+                                <img src="images/gallery-campus-3.jpg" alt="Cafeteria">
+                                <div class="gallery-item-overlay">
+                                    <h3 data-i18n="gallery.cafeteria">Cafeteria</h3>
+                                    <p data-i18n="gallery.cafeteriaDesc">Our cafeteria serves nutritious meals prepared fresh daily.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="academicsContent">
+                        <div class="gallery-grid">
+                            <div class="gallery-item" data-category="academics">
+                                <img src="images/gallery-academics-1.jpg" alt="Science Lab">
+                                <div class="gallery-item-overlay">
+                                    <h3 data-i18n="gallery.scienceLab">Science Laboratory</h3>
+                                    <p data-i18n="gallery.scienceLabDesc">Students conducting experiments in our state-of-the-art science laboratory.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="gallery-item" data-category="academics">
+                                <img src="images/gallery-academics-2.jpg" alt="Library">
+                                <div class="gallery-item-overlay">
+                                    <h3 data-i18n="gallery.library">School Library</h3>
+                                    <p data-i18n="gallery.libraryDesc">Our extensive library offers resources in multiple languages.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="gallery-item" data-category="academics">
+                                <img src="images/gallery-academics-3.jpg" alt="Classroom">
+                                <div class="gallery-item-overlay">
+                                    <h3 data-i18n="gallery.classroom">Interactive Classroom</h3>
+                                    <p data-i18n="gallery.classroomDesc">Engaging learning environments with modern technology.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="gallery-item" data-category="academics">
+                                <img src="images/gallery-academics-4.jpg" alt="Computer Lab">
+                                <div class="gallery-item-overlay">
+                                    <h3 data-i18n="gallery.computerLab">Computer Lab</h3>
+                                    <p data-i18n="gallery.computerLabDesc">Students developing digital skills in our computer laboratory.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="gallery-item" data-category="academics">
+                                <img src="images/gallery-academics-5.jpg" alt="Language Lab">
+                                <div class="gallery-item-overlay">
+                                    <h3 data-i18n="gallery.languageLab">Language Laboratory</h3>
+                                    <p data-i18n="gallery.languageLabDesc">Specialized facilities for language acquisition and practice.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="gallery-item" data-category="academics">
+                                <img src="images/gallery-academics-6.jpg" alt="Study Group">
+                                <div class="gallery-item-overlay">
+                                    <h3 data-i18n="gallery.studyGroup">Collaborative Learning</h3>
+                                    <p data-i18n="gallery.studyGroupDesc">Students working together on group projects and assignments.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="artsContent">
+                        <div class="gallery-grid">
+                            <div class="gallery-item" data-category="arts">
+                                <img src="images/gallery-arts-1.jpg" alt="Art Studio">
+                                <div class="gallery-item-overlay">
+                                    <h3 data-i18n="gallery.artStudio">Art Studio</h3>
+                                    <p data-i18n="gallery.artStudioDesc">Students expressing creativity in our well-equipped art studio.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="gallery-item" data-category="arts">
+                                <img src="images/gallery-arts-2.jpg" alt="School Play">
+                                <div class="gallery-item-overlay">
+                                    <h3 data-i18n="gallery.schoolPlay">Annual School Play</h3>
+                                    <p data-i18n="gallery.schoolPlayDesc">Students performing Shakespeare's 'A Midsummer Night's Dream'.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="gallery-item" data-category="arts">
+                                <img src="images/gallery-arts-3.jpg" alt="Music Room">
+                                <div class="gallery-item-overlay">
+                                    <h3 data-i18n="gallery.musicRoom">Music Room</h3>
+                                    <p data-i18n="gallery.musicRoomDesc">Our music program offers instruction in various instruments.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="gallery-item" data-category="arts">
+                                <img src="images/gallery-arts-4.jpg" alt="Dance Studio">
+                                <div class="gallery-item-overlay">
+                                    <h3 data-i18n="gallery.danceStudio">Dance Studio</h3>
+                                    <p data-i18n="gallery.danceStudioDesc">Students practicing various dance styles in our professional studio.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="gallery-item" data-category="arts">
+                                <img src="images/gallery-arts-5.jpg" alt="Choir Performance">
+                                <div class="gallery-item-overlay">
+                                    <h3 data-i18n="gallery.choirPerformance">Choir Performance</h3>
+                                    <p data-i18n="gallery.choirPerformanceDesc">Our award-winning choir performing at the annual concert.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="gallery-item" data-category="arts">
+                                <img src="images/gallery-arts-6.jpg" alt="Art Exhibition">
+                                <div class="gallery-item-overlay">
+                                    <h3 data-i18n="gallery.artExhibition">Student Art Exhibition</h3>
+                                    <p data-i18n="gallery.artExhibitionDesc">Showcasing the artistic talents of our students.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="sportsContent">
+                        <div class="gallery-grid">
+                            <div class="gallery-item" data-category="sports">
+                                <img src="images/gallery-sports-1.jpg" alt="Soccer Match">
+                                <div class="gallery-item-overlay">
+                                    <h3 data-i18n="gallery.soccerMatch">Soccer Championship</h3>
+                                    <p data-i18n="gallery.soccerMatchDesc">Our team celebrating victory in the regional finals.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="gallery-item" data-category="sports">
+                                <img src="images/gallery-sports-2.jpg" alt="Swimming Pool">
+                                <div class="gallery-item-overlay">
+                                    <h3 data-i18n="gallery.swimmingPool">Swimming Pool</h3>
+                                    <p data-i18n="gallery.swimmingPoolDesc">Our 25-meter pool hosts swimming lessons and competitions.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="gallery-item" data-category="sports">
+                                <img src="images/gallery-sports-3.jpg" alt="Basketball Court">
+                                <div class="gallery-item-overlay">
+                                    <h3 data-i18n="gallery.basketballCourt">Basketball Court</h3>
+                                    <p data-i18n="gallery.basketballCourtDesc">Indoor sports facilities for year-round athletic activities.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="gallery-item" data-category="sports">
+                                <img src="images/gallery-sports-4.jpg" alt="Tennis Courts">
+                                <div class="gallery-item-overlay">
+                                    <h3 data-i18n="gallery.tennisCourts">Tennis Courts</h3>
+                                    <p data-i18n="gallery.tennisCourtsDesc">Professional-grade courts for tennis practice and tournaments.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="gallery-item" data-category="sports">
+                                <img src="images/gallery-sports-5.jpg" alt="Athletics Track">
+                                <div class="gallery-item-overlay">
+                                    <h3 data-i18n="gallery.athleticsTrack">Athletics Track</h3>
+                                    <p data-i18n="gallery.athleticsTrackDesc">Our track and field facilities for training and competitions.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="gallery-item" data-category="sports">
+                                <img src="images/gallery-sports-6.jpg" alt="Fitness Center">
+                                <div class="gallery-item-overlay">
+                                    <h3 data-i18n="gallery.fitnessCenter">Fitness Center</h3>
+                                    <p data-i18n="gallery.fitnessCenterDesc">Modern equipment for physical training and conditioning.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="eventsContent">
+                        <div class="gallery-grid">
+                            <div class="gallery-item" data-category="events">
+                                <img src="images/gallery-events-1.jpg" alt="Graduation Ceremony">
+                                <div class="gallery-item-overlay">
+                                    <h3 data-i18n="gallery.graduation">Graduation Ceremony</h3>
+                                    <p data-i18n="gallery.graduationDesc">Celebrating the achievements of our graduating class.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="gallery-item" data-category="events">
+                                <img src="images/gallery-events-2.jpg" alt="International Day">
+                                <div class="gallery-item-overlay">
+                                    <h3 data-i18n="gallery.internationalDay">International Day</h3>
+                                    <p data-i18n="gallery.internationalDayDesc">Annual celebration of our diverse cultural community.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="gallery-item" data-category="events">
+                                <img src="images/gallery-events-3.jpg" alt="Science Fair">
+                                <div class="gallery-item-overlay">
+                                    <h3 data-i18n="gallery.scienceFair">Science Fair</h3>
+                                    <p data-i18n="gallery.scienceFairDesc">Students showcasing innovative research projects.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="gallery-item" data-category="events">
+                                <img src="images/gallery-events-4.jpg" alt="Parents Day">
+                                <div class="gallery-item-overlay">
+                                    <h3 data-i18n="gallery.parentsDay">Parents Day</h3>
+                                    <p data-i18n="gallery.parentsDayDesc">Annual event where parents experience a day in their children's school life.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="gallery-item" data-category="events">
+                                <img src="images/gallery-events-5.jpg" alt="Career Fair">
+                                <div class="gallery-item-overlay">
+                                    <h3 data-i18n="gallery.careerFair">Career Fair</h3>
+                                    <p data-i18n="gallery.careerFairDesc">Connecting students with professionals from various fields.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="gallery-item" data-category="events">
+                                <img src="images/gallery-events-6.jpg" alt="Sports Day">
+                                <div class="gallery-item-overlay">
+                                    <h3 data-i18n="gallery.sportsDay">Annual Sports Day</h3>
+                                    <p data-i18n="gallery.sportsDayDesc">A day of athletic competitions and team spirit.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="campusContent">
+                        <div class="gallery-grid">
+                            <div class="gallery-item" data-category="campus">
+                                <img src="images/gallery-campus-1.jpg" alt="School Building">
+                                <div class="gallery-item-overlay">
+                                    <h3 data-i18n="gallery.schoolBuilding">Main Building</h3>
+                                    <p data-i18n="gallery.schoolBuildingDesc">Our modern campus designed for optimal learning.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="gallery-item" data-category="campus">
+                                <img src="images/gallery-campus-2.jpg" alt="School Garden">
+                                <div class="gallery-item-overlay">
+                                    <h3 data-i18n="gallery.schoolGarden">School Garden</h3>
+                                    <p data-i18n="gallery.schoolGardenDesc">Outdoor spaces for relaxation and environmental education.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="gallery-item" data-category="campus">
+                                <img src="images/gallery-campus-3.jpg" alt="Cafeteria">
+                                <div class="gallery-item-overlay">
+                                    <h3 data-i18n="gallery.cafeteria">Cafeteria</h3>
+                                    <p data-i18n="gallery.cafeteriaDesc">Our cafeteria serves nutritious meals prepared fresh daily.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="gallery-item" data-category="campus">
+                                <img src="images/gallery-campus-4.jpg" alt="Auditorium">
+                                <div class="gallery-item-overlay">
+                                    <h3 data-i18n="gallery.auditorium">Auditorium</h3>
+                                    <p data-i18n="gallery.auditoriumDesc">Our 400-seat auditorium hosts performances and school events.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="gallery-item" data-category="campus">
+                                <img src="images/gallery-campus-5.jpg" alt="Entrance Hall">
+                                <div class="gallery-item-overlay">
+                                    <h3 data-i18n="gallery.entranceHall">Entrance Hall</h3>
+                                    <p data-i18n="gallery.entranceHallDesc">The welcoming entrance to our school community.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="gallery-item" data-category="campus">
+                                <img src="images/gallery-campus-6.jpg" alt="Aerial View">
+                                <div class="gallery-item-overlay">
+                                    <h3 data-i18n="gallery.aerialView">Aerial View</h3>
+                                    <p data-i18n="gallery.aerialViewDesc">A bird's eye view of our expansive campus facilities.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Image Modal -->
+            <div id="imageModal" class="modal">
+                <span class="close">&times;</span>
+                <div class="modal-content">
+                    <img id="modalImg" class="modal-img">
+                    <div id="modalCaption" class="modal-caption"></div>
+                    <a class="prev">&#10094;</a>
+                    <a class="next">&#10095;</a>
+                </div>
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-col">
+                        <h3 data-i18n="footer.about">About Us</h3>
+                        <p data-i18n="footer.aboutText">Laval Bilingual High School is committed to providing quality education in both English and French, preparing students for global opportunities.</p>
+                        <div class="footer-social">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h3 data-i18n="footer.quickLinks">Quick Links</h3>
+                        <ul>
+                            <li><a href="about.html" data-i18n="navigation.about">About</a></li>
+                            <li><a href="academics/overview.html" data-i18n="navigation.academics">Academics</a></li>
+                            <li><a href="admissions.html" data-i18n="navigation.admissions">Admissions</a></li>
+                            <li><a href="gallery.html" data-i18n="navigation.gallery">Gallery</a></li>
+                            <li><a href="contact.html" data-i18n="navigation.contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h3 data-i18n="footer.resources">Resources</h3>
+                        <ul>
+                            <li><a href="students.html" data-i18n="navigation.students">Students</a></li>
+                            <li><a href="books/anglophone.html" data-i18n="navigation.books">Books & Materials</a></li>
+                            <li><a href="faq.html" data-i18n="navigation.faq">FAQ</a></li>
+                            <li><a href="alumni.html" data-i18n="navigation.alumni">Alumni</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h3 data-i18n="footer.contactInfo">Contact Info</h3>
+                        <ul class="contact-info">
+                            <li>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span data-i18n="footer.address">123 Education Street, City, Country</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-phone"></i>
+                                <span data-i18n="footer.phone">+123 456 7890</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-envelope"></i>
+                                <span data-i18n="footer.email">info@lavalbilingual.edu</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-clock"></i>
+                                <span data-i18n="footer.hours">Mon-Fri: 7:30 AM - 4:30 PM</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p data-i18n="footer.copyright">© 2025 Laval Bilingual High School. All Rights Reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="js/translations.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Gallery page specific JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab functionality
+            const allTab = document.getElementById('allTab');
+            const academicsTab = document.getElementById('academicsTab');
+            const artsTab = document.getElementById('artsTab');
+            const sportsTab = document.getElementById('sportsTab');
+            const eventsTab = document.getElementById('eventsTab');
+            const campusTab = document.getElementById('campusTab');
+            
+            const allContent = document.getElementById('allContent');
+            const academicsContent = document.getElementById('academicsContent');
+            const artsContent = document.getElementById('artsContent');
+            const sportsContent = document.getElementById('sportsContent');
+            const eventsContent = document.getElementById('eventsContent');
+            const campusContent = document.getElementById('campusContent');
+            
+            allTab.addEventListener('click', function() {
+                setActiveTab(allTab, allContent);
+            });
+            
+            academicsTab.addEventListener('click', function() {
+                setActiveTab(academicsTab, academicsContent);
+            });
+            
+            artsTab.addEventListener('click', function() {
+                setActiveTab(artsTab, artsContent);
+            });
+            
+            sportsTab.addEventListener('click', function() {
+                setActiveTab(sportsTab, sportsContent);
+            });
+            
+            eventsTab.addEventListener('click', function() {
+                setActiveTab(eventsTab, eventsContent);
+            });
+            
+            campusTab.addEventListener('click', function() {
+                setActiveTab(campusTab, campusContent);
+            });
+            
+            function setActiveTab(activeTab, activeContent) {
+                // Remove active class from all tabs and content
+                [allTab, academicsTab, artsTab, sportsTab, eventsTab, campusTab].forEach(tab => {
+                    tab.classList.remove('active');
+                });
+                
+                [allContent, academicsContent, artsContent, sportsContent, eventsContent, campusContent].forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // Add active class to selected tab and content
+                activeTab.classList.add('active');
+                activeContent.classList.add('active');
+            }
+            
+            // Modal functionality
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImg');
+            const modalCaption = document.getElementById('modalCaption');
+            const closeBtn = document.getElementsByClassName('close')[0];
+            const prevBtn = document.getElementsByClassName('prev')[0];
+            const nextBtn = document.getElementsByClassName('next')[0];
+            
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            let currentIndex = 0;
+            let currentCategory = 'all';
+            
+            galleryItems.forEach((item, index) => {
+                item.addEventListener('click', function() {
+                    const img = this.querySelector('img');
+                    const title = this.querySelector('h3').textContent;
+                    const desc = this.querySelector('p').textContent;
+                    
+                    modal.style.display = 'block';
+                    modalImg.src = img.src;
+                    modalCaption.innerHTML = `<h3>${title}</h3><p>${desc}</p>`;
+                    
+                    currentIndex = index;
+                    currentCategory = this.dataset.category;
+                });
+            });
+            
+            closeBtn.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+            
+            window.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+            
+            prevBtn.addEventListener('click', function() {
+                navigateGallery(-1);
+            });
+            
+            nextBtn.addEventListener('click', function() {
+                navigateGallery(1);
+            });
+            
+            function navigateGallery(direction) {
+                const activeTab = document.querySelector('.tab-btn.active').id;
+                let visibleItems;
+                
+                if (activeTab === 'allTab') {
+                    visibleItems = document.querySelectorAll('.gallery-item');
+                } else {
+                    const categoryName = activeTab.replace('Tab', '');
+                    visibleItems = document.querySelectorAll(`.gallery-item[data-category="${categoryName}"]`);
+                }
+                
+                currentIndex = (currentIndex + direction + visibleItems.length) % visibleItems.length;
+                
+                const newItem = visibleItems[currentIndex];
+                const img = newItem.querySelector('img');
+                const title = newItem.querySelector('h3').textContent;
+                const desc = newItem.querySelector('p').textContent;
+                
+                modalImg.src = img.src;
+                modalCaption.innerHTML = `<h3>${title}</h3><p>${desc}</p>`;
+            }
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (modal.style.display === 'block') {
+                    if (e.key === 'ArrowLeft') {
+                        navigateGallery(-1);
+                    } else if (e.key === 'ArrowRight') {
+                        navigateGallery(1);
+                    } else if (e.key === 'Escape') {
+                        modal.style.display = 'none';
+                    }
+                }
+            });
+            
+            // Add translations for gallery page
+            if (!translations.en.gallery) {
+                translations.en.gallery = {
+                    title: "School Life in Pictures",
+                    intro: "Explore our vibrant school community through these images capturing academic excellence, creative expression, athletic achievement, and memorable events.",
+                    all: "All",
+                    academics: "Academics",
+                    arts: "Arts & Culture",
+                    sports: "Sports",
+                    events: "Events",
+                    campus: "Campus",
+                    scienceLab: "Science Laboratory",
+                    scienceLabDesc: "Students conducting experiments in our state-of-the-art science laboratory.",
+                    library: "School Library",
+                    libraryDesc: "Our extensive library offers resources in multiple languages.",
+                    classroom: "Interactive Classroom",
+                    classroomDesc: "Engaging learning environments with modern technology.",
+                    computerLab: "Computer Lab",
+                    computerLabDesc: "Students developing digital skills in our computer laboratory.",
+                    languageLab: "Language Laboratory",
+                    languageLabDesc: "Specialized facilities for language acquisition and practice.",
+                    studyGroup: "Collaborative Learning",
+                    studyGroupDesc: "Students working together on group projects and assignments.",
+                    artStudio: "Art Studio",
+                    artStudioDesc: "Students expressing creativity in our well-equipped art studio.",
+                    schoolPlay: "Annual School Play",
+                    schoolPlayDesc: "Students performing Shakespeare's 'A Midsummer Night's Dream'.",
+                    musicRoom: "Music Room",
+                    musicRoomDesc: "Our music program offers instruction in various instruments.",
+                    danceStudio: "Dance Studio",
+                    danceStudioDesc: "Students practicing various dance styles in our professional studio.",
+                    choirPerformance: "Choir Performance",
+                    choirPerformanceDesc: "Our award-winning choir performing at the annual concert.",
+                    artExhibition: "Student Art Exhibition",
+                    artExhibitionDesc: "Showcasing the artistic talents of our students.",
+                    soccerMatch: "Soccer Championship",
+                    soccerMatchDesc: "Our team celebrating victory in the regional finals.",
+                    swimmingPool: "Swimming Pool",
+                    swimmingPoolDesc: "Our 25-meter pool hosts swimming lessons and competitions.",
+                    basketballCourt: "Basketball Court",
+                    basketballCourtDesc: "Indoor sports facilities for year-round athletic activities.",
+                    tennisCourts: "Tennis Courts",
+                    tennisCourtsDesc: "Professional-grade courts for tennis practice and tournaments.",
+                    athleticsTrack: "Athletics Track",
+                    athleticsTrackDesc: "Our track and field facilities for training and competitions.",
+                    fitnessCenter: "Fitness Center",
+                    fitnessCenterDesc: "Modern equipment for physical training and conditioning.",
+                    graduation: "Graduation Ceremony",
+                    graduationDesc: "Celebrating the achievements of our graduating class.",
+                    internationalDay: "International Day",
+                    internationalDayDesc: "Annual celebration of our diverse cultural community.",
+                    scienceFair: "Science Fair",
+                    scienceFairDesc: "Students showcasing innovative research projects.",
+                    parentsDay: "Parents Day",
+                    parentsDayDesc: "Annual event where parents experience a day in their children's school life.",
+                    careerFair: "Career Fair",
+                    careerFairDesc: "Connecting students with professionals from various fields.",
+                    sportsDay: "Annual Sports Day",
+                    sportsDayDesc: "A day of athletic competitions and team spirit.",
+                    schoolBuilding: "Main Building",
+                    schoolBuildingDesc: "Our modern campus designed for optimal learning.",
+                    schoolGarden: "School Garden",
+                    schoolGardenDesc: "Outdoor spaces for relaxation and environmental education.",
+                    cafeteria: "Cafeteria",
+                    cafeteriaDesc: "Our cafeteria serves nutritious meals prepared fresh daily.",
+                    auditorium: "Auditorium",
+                    auditoriumDesc: "Our 400-seat auditorium hosts performances and school events.",
+                    entranceHall: "Entrance Hall",
+                    entranceHallDesc: "The welcoming entrance to our school community.",
+                    aerialView: "Aerial View",
+                    aerialViewDesc: "A bird's eye view of our expansive campus facilities."
+                };
+            }
+            
+            if (!translations.fr.gallery) {
+                translations.fr.gallery = {
+                    title: "La Vie Scolaire en Images",
+                    intro: "Explorez notre communauté scolaire dynamique à travers ces images capturant l'excellence académique, l'expression créative, les réussites sportives et les événements mémorables.",
+                    all: "Tout",
+                    academics: "Académique",
+                    arts: "Arts & Culture",
+                    sports: "Sports",
+                    events: "Événements",
+                    campus: "Campus",
+                    scienceLab: "Laboratoire de Sciences",
+                    scienceLabDesc: "Élèves réalisant des expériences dans notre laboratoire de sciences de pointe.",
+                    library: "Bibliothèque Scolaire",
+                    libraryDesc: "Notre vaste bibliothèque offre des ressources en plusieurs langues.",
+                    classroom: "Salle de Classe Interactive",
+                    classroomDesc: "Environnements d'apprentissage engageants avec technologie moderne.",
+                    computerLab: "Laboratoire Informatique",
+                    computerLabDesc: "Élèves développant des compétences numériques dans notre laboratoire informatique.",
+                    languageLab: "Laboratoire de Langues",
+                    languageLabDesc: "Installations spécialisées pour l'acquisition et la pratique des langues.",
+                    studyGroup: "Apprentissage Collaboratif",
+                    studyGroupDesc: "Élèves travaillant ensemble sur des projets de groupe et des devoirs.",
+                    artStudio: "Studio d'Art",
+                    artStudioDesc: "Élèves exprimant leur créativité dans notre studio d'art bien équipé.",
+                    schoolPlay: "Pièce de Théâtre Annuelle",
+                    schoolPlayDesc: "Élèves interprétant 'Le Songe d'une Nuit d'Été' de Shakespeare.",
+                    musicRoom: "Salle de Musique",
+                    musicRoomDesc: "Notre programme de musique offre une instruction sur divers instruments.",
+                    danceStudio: "Studio de Danse",
+                    danceStudioDesc: "Élèves pratiquant divers styles de danse dans notre studio professionnel.",
+                    choirPerformance: "Performance de la Chorale",
+                    choirPerformanceDesc: "Notre chorale primée se produisant au concert annuel.",
+                    artExhibition: "Exposition d'Art des Élèves",
+                    artExhibitionDesc: "Mise en valeur des talents artistiques de nos élèves.",
+                    soccerMatch: "Championnat de Football",
+                    soccerMatchDesc: "Notre équipe célébrant la victoire en finale régionale.",
+                    swimmingPool: "Piscine",
+                    swimmingPoolDesc: "Notre piscine de 25 mètres accueille des cours de natation et des compétitions.",
+                    basketballCourt: "Terrain de Basketball",
+                    basketballCourtDesc: "Installations sportives intérieures pour des activités sportives toute l'année.",
+                    tennisCourts: "Courts de Tennis",
+                    tennisCourtsDesc: "Courts de qualité professionnelle pour la pratique du tennis et les tournois.",
+                    athleticsTrack: "Piste d'Athlétisme",
+                    athleticsTrackDesc: "Nos installations d'athlétisme pour l'entraînement et les compétitions.",
+                    fitnessCenter: "Centre de Fitness",
+                    fitnessCenterDesc: "Équipement moderne pour l'entraînement physique et le conditionnement.",
+                    graduation: "Cérémonie de Remise des Diplômes",
+                    graduationDesc: "Célébration des réussites de notre classe diplômée.",
+                    internationalDay: "Journée Internationale",
+                    internationalDayDesc: "Célébration annuelle de notre communauté culturelle diverse.",
+                    scienceFair: "Foire aux Sciences",
+                    scienceFairDesc: "Élèves présentant des projets de recherche innovants.",
+                    parentsDay: "Journée des Parents",
+                    parentsDayDesc: "Événement annuel où les parents vivent une journée dans la vie scolaire de leurs enfants.",
+                    careerFair: "Forum des Carrières",
+                    careerFairDesc: "Mise en relation des élèves avec des professionnels de divers domaines.",
+                    sportsDay: "Journée Sportive Annuelle",
+                    sportsDayDesc: "Une journée de compétitions sportives et d'esprit d'équipe.",
+                    schoolBuilding: "Bâtiment Principal",
+                    schoolBuildingDesc: "Notre campus moderne conçu pour un apprentissage optimal.",
+                    schoolGarden: "Jardin de l'École",
+                    schoolGardenDesc: "Espaces extérieurs pour la détente et l'éducation environnementale.",
+                    cafeteria: "Cafétéria",
+                    cafeteriaDesc: "Notre cafétéria sert des repas nutritifs préparés frais chaque jour.",
+                    auditorium: "Auditorium",
+                    auditoriumDesc: "Notre auditorium de 400 places accueille des spectacles et des événements scolaires.",
+                    entranceHall: "Hall d'Entrée",
+                    entranceHallDesc: "L'entrée accueillante de notre communauté scolaire.",
+                    aerialView: "Vue Aérienne",
+                    aerialViewDesc: "Une vue à vol d'oiseau de nos vastes installations de campus."
+                };
+            }
+            
+            // Apply initial translations based on current language
+            const currentLang = localStorage.getItem('userLanguage') || 'en';
+            applyTranslations(currentLang);
+        });
+    </script>
+</body>
+</html>

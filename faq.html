@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Laval Bilingual High School</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/dropdown-fix.css">
+    <style>
+        .page-banner {
+            background-image: url('images/faq-banner.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .page-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .page-banner .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .page-banner h1 {
+            color: white;
+            font-size: 3rem;
+            font-weight: 700;
+        }
+        
+        .faq-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .tab-btn {
+            padding: 10px 20px;
+            background: none;
+            border: none;
+            border-bottom: 2px solid transparent;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 0 10px 10px;
+        }
+        
+        .tab-btn.active {
+            border-bottom-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .accordion-item {
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .accordion-header {
+            background-color: #f8f9fa;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .accordion-button {
+            width: 100%;
+            text-align: left;
+            padding: 15px 20px;
+            background: none;
+            border: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            color: var(--dark-color);
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .accordion-button::after {
+            content: '\f078';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            right: 20px;
+            transition: transform 0.3s;
+        }
+        
+        .accordion-button.active::after {
+            transform: rotate(180deg);
+        }
+        
+        .accordion-content {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .accordion-content.active {
+            max-height: 500px;
+            padding: 20px;
+        }
+        
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+        
+        .search-form {
+            display: flex;
+        }
+        
+        .search-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px 0 0 4px;
+            font-family: var(--font-primary);
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        .search-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            padding: 0 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .search-button:hover {
+            background-color: #003da6;
+        }
+        
+        .contact-cta {
+            background-color: #f8f9fa;
+            padding: 40px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        .contact-cta h3 {
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .btn-contact {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 4px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s;
+        }
+        
+        .btn-contact i {
+            margin-right: 10px;
+        }
+        
+        .btn-contact:hover {
+            background-color: #003da6;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 70, 173, 0.2);
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <header class="site-header">
+            <div class="header-contain">
+                <div class="header-content">
+                    <a href="index.html">
+                        <!-- logo section -->
+                        <div class="nav-logo">
+                            <div class="logo-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div class="logo-text">
+                                <h1 data-i18n="schoolName">Laval School</h1>
+                                <p>Excellence in Education</p>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="nav-toggle" id="navToggle"> <!-- 3 button for phone view-->
+                        <span></span> <span></span><span></span>
+                    </div>
+                    
+                    <nav class="main-nav" id="mainNav">
+                        <ul class="nav-menu">
+                            <li><a href="index.html" data-i18n="navigation.home">Home</a></li>
+                            <li><a href="about.html" data-i18n="navigation.about">About</a></li>
+                            <li><a href="staff.html" data-i18n="navigation.staff">Staff & Faculty</a></li>
+                            <li class="dropdown">
+                                <a href="academics/overview.html" data-i18n="navigation.academics">Academics</a>
+                                <div class="dropdown-content">
+                                    <a href="academics/overview.html" data-i18n="navigation.overview">Overview</a>
+                                    <a href="academics/curriculum.html" data-i18n="navigation.curriculum">Curriculum & Exams</a>
+                                    <a href="academics/results.html" data-i18n="navigation.results">Results</a>
+                                </div>
+                            </li>
+                            <li><a href="admissions.html" data-i18n="navigation.admissions">Admissions</a></li>
+                            <li class="dropdown">
+                                <a href="books/anglophone.html" data-i18n="navigation.books">Books & Materials</a>
+                                <div class="dropdown-content">
+                                    <a href="books/anglophone.html" data-i18n="navigation.anglophone">Anglophone Section</a>
+                                    <a href="books/francophone.html" data-i18n="navigation.francophone">Francophone Section</a>
+                                </div>
+                            </li>
+                            <li><a href="students.html" data-i18n="navigation.students">Students</a></li>
+                            <li><a href="gallery.html" data-i18n="navigation.gallery">Gallery</a></li>
+                            <li><a href="alumni.html" data-i18n="navigation.alumni">Alumni</a></li>
+                            <li><a href="faq.html" class="active" data-i18n="navigation.faq">FAQ</a></li>
+                            <li><a href="contact.html" data-i18n="navigation.contact">Contact</a></li>
+                        </ul>
+                    </nav>
+                    
+                    <div class="language-toggle">
+                        <button class="lang-btn active" data-lang="en">EN</button>
+                        <button class="lang-btn" data-lang="fr">FR</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <!-- Banner Section -->
+            <section class="page-banner">
+                <div class="container">
+                    <h1 data-i18n="navigation.faq">FAQ</h1>
+                </div>
+            </section>
+
+            <!-- FAQ Content -->
+            <section class="section">
+                <div class="container">
+                    <div class="section-title">
+                        <h2 data-i18n="faq.title">Frequently Asked Questions</h2>
+                        <p data-i18n="faq.intro">Find answers to the most common questions about Laval Bilingual High School. If you can't find what you're looking for, please don't hesitate to contact us.</p>
+                    </div>
+                    
+                    <div class="search-container">
+                        <form class="search-form" id="faqSearch">
+                            <input type="text" class="search-input" id="searchInput" placeholder="Search FAQs..." data-i18n-placeholder="faq.searchPlaceholder">
+                            <button type="submit" class="search-button">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <div class="faq-tabs">
+                        <button class="tab-btn active" id="generalTab" data-i18n="faq.general">General</button>
+                        <button class="tab-btn" id="admissionsTab" data-i18n="faq.admissions">Admissions</button>
+                        <button class="tab-btn" id="academicsTab" data-i18n="faq.academics">Academics</button>
+                        <button class="tab-btn" id="studentLifeTab" data-i18n="faq.studentLife">Student Life</button>
+                        <button class="tab-btn" id="facilitiesTab" data-i18n="faq.facilities">Facilities</button>
+                    </div>
+                    
+                    <div class="tab-content active" id="generalContent">
+                        <div class="accordion">
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button" data-i18n="faq.general1Q">What makes Laval Bilingual High School unique?</button>
+                                </h3>
+                                <div class="accordion-content">
+                                    <p data-i18n="faq.general1A">Laval Bilingual High School offers a truly bilingual education where students learn in both English and French. Our unique approach integrates both languages across the curriculum, rather than treating them as separate subjects. We combine the best educational practices from different systems to provide a comprehensive international education that prepares students for global opportunities.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button" data-i18n="faq.general2Q">What is the history of the school?</button>
+                                </h3>
+                                <div class="accordion-content">
+                                    <p data-i18n="faq.general2A">Founded in 1985, Laval Bilingual High School was established to provide quality bilingual education to meet the growing demand for internationally-minded education. Starting with just 50 students, we have grown to a community of over 800 students from diverse backgrounds. Throughout our history, we have maintained our commitment to academic excellence, cultural understanding, and preparing students for success in a globalized world.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button" data-i18n="faq.general3Q">What are the school hours?</button>
+                                </h3>
+                                <div class="accordion-content">
+                                    <p data-i18n="faq.general3A">School hours are from 8:00 AM to 3:30 PM, Monday through Friday. The school gates open at 7:30 AM, and students are expected to arrive by 7:50 AM for the morning assembly. After-school activities typically run from 3:45 PM to 5:00 PM.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button" data-i18n="faq.general4Q">Is transportation provided?</button>
+                                </h3>
+                                <div class="accordion-content">
+                                    <p data-i18n="faq.general4A">Yes, we offer a school bus service for students living within a 15-mile radius of the school. The bus routes are designed to provide convenient pickup and drop-off points. For families outside this radius, we can help coordinate carpooling options. Please contact our transportation office for more details and to register for the bus service.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button" data-i18n="faq.general5Q">What is the school's approach to technology?</button>
+                                </h3>
+                                <div class="accordion-content">
+                                    <p data-i18n="faq.general5A">We integrate technology throughout our curriculum to enhance learning and prepare students for the digital world. All classrooms are equipped with interactive whiteboards, and we maintain computer labs with up-to-date hardware and software. Students in Forms 4-6 participate in our 1:1 laptop program, while younger students have access to shared devices. We emphasize digital literacy and responsible use of technology.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="admissionsContent">
+                        <div class="accordion">
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button" data-i18n="faq.admissions1Q">What is the admissions process?</button>
+                                </h3>
+                                <div class="accordion-content">
+                                    <p data-i18n="faq.admissions1A">Our admissions process involves several steps: 1) Submission of the application form and required documents, 2) Entrance examination to assess language proficiency and academic readiness, 3) Interview with the student and parents, and 4) Final decision and enrollment. We recommend starting the application process at least 6 months before your desired entry date. Please visit our Admissions page for detailed information and application deadlines.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button" data-i18n="faq.admissions2Q">Does my child need to be bilingual to apply?</button>
+                                </h3>
+                                <div class="accordion-content">
+                                    <p data-i18n="faq.admissions2A">While prior knowledge of both English and French is beneficial, it is not a strict requirement for all grade levels. For entry into Form 1, we look for aptitude and willingness to learn both languages. For higher grades, a certain level of proficiency in both languages is expected. We offer language support programs to help students develop their skills in either language.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button" data-i18n="faq.admissions3Q">What are the tuition fees?</button>
+                                </h3>
+                                <div class="accordion-content">
+                                    <p data-i18n="faq.admissions3A">Tuition fees vary by grade level: Junior Forms (1-3): $12,000 per year, Senior Forms (4-5): $14,000 per year, and Sixth Form: $16,000 per year. Additional fees include a one-time application fee of $100, an annual registration fee of $500, and fees for books, materials, technology, and activities. Please refer to our Admissions page for a complete fee schedule and payment options.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button" data-i18n="faq.admissions4Q">Are scholarships available?</button>
+                                </h3>
+                                <div class="accordion-content">
+                                    <p data-i18n="faq.admissions4A">Yes, we offer both merit-based scholarships and need-based financial aid. Merit scholarships are awarded based on academic excellence, leadership potential, and special talents. Need-based financial aid is available to families who demonstrate financial need. Scholarship applications must be submitted along with the admissions application. Please contact our Admissions Office for more information about eligibility criteria and application procedures.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button" data-i18n="faq.admissions5Q">Can mid-year transfers be accommodated?</button>
+                                </h3>
+                                <div class="accordion-content">
+                                    <p data-i18n="faq.admissions5A">Yes, we accept mid-year transfers subject to availability of places and the student's ability to integrate into our curriculum. Each case is evaluated individually to ensure the student's success. We provide additional support for mid-year entrants to help them adjust to our bilingual program and catch up on any curriculum differences.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="academicsContent">
+                        <div class="accordion">
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button" data-i18n="faq.academics1Q">What curriculum does the school follow?</button>
+                                </h3>
+                                <div class="accordion-content">
+                                    <p data-i18n="faq.academics1A">We offer a blended curriculum that incorporates elements from both international and national educational systems. In the junior forms, we follow an integrated curriculum that builds strong foundations in both English and French. In the senior forms, students prepare for internationally recognized qualifications including the International Baccalaureate (IB) Diploma Programme and/or A-Levels, with options to also take the French Baccalauréat. This approach ensures our graduates have credentials recognized by universities worldwide.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button" data-i18n="faq.academics2Q">How is the bilingual aspect implemented in the curriculum?</button>
+                                </h3>
+                                <div class="accordion-content">
+                                    <p data-i18n="faq.academics2A">Our bilingual approach means that subjects are taught in both English and French, rather than simply offering language classes. In the junior forms, subjects alternate between the two languages throughout the week. In the senior forms, students can choose which language track they prefer for certain subjects, while maintaining proficiency in both languages. This immersive approach helps students develop true bilingualism and bicultural understanding.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button" data-i18n="faq.academics3Q">What is the average class size?</button>
+                                </h3>
+                                <div class="accordion-content">
+                                    <p data-i18n="faq.academics3A">Our average class size is 20 students, with a maximum of 24 students per class. This allows for personalized attention while maintaining a dynamic learning environment. For specialized subjects and advanced courses in the senior forms, class sizes may be smaller.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button" data-i18n="faq.academics4Q">How does the school support students who are struggling academically?</button>
+                                </h3>
+                                <div class="accordion-content">
+                                    <p data-i18n="faq.academics4A">We have a comprehensive support system for students who need additional help. This includes after-school tutoring, peer mentoring programs, and individualized learning plans developed in collaboration with teachers, parents, and our learning support specialists. For students who need language support, we offer English as an Additional Language (EAL) and French as an Additional Language (FAL) programs. Our goal is to help every student reach their full potential.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button" data-i18n="faq.academics5Q">What are the school's examination results like?</button>
+                                </h3>
+                                <div class="accordion-content">
+                                    <p data-i18n="faq.academics5A">Our students consistently achieve excellent results in external examinations. In the IB Diploma Programme, our average score is 36 points (global average: 30), with several students achieving 40+ points each year. For A-Levels, over 85% of grades are A*-B. Our French Baccalauréat students achieve an average score of 15/20, with a high percentage earning "mention très bien" (highest honors). These results reflect our commitment to academic excellence and have enabled our graduates to gain admission to top universities worldwide.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="studentLifeContent">
+                        <div class="accordion">
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button" data-i18n="faq.studentLife1Q">What extracurricular activities are offered?</button>
+                                </h3>
+                                <div class="accordion-content">
+                                    <p data-i18n="faq.studentLife1A">We offer a wide range of extracurricular activities to enrich student life and develop well-rounded individuals. These include sports (soccer, basketball, volleyball, tennis, swimming, athletics), arts (choir, orchestra, drama, visual arts), academic clubs (debate, Model UN, robotics, coding), and service initiatives (community service, environmental club). Activities take place after school and on weekends, with opportunities for local and international competitions and exchanges.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button" data-i18n="faq.studentLife2Q">Is there a school uniform?</button>
+                                </h3>
+                                <div class="accordion-content">
+                                    <p data-i18n="faq.studentLife2A">Yes, all students from Forms 1-5 are required to wear the school uniform, which consists of navy blue trousers or skirt, white shirt/blouse, school tie, and navy blue blazer with the school crest. Sixth Form students follow a business casual dress code. The uniform helps create a sense of community and equality among students. Detailed uniform guidelines are provided upon admission.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button" data-i18n="faq.studentLife3Q">What meals are provided at school?</button>
+                                </h3>
+                                <div class="accordion-content">
+                                    <p data-i18n="faq.studentLife3A">Our school cafeteria provides nutritious, balanced meals prepared fresh daily. Lunch is included in the tuition fees, with options for different dietary requirements (vegetarian, vegan, gluten-free, etc.). Breakfast and snacks are available for purchase. Our menu rotates on a three-week cycle and includes international cuisine that reflects our diverse community. Students may also bring packed lunches if they prefer.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button" data-i18n="faq.studentLife4Q">How does the school handle discipline?</button>
+                                </h3>
+                                <div class="accordion-content">
+                                    <p data-i18n="faq.studentLife4A">We follow a positive discipline approach that emphasizes respect, responsibility, and character development. Our code of conduct is clearly communicated to all students and parents. Minor infractions are handled through a system of warnings and reflective conversations, while more serious issues involve parent conferences and appropriate consequences. We believe in restorative practices that help students learn from their mistakes and develop self-discipline.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button" data-i18n="faq.studentLife5Q">Are there opportunities for international trips and exchanges?</button>
+                                </h3>
+                                <div class="accordion-content">
+                                    <p data-i18n="faq.studentLife5A">Yes, international experiences are an important part of our program. We organize annual language immersion trips to French-speaking countries for students in Forms 3-6. We also have exchange programs with partner schools in France, Canada, and other countries, allowing students to experience different educational systems and cultures. Additionally, we participate in international competitions, conferences, and service projects that provide valuable global exposure.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="facilitiesContent">
+                        <div class="accordion">
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button" data-i18n="faq.facilities1Q">What facilities does the school have?</button>
+                                </h3>
+                                <div class="accordion-content">
+                                    <p data-i18n="faq.facilities1A">Our campus features modern facilities designed to support academic excellence and holistic development. These include well-equipped classrooms with interactive technology, specialized science laboratories, computer labs, a library with resources in multiple languages, art studios, music rooms, a 400-seat auditorium, indoor sports hall, swimming pool, outdoor sports fields, and recreational areas. All facilities are regularly maintained and updated to provide an optimal learning environment.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button" data-i18n="faq.facilities2Q">Is there a library?</button>
+                                </h3>
+                                <div class="accordion-content">
+                                    <p data-i18n="faq.facilities2A">Yes, our school library is a central hub for learning and research. It houses over 20,000 print books in English, French, and other languages, as well as digital resources including e-books, academic databases, and multimedia materials. The library is staffed by qualified librarians who provide research guidance and organize literacy events. Students have access to the library during school hours and for extended hours during examination periods.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button" data-i18n="faq.facilities3Q">What sports facilities are available?</button>
+                                </h3>
+                                <div class="accordion-content">
+                                    <p data-i18n="faq.facilities3A">Our sports facilities include a multi-purpose indoor sports hall for basketball, volleyball, badminton, and other indoor sports; a 25-meter swimming pool; outdoor fields for soccer, rugby, and athletics; tennis courts; and a fitness center for senior students. These facilities are used for physical education classes, school team practices, and recreational activities. They are also available for community use outside school hours.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button" data-i18n="faq.facilities4Q">Are there facilities for arts and music?</button>
+                                </h3>
+                                <div class="accordion-content">
+                                    <p data-i18n="faq.facilities4A">We have dedicated spaces for creative expression, including art studios equipped for various media (painting, sculpture, ceramics, digital art), music rooms with instruments and recording equipment, a dance studio with mirrors and proper flooring, and a drama studio for theatrical productions. Our auditorium hosts performances throughout the year, showcasing student talent in music, drama, and dance.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button" data-i18n="faq.facilities5Q">Is there medical care available on campus?</button>
+                                </h3>
+                                <div class="accordion-content">
+                                    <p data-i18n="faq.facilities5A">Yes, we have a fully equipped health center staffed by qualified nurses during school hours. The health center provides first aid, manages student medications, conducts regular health screenings, and handles minor illnesses and injuries. For emergencies, we have protocols in place for immediate medical attention, including partnerships with nearby medical facilities. All staff are trained in basic first aid and emergency procedures.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-cta">
+                        <h3 data-i18n="faq.moreQuestions">Still have questions?</h3>
+                        <p data-i18n="faq.moreQuestionsText">If you couldn't find the answer to your question, please don't hesitate to contact us directly.</p>
+                        <a href="contact.html" class="btn-contact">
+                            <i class="fas fa-envelope"></i> <span data-i18n="faq.contactButton">Contact Us</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-col">
+                        <h3 data-i18n="footer.about">About Us</h3>
+                        <p data-i18n="footer.aboutText">Laval Bilingual High School is committed to providing quality education in both English and French, preparing students for global opportunities.</p>
+                        <div class="footer-social">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h3 data-i18n="footer.quickLinks">Quick Links</h3>
+                        <ul>
+                            <li><a href="about.html" data-i18n="navigation.about">About</a></li>
+                            <li><a href="academics/overview.html" data-i18n="navigation.academics">Academics</a></li>
+                            <li><a href="admissions.html" data-i18n="navigation.admissions">Admissions</a></li>
+                            <li><a href="gallery.html" data-i18n="navigation.gallery">Gallery</a></li>
+                            <li><a href="contact.html" data-i18n="navigation.contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h3 data-i18n="footer.resources">Resources</h3>
+                        <ul>
+                            <li><a href="students.html" data-i18n="navigation.students">Students</a></li>
+                            <li><a href="books/anglophone.html" data-i18n="navigation.books">Books & Materials</a></li>
+                            <li><a href="faq.html" data-i18n="navigation.faq">FAQ</a></li>
+                            <li><a href="alumni.html" data-i18n="navigation.alumni">Alumni</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h3 data-i18n="footer.contactInfo">Contact Info</h3>
+                        <ul class="contact-info">
+                            <li>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span data-i18n="footer.address">123 Education Street, City, Country</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-phone"></i>
+                                <span data-i18n="footer.phone">+123 456 7890</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-envelope"></i>
+                                <span data-i18n="footer.email">info@lavalbilingual.edu</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-clock"></i>
+                                <span data-i18n="footer.hours">Mon-Fri: 7:30 AM - 4:30 PM</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p data-i18n="footer.copyright">© 2025 Laval Bilingual High School. All Rights Reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="js/translations.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // FAQ page specific JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab functionality
+            const generalTab = document.getElementById('generalTab');
+            const admissionsTab = document.getElementById('admissionsTab');
+            const academicsTab = document.getElementById('academicsTab');
+            const studentLifeTab = document.getElementById('studentLifeTab');
+            const facilitiesTab = document.getElementById('facilitiesTab');
+            
+            const generalContent = document.getElementById('generalContent');
+            const admissionsContent = document.getElementById('admissionsContent');
+            const academicsContent = document.getElementById('academicsContent');
+            const studentLifeContent = document.getElementById('studentLifeContent');
+            const facilitiesContent = document.getElementById('facilitiesContent');
+            
+            generalTab.addEventListener('click', function() {
+                setActiveTab(generalTab, generalContent);
+            });
+            
+            admissionsTab.addEventListener('click', function() {
+                setActiveTab(admissionsTab, admissionsContent);
+            });
+            
+            academicsTab.addEventListener('click', function() {
+                setActiveTab(academicsTab, academicsContent);
+            });
+            
+            studentLifeTab.addEventListener('click', function() {
+                setActiveTab(studentLifeTab, studentLifeContent);
+            });
+            
+            facilitiesTab.addEventListener('click', function() {
+                setActiveTab(facilitiesTab, facilitiesContent);
+            });
+            
+            function setActiveTab(activeTab, activeContent) {
+                // Remove active class from all tabs and content
+                [generalTab, admissionsTab, academicsTab, studentLifeTab, facilitiesTab].forEach(tab => {
+                    tab.classList.remove('active');
+                });
+                
+                [generalContent, admissionsContent, academicsContent, studentLifeContent, facilitiesContent].forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // Add active class to selected tab and content
+                activeTab.classList.add('active');
+                activeContent.classList.add('active');
+            }
+            
+            // Accordion functionality
+            const accordionButtons = document.querySelectorAll('.accordion-button');
+            
+            accordionButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    const content = this.parentElement.nextElementSibling;
+                    content.classList.toggle('active');
+                });
+            });
+            
+            // Search functionality
+            const searchForm = document.getElementById('faqSearch');
+            const searchInput = document.getElementById('searchInput');
+            const allQuestions = document.querySelectorAll('.accordion-button');
+            
+            searchForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const searchTerm = searchInput.value.toLowerCase();
+                
+                if (searchTerm.trim() === '') {
+                    // If search is empty, reset all questions
+                    allQuestions.forEach(question => {
+                        question.parentElement.parentElement.style.display = 'block';
+                    });
+                    return;
+                }
+                
+                // Show all tabs for searching
+                [generalContent, admissionsContent, academicsContent, studentLifeContent, facilitiesContent].forEach(content => {
+                    content.style.display = 'block';
+                });
+                
+                // Hide all questions first
+                allQuestions.forEach(question => {
+                    question.parentElement.parentElement.style.display = 'none';
+                });
+                
+                // Show questions that match search
+                let foundResults = false;
+                allQuestions.forEach(question => {
+                    const questionText = question.textContent.toLowerCase();
+                    const answerText = question.parentElement.nextElementSibling.textContent.toLowerCase();
+                    
+                    if (questionText.includes(searchTerm) || answerText.includes(searchTerm)) {
+                        question.parentElement.parentElement.style.display = 'block';
+                        // Expand the question
+                        question.classList.add('active');
+                        question.parentElement.nextElementSibling.classList.add('active');
+                        foundResults = true;
+                    }
+                });
+                
+                // If no results found, show a message
+                if (!foundResults) {
+                    alert('No results found. Please try a different search term.');
+                    // Reset display
+                    allQuestions.forEach(question => {
+                        question.parentElement.parentElement.style.display = 'block';
+                    });
+                }
+                
+                // After search, reset tab display and activate the first tab with results
+                setTimeout(() => {
+                    [generalContent, admissionsContent, academicsContent, studentLifeContent, facilitiesContent].forEach(content => {
+                        content.style.display = 'none';
+                    });
+                    
+                    // Find first tab with visible questions
+                    const tabContents = [generalContent, admissionsContent, academicsContent, studentLifeContent, facilitiesContent];
+                    const tabs = [generalTab, admissionsTab, academicsTab, studentLifeTab, facilitiesTab];
+                    
+                    let activeTabIndex = 0;
+                    for (let i = 0; i < tabContents.length; i++) {
+                        const visibleQuestions = tabContents[i].querySelectorAll('.accordion-item[style="display: block;"]');
+                        if (visibleQuestions.length > 0) {
+                            activeTabIndex = i;
+                            break;
+                        }
+                    }
+                    
+                    setActiveTab(tabs[activeTabIndex], tabContents[activeTabIndex]);
+                }, 100);
+            });
+            
+            // Add translations for FAQ page
+            if (!translations.en.faq) {
+                translations.en.faq = {
+                    title: "Frequently Asked Questions",
+                    intro: "Find answers to the most common questions about Laval Bilingual High School. If you can't find what you're looking for, please don't hesitate to contact us.",
+                    searchPlaceholder: "Search FAQs...",
+                    general: "General",
+                    admissions: "Admissions",
+                    academics: "Academics",
+                    studentLife: "Student Life",
+                    facilities: "Facilities",
+                    general1Q: "What makes Laval Bilingual High School unique?",
+                    general1A: "Laval Bilingual High School offers a truly bilingual education where students learn in both English and French. Our unique approach integrates both languages across the curriculum, rather than treating them as separate subjects. We combine the best educational practices from different systems to provide a comprehensive international education that prepares students for global opportunities.",
+                    general2Q: "What is the history of the school?",
+                    general2A: "Founded in 1985, Laval Bilingual High School was established to provide quality bilingual education to meet the growing demand for internationally-minded education. Starting with just 50 students, we have grown to a community of over 800 students from diverse backgrounds. Throughout our history, we have maintained our commitment to academic excellence, cultural understanding, and preparing students for success in a globalized world.",
+                    general3Q: "What are the school hours?",
+                    general3A: "School hours are from 8:00 AM to 3:30 PM, Monday through Friday. The school gates open at 7:30 AM, and students are expected to arrive by 7:50 AM for the morning assembly. After-school activities typically run from 3:45 PM to 5:00 PM.",
+                    general4Q: "Is transportation provided?",
+                    general4A: "Yes, we offer a school bus service for students living within a 15-mile radius of the school. The bus routes are designed to provide convenient pickup and drop-off points. For families outside this radius, we can help coordinate carpooling options. Please contact our transportation office for more details and to register for the bus service.",
+                    general5Q: "What is the school's approach to technology?",
+                    general5A: "We integrate technology throughout our curriculum to enhance learning and prepare students for the digital world. All classrooms are equipped with interactive whiteboards, and we maintain computer labs with up-to-date hardware and software. Students in Forms 4-6 participate in our 1:1 laptop program, while younger students have access to shared devices. We emphasize digital literacy and responsible use of technology.",
+                    admissions1Q: "What is the admissions process?",
+                    admissions1A: "Our admissions process involves several steps: 1) Submission of the application form and required documents, 2) Entrance examination to assess language proficiency and academic readiness, 3) Interview with the student and parents, and 4) Final decision and enrollment. We recommend starting the application process at least 6 months before your desired entry date. Please visit our Admissions page for detailed information and application deadlines.",
+                    admissions2Q: "Does my child need to be bilingual to apply?",
+                    admissions2A: "While prior knowledge of both English and French is beneficial, it is not a strict requirement for all grade levels. For entry into Form 1, we look for aptitude and willingness to learn both languages. For higher grades, a certain level of proficiency in both languages is expected. We offer language support programs to help students develop their skills in either language.",
+                    admissions3Q: "What are the tuition fees?",
+                    admissions3A: "Tuition fees vary by grade level: Junior Forms (1-3): $12,000 per year, Senior Forms (4-5): $14,000 per year, and Sixth Form: $16,000 per year. Additional fees include a one-time application fee of $100, an annual registration fee of $500, and fees for books, materials, technology, and activities. Please refer to our Admissions page for a complete fee schedule and payment options.",
+                    admissions4Q: "Are scholarships available?",
+                    admissions4A: "Yes, we offer both merit-based scholarships and need-based financial aid. Merit scholarships are awarded based on academic excellence, leadership potential, and special talents. Need-based financial aid is available to families who demonstrate financial need. Scholarship applications must be submitted along with the admissions application. Please contact our Admissions Office for more information about eligibility criteria and application procedures.",
+                    admissions5Q: "Can mid-year transfers be accommodated?",
+                    admissions5A: "Yes, we accept mid-year transfers subject to availability of places and the student's ability to integrate into our curriculum. Each case is evaluated individually to ensure the student's success. We provide additional support for mid-year entrants to help them adjust to our bilingual program and catch up on any curriculum differences.",
+                    academics1Q: "What curriculum does the school follow?",
+                    academics1A: "We offer a blended curriculum that incorporates elements from both international and national educational systems. In the junior forms, we follow an integrated curriculum that builds strong foundations in both English and French. In the senior forms, students prepare for internationally recognized qualifications including the International Baccalaureate (IB) Diploma Programme and/or A-Levels, with options to also take the French Baccalauréat. This approach ensures our graduates have credentials recognized by universities worldwide.",
+                    academics2Q: "How is the bilingual aspect implemented in the curriculum?",
+                    academics2A: "Our bilingual approach means that subjects are taught in both English and French, rather than simply offering language classes. In the junior forms, subjects alternate between the two languages throughout the week. In the senior forms, students can choose which language track they prefer for certain subjects, while maintaining proficiency in both languages. This immersive approach helps students develop true bilingualism and bicultural understanding.",
+                    academics3Q: "What is the average class size?",
+                    academics3A: "Our average class size is 20 students, with a maximum of 24 students per class. This allows for personalized attention while maintaining a dynamic learning environment. For specialized subjects and advanced courses in the senior forms, class sizes may be smaller.",
+                    academics4Q: "How does the school support students who are struggling academically?",
+                    academics4A: "We have a comprehensive support system for students who need additional help. This includes after-school tutoring, peer mentoring programs, and individualized learning plans developed in collaboration with teachers, parents, and our learning support specialists. For students who need language support, we offer English as an Additional Language (EAL) and French as an Additional Language (FAL) programs. Our goal is to help every student reach their full potential.",
+                    academics5Q: "What are the school's examination results like?",
+                    academics5A: "Our students consistently achieve excellent results in external examinations. In the IB Diploma Programme, our average score is 36 points (global average: 30), with several students achieving 40+ points each year. For A-Levels, over 85% of grades are A*-B. Our French Baccalauréat students achieve an average score of 15/20, with a high percentage earning \"mention très bien\" (highest honors). These results reflect our commitment to academic excellence and have enabled our graduates to gain admission to top universities worldwide.",
+                    studentLife1Q: "What extracurricular activities are offered?",
+                    studentLife1A: "We offer a wide range of extracurricular activities to enrich student life and develop well-rounded individuals. These include sports (soccer, basketball, volleyball, tennis, swimming, athletics), arts (choir, orchestra, drama, visual arts), academic clubs (debate, Model UN, robotics, coding), and service initiatives (community service, environmental club). Activities take place after school and on weekends, with opportunities for local and international competitions and exchanges.",
+                    studentLife2Q: "Is there a school uniform?",
+                    studentLife2A: "Yes, all students from Forms 1-5 are required to wear the school uniform, which consists of navy blue trousers or skirt, white shirt/blouse, school tie, and navy blue blazer with the school crest. Sixth Form students follow a business casual dress code. The uniform helps create a sense of community and equality among students. Detailed uniform guidelines are provided upon admission.",
+                    studentLife3Q: "What meals are provided at school?",
+                    studentLife3A: "Our school cafeteria provides nutritious, balanced meals prepared fresh daily. Lunch is included in the tuition fees, with options for different dietary requirements (vegetarian, vegan, gluten-free, etc.). Breakfast and snacks are available for purchase. Our menu rotates on a three-week cycle and includes international cuisine that reflects our diverse community. Students may also bring packed lunches if they prefer.",
+                    studentLife4Q: "How does the school handle discipline?",
+                    studentLife4A: "We follow a positive discipline approach that emphasizes respect, responsibility, and character development. Our code of conduct is clearly communicated to all students and parents. Minor infractions are handled through a system of warnings and reflective conversations, while more serious issues involve parent conferences and appropriate consequences. We believe in restorative practices that help students learn from their mistakes and develop self-discipline.",
+                    studentLife5Q: "Are there opportunities for international trips and exchanges?",
+                    studentLife5A: "Yes, international experiences are an important part of our program. We organize annual language immersion trips to French-speaking countries for students in Forms 3-6. We also have exchange programs with partner schools in France, Canada, and other countries, allowing students to experience different educational systems and cultures. Additionally, we participate in international competitions, conferences, and service projects that provide valuable global exposure.",
+                    facilities1Q: "What facilities does the school have?",
+                    facilities1A: "Our campus features modern facilities designed to support academic excellence and holistic development. These include well-equipped classrooms with interactive technology, specialized science laboratories, computer labs, a library with resources in multiple languages, art studios, music rooms, a 400-seat auditorium, indoor sports hall, swimming pool, outdoor sports fields, and recreational areas. All facilities are regularly maintained and updated to provide an optimal learning environment.",
+                    facilities2Q: "Is there a library?",
+                    facilities2A: "Yes, our school library is a central hub for learning and research. It houses over 20,000 print books in English, French, and other languages, as well as digital resources including e-books, academic databases, and multimedia materials. The library is staffed by qualified librarians who provide research guidance and organize literacy events. Students have access to the library during school hours and for extended hours during examination periods.",
+                    facilities3Q: "What sports facilities are available?",
+                    facilities3A: "Our sports facilities include a multi-purpose indoor sports hall for basketball, volleyball, badminton, and other indoor sports; a 25-meter swimming pool; outdoor fields for soccer, rugby, and athletics; tennis courts; and a fitness center for senior students. These facilities are used for physical education classes, school team practices, and recreational activities. They are also available for community use outside school hours.",
+                    facilities4Q: "Are there facilities for arts and music?",
+                    facilities4A: "We have dedicated spaces for creative expression, including art studios equipped for various media (painting, sculpture, ceramics, digital art), music rooms with instruments and recording equipment, a dance studio with mirrors and proper flooring, and a drama studio for theatrical productions. Our auditorium hosts performances throughout the year, showcasing student talent in music, drama, and dance.",
+                    facilities5Q: "Is there medical care available on campus?",
+                    facilities5A: "Yes, we have a fully equipped health center staffed by qualified nurses during school hours. The health center provides first aid, manages student medications, conducts regular health screenings, and handles minor illnesses and injuries. For emergencies, we have protocols in place for immediate medical attention, including partnerships with nearby medical facilities. All staff are trained in basic first aid and emergency procedures.",
+                    moreQuestions: "Still have questions?",
+                    moreQuestionsText: "If you couldn't find the answer to your question, please don't hesitate to contact us directly.",
+                    contactButton: "Contact Us"
+                };
+            }
+            
+            if (!translations.fr.faq) {
+                translations.fr.faq = {
+                    title: "Questions Fréquemment Posées",
+                    intro: "Trouvez des réponses aux questions les plus courantes sur le Lycée Bilingue Laval. Si vous ne trouvez pas ce que vous cherchez, n'hésitez pas à nous contacter.",
+                    searchPlaceholder: "Rechercher dans les FAQ...",
+                    general: "Général",
+                    admissions: "Admissions",
+                    academics: "Académique",
+                    studentLife: "Vie Étudiante",
+                    facilities: "Installations",
+                    general1Q: "Qu'est-ce qui rend le Lycée Bilingue Laval unique?",
+                    general1A: "Le Lycée Bilingue Laval offre une éducation véritablement bilingue où les élèves apprennent en anglais et en français. Notre approche unique intègre les deux langues dans tout le programme, plutôt que de les traiter comme des matières séparées. Nous combinons les meilleures pratiques éducatives de différents systèmes pour offrir une éducation internationale complète qui prépare les élèves aux opportunités mondiales.",
+                    general2Q: "Quelle est l'histoire de l'école?",
+                    general2A: "Fondé en 1985, le Lycée Bilingue Laval a été établi pour fournir une éducation bilingue de qualité répondant à la demande croissante d'une éducation à vocation internationale. Commençant avec seulement 50 élèves, nous avons grandi pour devenir une communauté de plus de 800 élèves d'origines diverses. Tout au long de notre histoire, nous avons maintenu notre engagement envers l'excellence académique, la compréhension culturelle et la préparation des élèves au succès dans un monde globalisé.",
+                    general3Q: "Quelles sont les heures d'école?",
+                    general3A: "Les heures d'école sont de 8h00 à 15h30, du lundi au vendredi. Les portes de l'école ouvrent à 7h30, et les élèves sont attendus à 7h50 pour l'assemblée du matin. Les activités parascolaires se déroulent généralement de 15h45 à 17h00.",
+                    general4Q: "Un transport est-il fourni?",
+                    general4A: "Oui, nous offrons un service de bus scolaire pour les élèves vivant dans un rayon de 24 kilomètres de l'école. Les itinéraires des bus sont conçus pour offrir des points de ramassage et de dépose pratiques. Pour les familles en dehors de ce rayon, nous pouvons aider à coordonner des options de covoiturage. Veuillez contacter notre bureau des transports pour plus de détails et pour vous inscrire au service de bus.",
+                    general5Q: "Quelle est l'approche de l'école concernant la technologie?",
+                    general5A: "Nous intégrons la technologie dans tout notre programme pour améliorer l'apprentissage et préparer les élèves au monde numérique. Toutes les salles de classe sont équipées de tableaux interactifs, et nous maintenons des laboratoires informatiques avec du matériel et des logiciels à jour. Les élèves des Forms 4-6 participent à notre programme d'ordinateurs portables 1:1, tandis que les élèves plus jeunes ont accès à des appareils partagés. Nous mettons l'accent sur la littératie numérique et l'utilisation responsable de la technologie.",
+                    admissions1Q: "Quel est le processus d'admission?",
+                    admissions1A: "Notre processus d'admission comprend plusieurs étapes: 1) Soumission du formulaire de demande et des documents requis, 2) Examen d'entrée pour évaluer la maîtrise de la langue et la préparation académique, 3) Entretien avec l'élève et les parents, et 4) Décision finale et inscription. Nous recommandons de commencer le processus de demande au moins 6 mois avant la date d'entrée souhaitée. Veuillez consulter notre page Admissions pour des informations détaillées et les dates limites de candidature.",
+                    admissions2Q: "Mon enfant doit-il être bilingue pour postuler?",
+                    admissions2A: "Bien qu'une connaissance préalable de l'anglais et du français soit bénéfique, ce n'est pas une exigence stricte pour tous les niveaux. Pour l'entrée en Form 1, nous recherchons l'aptitude et la volonté d'apprendre les deux langues. Pour les niveaux supérieurs, un certain niveau de compétence dans les deux langues est attendu. Nous offrons des programmes de soutien linguistique pour aider les élèves à développer leurs compétences dans l'une ou l'autre langue.",
+                    admissions3Q: "Quels sont les frais de scolarité?",
+                    admissions3A: "Les frais de scolarité varient selon le niveau: Forms Junior (1-3): 12 000 $ par an, Forms Senior (4-5): 14 000 $ par an, et Sixième: 16 000 $ par an. Des frais supplémentaires comprennent des frais de demande uniques de 100 $, des frais d'inscription annuels de 500 $, et des frais pour les livres, le matériel, la technologie et les activités. Veuillez consulter notre page Admissions pour un calendrier complet des frais et des options de paiement.",
+                    admissions4Q: "Des bourses sont-elles disponibles?",
+                    admissions4A: "Oui, nous offrons à la fois des bourses au mérite et des aides financières basées sur les besoins. Les bourses au mérite sont attribuées sur la base de l'excellence académique, du potentiel de leadership et des talents spéciaux. L'aide financière basée sur les besoins est disponible pour les familles qui démontrent un besoin financier. Les demandes de bourse doivent être soumises avec la demande d'admission. Veuillez contacter notre Bureau des Admissions pour plus d'informations sur les critères d'éligibilité et les procédures de demande.",
+                    admissions5Q: "Les transferts en cours d'année peuvent-ils être accommodés?",
+                    admissions5A: "Oui, nous acceptons les transferts en cours d'année sous réserve de disponibilité des places et de la capacité de l'élève à s'intégrer dans notre programme. Chaque cas est évalué individuellement pour assurer le succès de l'élève. Nous fournissons un soutien supplémentaire aux entrants en cours d'année pour les aider à s'adapter à notre programme bilingue et à rattraper les différences de programme.",
+                    academics1Q: "Quel programme l'école suit-elle?",
+                    academics1A: "Nous offrons un programme mixte qui incorpore des éléments des systèmes éducatifs internationaux et nationaux. Dans les forms junior, nous suivons un programme intégré qui construit de solides fondations en anglais et en français. Dans les forms senior, les élèves se préparent pour des qualifications reconnues internationalement, notamment le Programme du Diplôme du Baccalauréat International (IB) et/ou les A-Levels, avec des options pour également passer le Baccalauréat français. Cette approche garantit que nos diplômés ont des diplômes reconnus par les universités du monde entier.",
+                    academics2Q: "Comment l'aspect bilingue est-il mis en œuvre dans le programme?",
+                    academics2A: "Notre approche bilingue signifie que les matières sont enseignées en anglais et en français, plutôt que de simplement offrir des cours de langue. Dans les forms junior, les matières alternent entre les deux langues tout au long de la semaine. Dans les forms senior, les élèves peuvent choisir quelle piste linguistique ils préfèrent pour certaines matières, tout en maintenant la maîtrise des deux langues. Cette approche immersive aide les élèves à développer un véritable bilinguisme et une compréhension biculturelle.",
+                    academics3Q: "Quelle est la taille moyenne des classes?",
+                    academics3A: "Notre taille moyenne de classe est de 20 élèves, avec un maximum de 24 élèves par classe. Cela permet une attention personnalisée tout en maintenant un environnement d'apprentissage dynamique. Pour les matières spécialisées et les cours avancés dans les forms senior, les tailles de classe peuvent être plus petites.",
+                    academics4Q: "Comment l'école soutient-elle les élèves qui ont des difficultés académiques?",
+                    academics4A: "Nous avons un système de soutien complet pour les élèves qui ont besoin d'aide supplémentaire. Cela comprend du tutorat après l'école, des programmes de mentorat par les pairs, et des plans d'apprentissage individualisés développés en collaboration avec les enseignants, les parents et nos spécialistes du soutien à l'apprentissage. Pour les élèves qui ont besoin de soutien linguistique, nous offrons des programmes d'Anglais comme Langue Additionnelle (EAL) et de Français comme Langue Additionnelle (FAL). Notre objectif est d'aider chaque élève à atteindre son plein potentiel.",
+                    academics5Q: "Comment sont les résultats d'examen de l'école?",
+                    academics5A: "Nos élèves obtiennent constamment d'excellents résultats aux examens externes. Dans le Programme du Diplôme IB, notre score moyen est de 36 points (moyenne mondiale: 30), avec plusieurs élèves obtenant plus de 40 points chaque année. Pour les A-Levels, plus de 85% des notes sont A*-B. Nos élèves du Baccalauréat français obtiennent un score moyen de 15/20, avec un pourcentage élevé obtenant la \"mention très bien\" (les plus hautes distinctions). Ces résultats reflètent notre engagement envers l'excellence académique et ont permis à nos diplômés d'être admis dans les meilleures universités du monde.",
+                    studentLife1Q: "Quelles activités parascolaires sont proposées?",
+                    studentLife1A: "Nous offrons une large gamme d'activités parascolaires pour enrichir la vie étudiante et développer des individus équilibrés. Celles-ci comprennent des sports (football, basketball, volleyball, tennis, natation, athlétisme), des arts (chorale, orchestre, théâtre, arts visuels), des clubs académiques (débat, Modèle ONU, robotique, codage), et des initiatives de service (service communautaire, club environnemental). Les activités ont lieu après l'école et les week-ends, avec des opportunités de compétitions locales et internationales et d'échanges.",
+                    studentLife2Q: "Y a-t-il un uniforme scolaire?",
+                    studentLife2A: "Oui, tous les élèves des Forms 1-5 sont tenus de porter l'uniforme scolaire, qui se compose d'un pantalon ou d'une jupe bleu marine, d'une chemise/chemisier blanc, d'une cravate d'école, et d'un blazer bleu marine avec l'écusson de l'école. Les élèves de Sixième suivent un code vestimentaire business casual. L'uniforme aide à créer un sentiment de communauté et d'égalité parmi les élèves. Des directives détaillées sur l'uniforme sont fournies lors de l'admission.",
+                    studentLife3Q: "Quels repas sont fournis à l'école?",
+                    studentLife3A: "Notre cafétéria scolaire fournit des repas nutritifs et équilibrés préparés frais chaque jour. Le déjeuner est inclus dans les frais de scolarité, avec des options pour différentes exigences alimentaires (végétarien, végétalien, sans gluten, etc.). Le petit-déjeuner et les collations sont disponibles à l'achat. Notre menu tourne sur un cycle de trois semaines et comprend une cuisine internationale qui reflète notre communauté diverse. Les élèves peuvent également apporter des déjeuners emballés s'ils préfèrent.",
+                    studentLife4Q: "Comment l'école gère-t-elle la discipline?",
+                    studentLife4A: "Nous suivons une approche de discipline positive qui met l'accent sur le respect, la responsabilité et le développement du caractère. Notre code de conduite est clairement communiqué à tous les élèves et parents. Les infractions mineures sont traitées par un système d'avertissements et de conversations réfléchies, tandis que les problèmes plus graves impliquent des conférences avec les parents et des conséquences appropriées. Nous croyons aux pratiques restauratives qui aident les élèves à apprendre de leurs erreurs et à développer l'autodiscipline.",
+                    studentLife5Q: "Y a-t-il des opportunités de voyages internationaux et d'échanges?",
+                    studentLife5A: "Oui, les expériences internationales sont une partie importante de notre programme. Nous organisons des voyages annuels d'immersion linguistique dans des pays francophones pour les élèves des Forms 3-6. Nous avons également des programmes d'échange avec des écoles partenaires en France, au Canada et dans d'autres pays, permettant aux élèves d'expérimenter différents systèmes éducatifs et cultures. De plus, nous participons à des compétitions internationales, des conférences et des projets de service qui fournissent une précieuse exposition mondiale.",
+                    facilities1Q: "Quelles installations l'école possède-t-elle?",
+                    facilities1A: "Notre campus dispose d'installations modernes conçues pour soutenir l'excellence académique et le développement holistique. Celles-ci comprennent des salles de classe bien équipées avec technologie interactive, des laboratoires scientifiques spécialisés, des laboratoires informatiques, une bibliothèque avec des ressources en plusieurs langues, des studios d'art, des salles de musique, un auditorium de 400 places, une salle de sport intérieure, une piscine, des terrains de sport extérieurs et des zones récréatives. Toutes les installations sont régulièrement entretenues et mises à jour pour fournir un environnement d'apprentissage optimal.",
+                    facilities2Q: "Y a-t-il une bibliothèque?",
+                    facilities2A: "Oui, notre bibliothèque scolaire est un centre névralgique pour l'apprentissage et la recherche. Elle abrite plus de 20 000 livres imprimés en anglais, français et autres langues, ainsi que des ressources numériques comprenant des livres électroniques, des bases de données académiques et du matériel multimédia. La bibliothèque est dotée de bibliothécaires qualifiés qui fournissent des conseils de recherche et organisent des événements de littératie. Les élèves ont accès à la bibliothèque pendant les heures d'école et pour des heures prolongées pendant les périodes d'examen.",
+                    facilities3Q: "Quelles installations sportives sont disponibles?",
+                    facilities3A: "Nos installations sportives comprennent une salle de sport polyvalente intérieure pour le basketball, le volleyball, le badminton et d'autres sports intérieurs; une piscine de 25 mètres; des terrains extérieurs pour le football, le rugby et l'athlétisme; des courts de tennis; et un centre de fitness pour les élèves seniors. Ces installations sont utilisées pour les cours d'éducation physique, les pratiques des équipes scolaires et les activités récréatives. Elles sont également disponibles pour l'utilisation communautaire en dehors des heures d'école.",
+                    facilities4Q: "Y a-t-il des installations pour les arts et la musique?",
+                    facilities4A: "Nous avons des espaces dédiés à l'expression créative, y compris des studios d'art équipés pour divers médias (peinture, sculpture, céramique, art numérique), des salles de musique avec instruments et équipement d'enregistrement, un studio de danse avec miroirs et revêtement de sol approprié, et un studio de théâtre pour les productions théâtrales. Notre auditorium accueille des performances tout au long de l'année, mettant en valeur le talent des élèves en musique, théâtre et danse.",
+                    facilities5Q: "Y a-t-il des soins médicaux disponibles sur le campus?",
+                    facilities5A: "Oui, nous avons un centre de santé entièrement équipé doté d'infirmières qualifiées pendant les heures d'école. Le centre de santé fournit les premiers soins, gère les médicaments des élèves, effectue des dépistages de santé réguliers et traite les maladies et blessures mineures. Pour les urgences, nous avons des protocoles en place pour une attention médicale immédiate, y compris des partenariats avec des établissements médicaux à proximité. Tout le personnel est formé aux premiers soins de base et aux procédures d'urgence.",
+                    moreQuestions: "Vous avez encore des questions?",
+                    moreQuestionsText: "Si vous n'avez pas trouvé la réponse à votre question, n'hésitez pas à nous contacter directement.",
+                    contactButton: "Contactez-Nous"
+                };
+            }
+            
+            // Apply initial translations based on current language
+            const currentLang = localStorage.getItem('userLanguage') || 'en';
+            applyTranslations(currentLang);
+        });
+    </script>
+</body>
+</html>

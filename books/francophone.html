@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Francophone Section - Laval Bilingual High School</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/dropdown-fix.css">
+</head>
+<body>
+    <div id="app">
+        <header class="site-header">
+            <div class="header-contain">
+                <div class="header-content">
+                    <a href="index.html">
+                        <!-- logo section -->
+                        <div class="nav-logo">
+                            <div class="logo-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div class="logo-text">
+                                <h1 data-i18n="schoolName">Laval School</h1>
+                                <p>Excellence in Education</p>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="nav-toggle" id="navToggle"> <!-- 3 button for phone view-->
+                        <span></span> <span></span><span></span>
+                    </div>
+                    
+                    <nav class="main-nav" id="mainNav">
+                        <ul class="nav-menu">
+                            <li><a href="../index.html" data-i18n="navigation.home">Home</a></li>
+                            <li><a href="../about.html" data-i18n="navigation.about">About</a></li>
+                            <li><a href="../staff.html" data-i18n="navigation.staff">Staff & Faculty</a></li>
+                            <li class="dropdown">
+                                <a href="../academics/overview.html" data-i18n="navigation.academics">Academics</a>
+                                <div class="dropdown-content">
+                                    <a href="../academics/overview.html" data-i18n="navigation.overview">Overview</a>
+                                    <a href="../academics/curriculum.html" data-i18n="navigation.curriculum">Curriculum & Exams</a>
+                                    <a href="../academics/results.html" data-i18n="navigation.results">Results</a>
+                                </div>
+                            </li>
+                            <li><a href="../admissions.html" data-i18n="navigation.admissions">Admissions</a></li>
+                            <li class="dropdown">
+                                <a href="anglophone.html" class="active" data-i18n="navigation.books">Books & Materials</a>
+                                <div class="dropdown-content">
+                                    <a href="anglophone.html" data-i18n="navigation.anglophone">Anglophone Section</a>
+                                    <a href="francophone.html" class="active" data-i18n="navigation.francophone">Francophone Section</a>
+                                </div>
+                            </li>
+                            <li><a href="../students.html" data-i18n="navigation.students">Students</a></li>
+                            <li><a href="../gallery.html" data-i18n="navigation.gallery">Gallery</a></li>
+                            <li><a href="../alumni.html" data-i18n="navigation.alumni">Alumni</a></li>
+                            <li><a href="../faq.html" data-i18n="navigation.faq">FAQ</a></li>
+                            <li><a href="../contact.html" data-i18n="navigation.contact">Contact</a></li>
+                        </ul>
+                    </nav>
+                    
+                    <div class="language-toggle">
+                        <button class="lang-btn active" data-lang="en">EN</button>
+                        <button class="lang-btn" data-lang="fr">FR</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <!-- Banner Section -->
+            <section class="page-banner" style="background-image: url('../images/books-banner-fr.jpg');">
+                <div class="container">
+                    <div class="banner-content">
+                        <h1 data-i18n="books.francophoneTitle">Francophone Section Books</h1>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Books Content -->
+            <section class="section">
+                <div class="container">
+                    <div class="books-content">
+                        <h2 data-i18n="books.selectClass">Select your class</h2>
+                        
+                        <div class="class-selector">
+                            <div class="row">
+                                <div class="col-md-4 mb-4">
+                                    <div class="card class-card">
+                                        <div class="card-body">
+                                            <h3 data-i18n="books.sixieme">6ème</h3>
+                                            <a href="#" class="btn btn-primary" data-i18n="buttons.download">Download</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-4">
+                                    <div class="card class-card">
+                                        <div class="card-body">
+                                            <h3 data-i18n="books.cinquieme">5ème</h3>
+                                            <a href="#" class="btn btn-primary" data-i18n="buttons.download">Download</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-4">
+                                    <div class="card class-card">
+                                        <div class="card-body">
+                                            <h3 data-i18n="books.quatrieme">4ème</h3>
+                                            <a href="#" class="btn btn-primary" data-i18n="buttons.download">Download</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-4">
+                                    <div class="card class-card">
+                                        <div class="card-body">
+                                            <h3 data-i18n="books.troisieme">3ème</h3>
+                                            <a href="#" class="btn btn-primary" data-i18n="buttons.download">Download</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-4">
+                                    <div class="card class-card">
+                                        <div class="card-body">
+                                            <h3 data-i18n="books.seconde">2nd</h3>
+                                            <a href="#" class="btn btn-primary" data-i18n="buttons.download">Download</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-4">
+                                    <div class="card class-card">
+                                        <div class="card-body">
+                                            <h3 data-i18n="books.premiere">1er</h3>
+                                            <a href="#" class="btn btn-primary" data-i18n="buttons.download">Download</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-4">
+                                    <div class="card class-card">
+                                        <div class="card-body">
+                                            <h3 data-i18n="books.terminale">Tle</h3>
+                                            <a href="#" class="btn btn-primary" data-i18n="buttons.download">Download</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="complete-list mt-5 text-center">
+                            <a href="#" class="btn btn-action" data-i18n="books.downloadComplete">Download Complete Book List</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-col">
+                        <h3 data-i18n="footer.about">About Us</h3>
+                        <p data-i18n="footer.aboutText">Laval Bilingual High School is committed to providing quality education in both English and French, preparing students for global opportunities.</p>
+                        <div class="footer-social">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h3 data-i18n="footer.quickLinks">Quick Links</h3>
+                        <ul>
+                            <li><a href="../about.html" data-i18n="navigation.about">About</a></li>
+                            <li><a href="../academics/overview.html" data-i18n="navigation.academics">Academics</a></li>
+                            <li><a href="../admissions.html" data-i18n="navigation.admissions">Admissions</a></li>
+                            <li><a href="../gallery.html" data-i18n="navigation.gallery">Gallery</a></li>
+                            <li><a href="../contact.html" data-i18n="navigation.contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h3 data-i18n="footer.resources">Resources</h3>
+                        <ul>
+                            <li><a href="../students.html" data-i18n="navigation.students">Students</a></li>
+                            <li><a href="anglophone.html" data-i18n="navigation.books">Books & Materials</a></li>
+                            <li><a href="../faq.html" data-i18n="navigation.faq">FAQ</a></li>
+                            <li><a href="../alumni.html" data-i18n="navigation.alumni">Alumni</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h3 data-i18n="footer.contactInfo">Contact Info</h3>
+                        <ul class="contact-info">
+                            <li>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span data-i18n="footer.address">123 Education Street, City, Country</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-phone"></i>
+                                <span data-i18n="footer.phone">+123 456 7890</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-envelope"></i>
+                                <span data-i18n="footer.email">info@lavalbilingual.edu</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-clock"></i>
+                                <span data-i18n="footer.hours">Mon-Fri: 7:30 AM - 4:30 PM</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p data-i18n="footer.copyright">© 2025 Laval Bilingual High School. All Rights Reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="../js/translations.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

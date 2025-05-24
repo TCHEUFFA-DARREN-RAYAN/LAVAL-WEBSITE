@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laval Bilingual High School</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/dropdown-fix.css">
+</head>
+
+<body>
+    <div id="app">
+        <header class="site-header">
+            <div class="header-contain">
+                <div class="header-content">
+                    <a href="index.html">
+                        <!-- logo section -->
+                        <div class="nav-logo">
+                            <div class="logo-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div class="logo-text">
+                                <h1 data-i18n="schoolName">Laval School</h1>
+                                <p>Excellence in Education</p>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="nav-toggle" id="navToggle"> <!-- 3 button for phone view-->
+                        <span></span> <span></span><span></span>
+                    </div>
+
+                    <nav class="main-nav" id="mainNav">
+                        <ul class="nav-menu">
+                            <li><a href="index.html" class="active" data-i18n="navigation.home">Home</a></li>
+                            <li><a href="about.html" data-i18n="navigation.about">About</a></li>
+                            <li><a href="staff.html" data-i18n="navigation.staff">Staff & Faculty</a></li>
+                            <li class="dropdown">
+                                <a href="academics/overview.html" data-i18n="navigation.academics">Academics</a>
+                                <div class="dropdown-content">
+                                    <a href="academics/overview.html" data-i18n="navigation.overview">Overview</a>
+                                    <a href="academics/curriculum.html" data-i18n="navigation.curriculum">Curriculum &
+                                        Exams</a>
+                                    <a href="academics/results.html" data-i18n="navigation.results">Results</a>
+                                </div>
+                            </li>
+                            <li><a href="admissions.html" data-i18n="navigation.admissions">Admissions</a></li>
+                            <li class="dropdown">
+                                <a href="books/anglophone.html" data-i18n="navigation.books">Books & Materials</a>
+                                <div class="dropdown-content">
+                                    <a href="books/anglophone.html" data-i18n="navigation.anglophone">Anglophone
+                                        Section</a>
+                                    <a href="books/francophone.html" data-i18n="navigation.francophone">Francophone
+                                        Section</a>
+                                </div>
+                            </li>
+                            <li><a href="students.html" data-i18n="navigation.students">Students</a></li>
+                            <li><a href="gallery.html" data-i18n="navigation.gallery">Gallery</a></li>
+                            <li><a href="alumni.html" data-i18n="navigation.alumni">Alumni</a></li>
+                            <li><a href="faq.html" data-i18n="navigation.faq">FAQ</a></li>
+                            <li><a href="contact.html" data-i18n="navigation.contact">Contact</a></li>
+                        </ul>
+                    </nav>
+
+                    <div class="language-toggle">
+                        <button class="lang-btn active" data-lang="en">EN</button>
+                        <button class="lang-btn" data-lang="fr">FR</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <div class="hero-slide active" style="background-image: url('images/hero1.jpg');">
+                    <div class="hero-content">
+                        <h1 data-i18n="home.welcome">Welcome to Laval Bilingual High School</h1>
+                        <p data-i18n="home.subtitle">Excellence in Bilingual Education</p>
+                        <p data-i18n="home.intro">Providing quality education in both English and French, preparing
+                            students for global opportunities.</p>
+                        <a href="admissions.html" class="btn btn-action" data-i18n="buttons.apply">Apply Now</a>
+                    </div>
+                </div>
+                <div class="hero-slide" style="background-image: url('images/hero2.jpg');">
+                    <div class="hero-content">
+                        <h1 data-i18n="home.welcome">Welcome to Laval Bilingual High School</h1>
+                        <p data-i18n="home.subtitle">Excellence in Bilingual Education</p>
+                        <p data-i18n="home.intro">Providing quality education in both English and French, preparing
+                            students for global opportunities.</p>
+                        <a href="admissions.html" class="btn btn-action" data-i18n="buttons.apply">Apply Now</a>
+                    </div>
+                </div>
+                <div class="hero-slide" style="background-image: url('images/hero3.jpg');">
+                    <div class="hero-content">
+                        <h1 data-i18n="home.welcome">Welcome to Laval Bilingual High School</h1>
+                        <p data-i18n="home.subtitle">Excellence in Bilingual Education</p>
+                        <p data-i18n="home.intro">Providing quality education in both English and French, preparing
+                            students for global opportunities.</p>
+                        <a href="admissions.html" class="btn btn-action" data-i18n="buttons.apply">Apply Now</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Mission Section -->
+            <section class="section">
+                <div class="container">
+                    <div class="section-title">
+                        <h2 data-i18n="home.mission">Our Mission</h2>
+                    </div>
+                    <div class="grid-2">
+                        <div class="mission-image">
+                            <img src="images/mission.jpg" alt="Our Mission">
+                        </div>
+                        <div class="mission-content">
+                            <p data-i18n="home.missionText">To provide a high-quality bilingual education that prepares
+                                students to succeed in a global society while fostering critical thinking, creativity,
+                                and character development.</p>
+                            <a href="about.html" class="btn btn-primary" data-i18n="buttons.learnMore">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Programs -->
+            <section class="section bg-light">
+                <div class="container">
+                    <div class="section-title">
+                        <h2 data-i18n="home.featuredPrograms">Featured Programs</h2>
+                    </div>
+                    <div class="grid-3">
+                        <div class="card">
+                            <div class="card-img">
+                                <img src="images/program1.jpg" alt="Academic Excellence">
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">Academic Excellence</h3>
+                                <p class="card-text">Our rigorous curriculum challenges students to achieve their
+                                    highest potential in both English and French.</p>
+                                <a href="academics/overview.html" class="btn btn-outline"
+                                    data-i18n="buttons.readMore">Read More</a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-img">
+                                <img src="images/program2.jpg" alt="Cultural Exchange">
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">Cultural Exchange</h3>
+                                <p class="card-text">Students experience diverse cultural perspectives through our
+                                    international exchange programs.</p>
+                                <a href="academics/overview.html" class="btn btn-outline"
+                                    data-i18n="buttons.readMore">Read More</a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-img">
+                                <img src="images/program3.jpg" alt="Extracurricular Activities">
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">Extracurricular Activities</h3>
+                                <p class="card-text">From sports to arts, our diverse activities help students develop
+                                    well-rounded personalities.</p>
+                                <a href="students.html" class="btn btn-outline" data-i18n="buttons.readMore">Read
+                                    More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials -->
+            <section class="section">
+                <div class="container">
+                    <div class="section-title">
+                        <h2 data-i18n="home.testimonials">What Our Community Says</h2>
+                    </div>
+                    <div class="testimonial-slider">
+                        <div class="testimonial active">
+                            <div class="testimonial-content">
+                                <p>"The bilingual education my child receives at Laval has opened up so many
+                                    opportunities. The teachers are dedicated and the curriculum is challenging yet
+                                    supportive."</p>
+                                <div class="testimonial-author">
+                                    <img src="images/testimonial1.jpg" alt="Parent">
+                                    <div>
+                                        <h4>Sarah Johnson</h4>
+                                        <p>Parent</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="cta-section" style="background-image: url('images/cta-bg.jpg');">
+                <div class="container">
+                    <div class="cta-content">
+                        <h2>Ready to Join Our Community?</h2>
+                        <p>Take the first step towards a world-class bilingual education.</p>
+                        <a href="admissions.html" class="btn btn-action" data-i18n="buttons.apply">Apply Now</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-col">
+                        <h3 data-i18n="footer.about">About Us</h3>
+                        <p data-i18n="footer.aboutText">Laval Bilingual High School is committed to providing quality
+                            education in both English and French, preparing students for global opportunities.</p>
+                        <div class="footer-social">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h3 data-i18n="footer.quickLinks">Quick Links</h3>
+                        <ul>
+                            <li><a href="about.html" data-i18n="navigation.about">About</a></li>
+                            <li><a href="academics/overview.html" data-i18n="navigation.academics">Academics</a></li>
+                            <li><a href="admissions.html" data-i18n="navigation.admissions">Admissions</a></li>
+                            <li><a href="gallery.html" data-i18n="navigation.gallery">Gallery</a></li>
+                            <li><a href="contact.html" data-i18n="navigation.contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h3 data-i18n="footer.resources">Resources</h3>
+                        <ul>
+                            <li><a href="students.html" data-i18n="navigation.students">Students</a></li>
+                            <li><a href="books/anglophone.html" data-i18n="navigation.books">Books & Materials</a></li>
+                            <li><a href="faq.html" data-i18n="navigation.faq">FAQ</a></li>
+                            <li><a href="alumni.html" data-i18n="navigation.alumni">Alumni</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h3 data-i18n="footer.contactInfo">Contact Info</h3>
+                        <ul class="contact-info">
+                            <li>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span data-i18n="footer.address">123 Education Street, City, Country</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-phone"></i>
+                                <span data-i18n="footer.phone">+123 456 7890</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-envelope"></i>
+                                <span data-i18n="footer.email">info@lavalbilingual.edu</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-clock"></i>
+                                <span data-i18n="footer.hours">Mon-Fri: 7:30 AM - 4:30 PM</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p data-i18n="footer.copyright">© 2025 Laval Bilingual High School. All Rights Reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="js/translations.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

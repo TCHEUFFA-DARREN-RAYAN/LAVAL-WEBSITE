@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff & Faculty - Laval Bilingual High School</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/dropdown-fix.css">
+    <style>
+        .page-banner {
+            background-image: url('images/staff-banner.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .page-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .page-banner .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .page-banner h1 {
+            color: white;
+            font-size: 3rem;
+            font-weight: 700;
+        }
+        
+        .leadership-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .leader-card {
+            display: flex;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .leader-img {
+            width: 200px;
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .leader-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .leader-info {
+            padding: 20px;
+            flex: 1;
+        }
+        
+        .leader-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+        
+        .designation {
+            font-weight: 500;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+        
+        .bio {
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+        
+        .staff-social {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .staff-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background-color: rgba(0, 70, 173, 0.1);
+            border-radius: 50%;
+            color: var(--primary-color);
+            transition: all 0.3s;
+        }
+        
+        .staff-social a:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .staff-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .staff-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .staff-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .staff-img {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .staff-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .staff-card:hover .staff-img img {
+            transform: scale(1.1);
+        }
+        
+        .staff-info {
+            padding: 20px;
+        }
+        
+        .staff-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+        
+        .staff-position {
+            font-weight: 500;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+        
+        .staff-education, .staff-experience {
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .staff-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        
+        .tab-btn {
+            padding: 10px 20px;
+            background: none;
+            border: none;
+            border-bottom: 2px solid transparent;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 0 10px;
+        }
+        
+        .tab-btn.active {
+            border-bottom-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .cta-section {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/cta-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 80px 0;
+            text-align: center;
+            color: white;
+        }
+        
+        .cta-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta-content p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+        }
+        
+        .vibrating-btn {
+            animation: vibrate 0.3s linear infinite;
+            animation-play-state: paused;
+        }
+        
+        .vibrating-btn:hover {
+            animation-play-state: running;
+        }
+        
+        @keyframes vibrate {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-2px); }
+            50% { transform: translateX(0); }
+            75% { transform: translateX(2px); }
+            100% { transform: translateX(0); }
+        }
+        
+        @media (max-width: 992px) {
+            .leadership-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .staff-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .leader-card {
+                flex-direction: column;
+            }
+            
+            .leader-img {
+                width: 100%;
+                height: 300px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .staff-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <header class="site-header">
+            <div class="header-contain">
+                <div class="header-content">
+                    <a href="index.html">
+                        <!-- logo section -->
+                        <div class="nav-logo">
+                            <div class="logo-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div class="logo-text">
+                                <h1 data-i18n="schoolName">Laval School</h1>
+                                <p>Excellence in Education</p>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="nav-toggle" id="navToggle"> <!-- 3 button for phone view-->
+                        <span></span> <span></span><span></span>
+                    </div>
+                    
+                    <nav class="main-nav" id="mainNav">
+                        <ul class="nav-menu">
+                            <li><a href="index.html" data-i18n="navigation.home">Home</a></li>
+                            <li><a href="about.html" data-i18n="navigation.about">About</a></li>
+                            <li><a href="staff.html" class="active" data-i18n="navigation.staff">Staff & Faculty</a></li>
+                            <li class="dropdown">
+                                <a href="academics/overview.html" data-i18n="navigation.academics">Academics</a>
+                                <div class="dropdown-content">
+                                    <a href="academics/overview.html" data-i18n="navigation.overview">Overview</a>
+                                    <a href="academics/curriculum.html" data-i18n="navigation.curriculum">Curriculum & Exams</a>
+                                    <a href="academics/results.html" data-i18n="navigation.results">Results</a>
+                                </div>
+                            </li>
+                            <li><a href="admissions.html" data-i18n="navigation.admissions">Admissions</a></li>
+                            <li class="dropdown">
+                                <a href="books/anglophone.html" data-i18n="navigation.books">Books & Materials</a>
+                                <div class="dropdown-content">
+                                    <a href="books/anglophone.html" data-i18n="navigation.anglophone">Anglophone Section</a>
+                                    <a href="books/francophone.html" data-i18n="navigation.francophone">Francophone Section</a>
+                                </div>
+                            </li>
+                            <li><a href="students.html" data-i18n="navigation.students">Students</a></li>
+                            <li><a href="gallery.html" data-i18n="navigation.gallery">Gallery</a></li>
+                            <li><a href="alumni.html" data-i18n="navigation.alumni">Alumni</a></li>
+                            <li><a href="faq.html" data-i18n="navigation.faq">FAQ</a></li>
+                            <li><a href="contact.html" data-i18n="navigation.contact">Contact</a></li>
+                        </ul>
+                    </nav>
+                    
+                    <div class="language-toggle">
+                        <button class="lang-btn active" data-lang="en">EN</button>
+                        <button class="lang-btn" data-lang="fr">FR</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <!-- Banner Section -->
+            <section class="page-banner">
+                <div class="container">
+                    <h1 data-i18n="navigation.staff">Staff & Faculty</h1>
+                </div>
+            </section>
+
+            <!-- Leadership Section -->
+            <section class="section">
+                <div class="container">
+                    <div class="section-title">
+                        <h2 data-i18n="staff.schoolLeadership">School Leadership</h2>
+                    </div>
+                    
+                    <div class="leadership-grid">
+                        <div class="leader-card">
+                            <div class="leader-img">
+                                <img src="images/principal.jpg" alt="Dr. James Anderson">
+                            </div>
+                            <div class="leader-info">
+                                <h3>Dr. James Anderson</h3>
+                                <p class="designation" data-i18n="staff.principal">Principal</p>
+                                <p class="bio">Dr. Anderson has over 25 years of experience in education and holds a Ph.D. in Educational Leadership from Harvard University. He has been leading Laval Bilingual High School for the past 10 years, implementing innovative educational approaches and fostering a culture of excellence.</p>
+                                <div class="staff-social">
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#"><i class="fas fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="leader-card">
+                            <div class="leader-img">
+                                <img src="images/vice-principal.jpg" alt="Dr. Marie Dubois">
+                            </div>
+                            <div class="leader-info">
+                                <h3>Dr. Marie Dubois</h3>
+                                <p class="designation" data-i18n="staff.viceprincipalf">Vice Principal (Francophone)</p>
+                                <p class="bio">Dr. Dubois is a distinguished educator with a doctorate in French Literature from Sorbonne University. She oversees the Francophone section of our school, ensuring high standards in French language education and cultural integration.</p>
+                                <div class="staff-social">
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#"><i class="fas fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="leader-card">
+                            <div class="leader-img">
+                                <img src="images/vice-principal-2.jpg" alt="Prof. Robert Williams">
+                            </div>
+                            <div class="leader-info">
+                                <h3>Prof. Robert Williams</h3>
+                                <p class="designation" data-i18n="staff.viceprincipale">Vice Principal (Anglophone)</p>
+                                <p class="bio">Prof. Williams brings extensive experience in English education with a Master's degree from Oxford University. He leads the Anglophone section, focusing on maintaining high academic standards and implementing effective teaching methodologies.</p>
+                                <div class="staff-social">
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#"><i class="fas fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="leader-card">
+                            <div class="leader-img">
+                                <img src="images/dean.jpg" alt="Dr. Sarah Johnson">
+                            </div>
+                            <div class="leader-info">
+                                <h3>Dr. Sarah Johnson</h3>
+                                <p class="designation" data-i18n="staff.deanOfStudies">Dean of Studies</p>
+                                <p class="bio">Dr. Johnson holds a Ph.D. in Curriculum Development and has been instrumental in designing our integrated bilingual curriculum. She oversees academic planning, assessment strategies, and educational quality assurance across both language sections.</p>
+                                <div class="staff-social">
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#"><i class="fas fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Department Heads Section -->
+            <section class="section" style="background-color: #f8f9fa;">
+                <div class="container">
+                    <div class="section-title">
+                        <h2 data-i18n="staff.departmentHeads">Department Heads</h2>
+                    </div>
+                    
+                    <div class="staff-grid">
+                        <div class="staff-card">
+                            <div class="staff-img">
+                                <img src="images/staff-1.jpg" alt="Prof. David Chen">
+                            </div>
+                            <div class="staff-info">
+                                <h3>Prof. David Chen</h3>
+                                <p class="staff-position" data-i18n="staff.headOfMathematics">Head of Mathematics</p>
+                                <p class="staff-education">Ph.D. in Mathematics, MIT</p>
+                                <div class="staff-social">
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#"><i class="fas fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="staff-card">
+                            <div class="staff-img">
+                                <img src="images/staff-2.jpg" alt="Dr. Emily Parker">
+                            </div>
+                            <div class="staff-info">
+                                <h3>Dr. Emily Parker</h3>
+                                <p class="staff-position" data-i18n="staff.headOfSciences">Head of Sciences</p>
+                                <p class="staff-education">Ph.D. in Physics, Stanford University</p>
+                                <div class="staff-social">
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#"><i class="fas fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="staff-card">
+                            <div class="staff-img">
+                                <img src="images/staff-3.jpg" alt="Prof. Jean-Pierre Moreau">
+                            </div>
+                            <div class="staff-info">
+                                <h3>Prof. Jean-Pierre Moreau</h3>
+                                <p class="staff-position" data-i18n="staff.headOfFrench">Head of French</p>
+                                <p class="staff-education">Master's in French Literature, Université de Montréal</p>
+                                <div class="staff-social">
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#"><i class="fas fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="staff-card">
+                            <div class="staff-img">
+                                <img src="images/staff-4.jpg" alt="Dr. Amanda Wilson">
+                            </div>
+                            <div class="staff-info">
+                                <h3>Dr. Amanda Wilson</h3>
+                                <p class="staff-position" data-i18n="staff.headOfEnglish">Head of English</p>
+                                <p class="staff-education">Ph.D. in English Literature, Cambridge University</p>
+                                <div class="staff-social">
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#"><i class="fas fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="staff-card">
+                            <div class="staff-img">
+                                <img src="images/staff-5.jpg" alt="Prof. Michael Okonkwo">
+                            </div>
+                            <div class="staff-info">
+                                <h3>Prof. Michael Okonkwo</h3>
+                                <p class="staff-position" data-i18n="staff.headOfSocialSciences">Head of Social Sciences</p>
+                                <p class="staff-education">Ph.D. in History, University of Chicago</p>
+                                <div class="staff-social">
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#"><i class="fas fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="staff-card">
+                            <div class="staff-img">
+                                <img src="images/staff-6.jpg" alt="Ms. Sophie Laurent">
+                            </div>
+                            <div class="staff-info">
+                                <h3>Ms. Sophie Laurent</h3>
+                                <p class="staff-position" data-i18n="staff.headOfArts">Head of Arts</p>
+                                <p class="staff-education">Master's in Fine Arts, École des Beaux-Arts de Paris</p>
+                                <div class="staff-social">
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#"><i class="fas fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="staff-card">
+                            <div class="staff-img">
+                                <img src="images/staff-7.jpg" alt="Mr. Thomas Rodriguez">
+                            </div>
+                            <div class="staff-info">
+                                <h3>Mr. Thomas Rodriguez</h3>
+                                <p class="staff-position" data-i18n="staff.headOfPhysicalEducation">Head of Physical Education</p>
+                                <p class="staff-education">Master's in Sports Science, University of Barcelona</p>
+                                <div class="staff-social">
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#"><i class="fas fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="staff-card">
+                            <div class="staff-img">
+                                <img src="images/staff-8.jpg" alt="Dr. Fatima Al-Hassan">
+                            </div>
+                            <div class="staff-info">
+                                <h3>Dr. Fatima Al-Hassan</h3>
+                                <p class="staff-position" data-i18n="staff.headOfTechnology">Head of Technology</p>
+                                <p class="staff-education">Ph.D. in Computer Science, ETH Zurich</p>
+                                <div class="staff-social">
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#"><i class="fas fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Teaching Staff Section -->
+            <section class="section">
+                <div class="container">
+                    <div class="section-title">
+                        <h2 data-i18n="staff.teachingStaff">Teaching Staff</h2>
+                    </div>
+                    
+                    <div class="staff-tabs">
+                        <button class="tab-btn active" id="anglophoneTab" data-i18n="staff.anglophoneSection">Anglophone Section</button>
+                        <button class="tab-btn" id="francophoneTab" data-i18n="staff.francophoneSection">Francophone Section</button>
+                    </div>
+                    
+                    <div class="tab-content active" id="anglophoneContent">
+                        <div class="staff-grid">
+                            <div class="staff-card">
+                                <div class="staff-img">
+                                    <img src="images/teacher-1.jpg" alt="Ms. Jennifer Smith">
+                                </div>
+                                <div class="staff-info">
+                                    <h3>Ms. Jennifer Smith</h3>
+                                    <p class="staff-position">English Language</p>
+                                    <p class="staff-experience">15 years experience</p>
+                                </div>
+                            </div>
+                            
+                            <div class="staff-card">
+                                <div class="staff-img">
+                                    <img src="images/teacher-2.jpg" alt="Mr. Richard Brown">
+                                </div>
+                                <div class="staff-info">
+                                    <h3>Mr. Richard Brown</h3>
+                                    <p class="staff-position">Mathematics</p>
+                                    <p class="staff-experience">12 years experience</p>
+                                </div>
+                            </div>
+                            
+                            <div class="staff-card">
+                                <div class="staff-img">
+                                    <img src="images/teacher-3.jpg" alt="Dr. Lisa Wong">
+                                </div>
+                                <div class="staff-info">
+                                    <h3>Dr. Lisa Wong</h3>
+                                    <p class="staff-position">Biology</p>
+                                    <p class="staff-experience">10 years experience</p>
+                                </div>
+                            </div>
+                            
+                            <div class="staff-card">
+                                <div class="staff-img">
+                                    <img src="images/teacher-4.jpg" alt="Mr. Daniel Taylor">
+                                </div>
+                                <div class="staff-info">
+                                    <h3>Mr. Daniel Taylor</h3>
+                                    <p class="staff-position">Physics</p>
+                                    <p class="staff-experience">8 years experience</p>
+                                </div>
+                            </div>
+                            
+                            <div class="staff-card">
+                                <div class="staff-img">
+                                    <img src="images/teacher-5.jpg" alt="Ms. Rachel Green">
+                                </div>
+                                <div class="staff-info">
+                                    <h3>Ms. Rachel Green</h3>
+                                    <p class="staff-position">Chemistry</p>
+                                    <p class="staff-experience">9 years experience</p>
+                                </div>
+                            </div>
+                            
+                            <div class="staff-card">
+                                <div class="staff-img">
+                                    <img src="images/teacher-6.jpg" alt="Mr. James Wilson">
+                                </div>
+                                <div class="staff-info">
+                                    <h3>Mr. James Wilson</h3>
+                                    <p class="staff-position">History</p>
+                                    <p class="staff-experience">11 years experience</p>
+                                </div>
+                            </div>
+                            
+                            <div class="staff-card">
+                                <div class="staff-img">
+                                    <img src="images/teacher-7.jpg" alt="Ms. Emma Thompson">
+                                </div>
+                                <div class="staff-info">
+                                    <h3>Ms. Emma Thompson</h3>
+                                    <p class="staff-position">Geography</p>
+                                    <p class="staff-experience">7 years experience</p>
+                                </div>
+                            </div>
+                            
+                            <div class="staff-card">
+                                <div class="staff-img">
+                                    <img src="images/teacher-8.jpg" alt="Mr. Michael Johnson">
+                                </div>
+                                <div class="staff-info">
+                                    <h3>Mr. Michael Johnson</h3>
+                                    <p class="staff-position">Computer Science</p>
+                                    <p class="staff-experience">6 years experience</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="francophoneContent">
+                        <div class="staff-grid">
+                            <div class="staff-card">
+                                <div class="staff-img">
+                                    <img src="images/teacher-9.jpg" alt="Mme. Sophie Dubois">
+                                </div>
+                                <div class="staff-info">
+                                    <h3>Mme. Sophie Dubois</h3>
+                                    <p class="staff-position">Langue Française</p>
+                                    <p class="staff-experience">14 years experience</p>
+                                </div>
+                            </div>
+                            
+                            <div class="staff-card">
+                                <div class="staff-img">
+                                    <img src="images/teacher-10.jpg" alt="M. Pierre Laurent">
+                                </div>
+                                <div class="staff-info">
+                                    <h3>M. Pierre Laurent</h3>
+                                    <p class="staff-position">Mathématiques</p>
+                                    <p class="staff-experience">13 years experience</p>
+                                </div>
+                            </div>
+                            
+                            <div class="staff-card">
+                                <div class="staff-img">
+                                    <img src="images/teacher-11.jpg" alt="Dr. Claude Moreau">
+                                </div>
+                                <div class="staff-info">
+                                    <h3>Dr. Claude Moreau</h3>
+                                    <p class="staff-position">Biologie</p>
+                                    <p class="staff-experience">11 years experience</p>
+                                </div>
+                            </div>
+                            
+                            <div class="staff-card">
+                                <div class="staff-img">
+                                    <img src="images/teacher-12.jpg" alt="Mme. Marie Leclerc">
+                                </div>
+                                <div class="staff-info">
+                                    <h3>Mme. Marie Leclerc</h3>
+                                    <p class="staff-position">Physique</p>
+                                    <p class="staff-experience">9 years experience</p>
+                                </div>
+                            </div>
+                            
+                            <div class="staff-card">
+                                <div class="staff-img">
+                                    <img src="images/teacher-13.jpg" alt="M. Jean Dupont">
+                                </div>
+                                <div class="staff-info">
+                                    <h3>M. Jean Dupont</h3>
+                                    <p class="staff-position">Chimie</p>
+                                    <p class="staff-experience">10 years experience</p>
+                                </div>
+                            </div>
+                            
+                            <div class="staff-card">
+                                <div class="staff-img">
+                                    <img src="images/teacher-14.jpg" alt="Mme. Isabelle Martin">
+                                </div>
+                                <div class="staff-info">
+                                    <h3>Mme. Isabelle Martin</h3>
+                                    <p class="staff-position">Histoire</p>
+                                    <p class="staff-experience">12 years experience</p>
+                                </div>
+                            </div>
+                            
+                            <div class="staff-card">
+                                <div class="staff-img">
+                                    <img src="images/teacher-15.jpg" alt="M. François Bernard">
+                                </div>
+                                <div class="staff-info">
+                                    <h3>M. François Bernard</h3>
+                                    <p class="staff-position">Géographie</p>
+                                    <p class="staff-experience">8 years experience</p>
+                                </div>
+                            </div>
+                            
+                            <div class="staff-card">
+                                <div class="staff-img">
+                                    <img src="images/teacher-16.jpg" alt="Mme. Nicole Rousseau">
+                                </div>
+                                <div class="staff-info">
+                                    <h3>Mme. Nicole Rousseau</h3>
+                                    <p class="staff-position">Informatique</p>
+                                    <p class="staff-experience">7 years experience</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- CTA Section -->
+            <section class="section cta-section">
+                <div class="container">
+                    <div class="cta-content">
+                        <h2 data-i18n="staff.joinOurTeam">Join Our Team</h2>
+                        <p data-i18n="staff.joinOurTeamText">We are always looking for talented and passionate educators to join our team. If you are interested in making a difference in students' lives, check out our current openings.</p>
+                        <button class="btn btn-action vibrating-btn">
+                            <i class="fas fa-briefcase"></i> <span data-i18n="staff.viewOpenings">View Openings</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-col">
+                        <h3 data-i18n="footer.about">About Us</h3>
+                        <p data-i18n="footer.aboutText">Laval Bilingual High School is committed to providing quality education in both English and French, preparing students for global opportunities.</p>
+                        <div class="footer-social">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h3 data-i18n="footer.quickLinks">Quick Links</h3>
+                        <ul>
+                            <li><a href="about.html" data-i18n="navigation.about">About</a></li>
+                            <li><a href="academics/overview.html" data-i18n="navigation.academics">Academics</a></li>
+                            <li><a href="admissions.html" data-i18n="navigation.admissions">Admissions</a></li>
+                            <li><a href="gallery.html" data-i18n="navigation.gallery">Gallery</a></li>
+                            <li><a href="contact.html" data-i18n="navigation.contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h3 data-i18n="footer.resources">Resources</h3>
+                        <ul>
+                            <li><a href="students.html" data-i18n="navigation.students">Students</a></li>
+                            <li><a href="books/anglophone.html" data-i18n="navigation.books">Books & Materials</a></li>
+                            <li><a href="faq.html" data-i18n="navigation.faq">FAQ</a></li>
+                            <li><a href="alumni.html" data-i18n="navigation.alumni">Alumni</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h3 data-i18n="footer.contactInfo">Contact Info</h3>
+                        <ul class="contact-info">
+                            <li>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span data-i18n="footer.address">123 Education Street, City, Country</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-phone"></i>
+                                <span data-i18n="footer.phone">+123 456 7890</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-envelope"></i>
+                                <span data-i18n="footer.email">info@lavalbilingual.edu</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-clock"></i>
+                                <span data-i18n="footer.hours">Mon-Fri: 7:30 AM - 4:30 PM</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p data-i18n="footer.copyright">© 2025 Laval Bilingual High School. All Rights Reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="js/translations.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Staff page specific JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab functionality
+            const anglophoneTab = document.getElementById('anglophoneTab');
+            const francophoneTab = document.getElementById('francophoneTab');
+            const anglophoneContent = document.getElementById('anglophoneContent');
+            const francophoneContent = document.getElementById('francophoneContent');
+            
+            anglophoneTab.addEventListener('click', function() {
+                anglophoneTab.classList.add('active');
+                francophoneTab.classList.remove('active');
+                anglophoneContent.classList.add('active');
+                francophoneContent.classList.remove('active');
+            });
+            
+            francophoneTab.addEventListener('click', function() {
+                francophoneTab.classList.add('active');
+                anglophoneTab.classList.remove('active');
+                francophoneContent.classList.add('active');
+                anglophoneContent.classList.remove('active');
+            });
+            
+            // Add translations for staff page
+            if (!translations.en.staff) {
+                translations.en.staff = {
+                    schoolLeadership: "School Leadership",
+                    principal: "Principal",
+                    viceprincipalf: "Vice Principal (Francophone)",
+                    viceprincipale: "Vice Principal (Anglophone)",
+                    deanOfStudies: "Dean of Studies",
+                    departmentHeads: "Department Heads",
+                    headOfMathematics: "Head of Mathematics",
+                    headOfSciences: "Head of Sciences",
+                    headOfFrench: "Head of French",
+                    headOfEnglish: "Head of English",
+                    headOfSocialSciences: "Head of Social Sciences",
+                    headOfArts: "Head of Arts",
+                    headOfPhysicalEducation: "Head of Physical Education",
+                    headOfTechnology: "Head of Technology",
+                    teachingStaff: "Teaching Staff",
+                    anglophoneSection: "Anglophone Section",
+                    francophoneSection: "Francophone Section",
+                    joinOurTeam: "Join Our Team",
+                    joinOurTeamText: "We are always looking for talented and passionate educators to join our team. If you are interested in making a difference in students' lives, check out our current openings.",
+                    viewOpenings: "View Openings"
+                };
+            }
+            
+            if (!translations.fr.staff) {
+                translations.fr.staff = {
+                    schoolLeadership: "Direction de l'École",
+                    principal: "Directeur",
+                    viceprincipalf: "Directrice Adjointe (Francophone)",
+                    viceprincipale: "Directeur Adjoint (Anglophone)",
+                    deanOfStudies: "Doyen des Études",
+                    departmentHeads: "Chefs de Département",
+                    headOfMathematics: "Chef de Mathématiques",
+                    headOfSciences: "Chef des Sciences",
+                    headOfFrench: "Chef de Français",
+                    headOfEnglish: "Chef d'Anglais",
+                    headOfSocialSciences: "Chef des Sciences Sociales",
+                    headOfArts: "Chef des Arts",
+                    headOfPhysicalEducation: "Chef d'Éducation Physique",
+                    headOfTechnology: "Chef de Technologie",
+                    teachingStaff: "Personnel Enseignant",
+                    anglophoneSection: "Section Anglophone",
+                    francophoneSection: "Section Francophone",
+                    joinOurTeam: "Rejoignez Notre Équipe",
+                    joinOurTeamText: "Nous sommes toujours à la recherche d'éducateurs talentueux et passionnés pour rejoindre notre équipe. Si vous souhaitez faire une différence dans la vie des élèves, consultez nos postes actuels.",
+                    viewOpenings: "Voir les Postes"
+                };
+            }
+            
+            // Apply initial translations based on current language
+            const currentLang = localStorage.getItem('userLanguage') || 'en';
+            applyTranslations(currentLang);
+        });
+    </script>
+</body>
+</html>

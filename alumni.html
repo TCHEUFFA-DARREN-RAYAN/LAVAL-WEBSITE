@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumni - Laval Bilingual High School</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/dropdown-fix.css">
+    <style>
+        .page-banner {
+            background-image: url('images/alumni-banner.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .page-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .page-banner .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .page-banner h1 {
+            color: white;
+            font-size: 3rem;
+            font-weight: 700;
+        }
+        
+        .alumni-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .alumni-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .alumni-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .alumni-img {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .alumni-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .alumni-card:hover .alumni-img img {
+            transform: scale(1.1);
+        }
+        
+        .alumni-info {
+            padding: 20px;
+        }
+        
+        .alumni-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+        
+        .alumni-year {
+            font-weight: 500;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+        
+        .alumni-position {
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+        
+        .alumni-quote {
+            font-style: italic;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+        
+        .alumni-social {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .alumni-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background-color: rgba(0, 70, 173, 0.1);
+            border-radius: 50%;
+            color: var(--primary-color);
+            transition: all 0.3s;
+        }
+        
+        .alumni-social a:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .alumni-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        
+        .tab-btn {
+            padding: 10px 20px;
+            background: none;
+            border: none;
+            border-bottom: 2px solid transparent;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 0 10px;
+        }
+        
+        .tab-btn.active {
+            border-bottom-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .testimonial-slider {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .testimonial {
+            display: none;
+            padding: 30px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        
+        .testimonial.active {
+            display: block;
+        }
+        
+        .testimonial-content p {
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .testimonial-author img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        
+        .testimonial-author h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .testimonial-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .testimonial-nav button {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            cursor: pointer;
+            margin: 0 10px;
+            transition: all 0.3s;
+        }
+        
+        .testimonial-nav button:hover {
+            color: var(--secondary-color);
+        }
+        
+        .alumni-form {
+            background-color: #f8f9fa;
+            padding: 30px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: var(--font-primary);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(0, 70, 173, 0.1);
+        }
+        
+        .btn-submit {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-submit:hover {
+            background-color: #003da6;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 70, 173, 0.2);
+        }
+        
+        @media (max-width: 992px) {
+            .alumni-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .alumni-tabs {
+                flex-wrap: wrap;
+            }
+            
+            .tab-btn {
+                margin-bottom: 10px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .alumni-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <header class="site-header">
+            <div class="header-contain">
+                <div class="header-content">
+                    <a href="index.html">
+                        <!-- logo section -->
+                        <div class="nav-logo">
+                            <div class="logo-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div class="logo-text">
+                                <h1 data-i18n="schoolName">Laval School</h1>
+                                <p>Excellence in Education</p>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="nav-toggle" id="navToggle"> <!-- 3 button for phone view-->
+                        <span></span> <span></span><span></span>
+                    </div>
+                    
+                    <nav class="main-nav" id="mainNav">
+                        <ul class="nav-menu">
+                            <li><a href="index.html" data-i18n="navigation.home">Home</a></li>
+                            <li><a href="about.html" data-i18n="navigation.about">About</a></li>
+                            <li><a href="staff.html" data-i18n="navigation.staff">Staff & Faculty</a></li>
+                            <li class="dropdown">
+                                <a href="academics/overview.html" data-i18n="navigation.academics">Academics</a>
+                                <div class="dropdown-content">
+                                    <a href="academics/overview.html" data-i18n="navigation.overview">Overview</a>
+                                    <a href="academics/curriculum.html" data-i18n="navigation.curriculum">Curriculum & Exams</a>
+                                    <a href="academics/results.html" data-i18n="navigation.results">Results</a>
+                                </div>
+                            </li>
+                            <li><a href="admissions.html" data-i18n="navigation.admissions">Admissions</a></li>
+                            <li class="dropdown">
+                                <a href="books/anglophone.html" data-i18n="navigation.books">Books & Materials</a>
+                                <div class="dropdown-content">
+                                    <a href="books/anglophone.html" data-i18n="navigation.anglophone">Anglophone Section</a>
+                                    <a href="books/francophone.html" data-i18n="navigation.francophone">Francophone Section</a>
+                                </div>
+                            </li>
+                            <li><a href="students.html" data-i18n="navigation.students">Students</a></li>
+                            <li><a href="gallery.html" data-i18n="navigation.gallery">Gallery</a></li>
+                            <li><a href="alumni.html" class="active" data-i18n="navigation.alumni">Alumni</a></li>
+                            <li><a href="faq.html" data-i18n="navigation.faq">FAQ</a></li>
+                            <li><a href="contact.html" data-i18n="navigation.contact">Contact</a></li>
+                        </ul>
+                    </nav>
+                    
+                    <div class="language-toggle">
+                        <button class="lang-btn active" data-lang="en">EN</button>
+                        <button class="lang-btn" data-lang="fr">FR</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <!-- Banner Section -->
+            <section class="page-banner">
+                <div class="container">
+                    <h1 data-i18n="navigation.alumni">Alumni</h1>
+                </div>
+            </section>
+
+            <!-- Alumni Content -->
+            <section class="section">
+                <div class="container">
+                    <div class="section-title">
+                        <h2 data-i18n="alumni.networkTitle">Our Alumni Network</h2>
+                        <p data-i18n="alumni.networkIntro">Our alumni are making significant contributions in various fields around the world. They remain an integral part of our school community, serving as mentors, guest speakers, and supporters of our educational mission.</p>
+                    </div>
+                    
+                    <div class="alumni-tabs">
+                        <button class="tab-btn active" id="featuredTab" data-i18n="alumni.featuredAlumni">Featured Alumni</button>
+                        <button class="tab-btn" id="recentTab" data-i18n="alumni.recentGraduates">Recent Graduates</button>
+                        <button class="tab-btn" id="internationalTab" data-i18n="alumni.internationalAlumni">International Alumni</button>
+                    </div>
+                    
+                    <div class="tab-content active" id="featuredContent">
+                        <div class="alumni-grid">
+                            <div class="alumni-card">
+                                <div class="alumni-img">
+                                    <img src="images/alumni-1.jpg" alt="Dr. Sarah Chen">
+                                </div>
+                                <div class="alumni-info">
+                                    <h3>Dr. Sarah Chen</h3>
+                                    <p class="alumni-year">Class of 2005</p>
+                                    <p class="alumni-position">Neurosurgeon, Johns Hopkins Hospital</p>
+                                    <p class="alumni-quote">"The bilingual education I received at Laval gave me a unique perspective that has been invaluable in my medical career and research."</p>
+                                    <div class="alumni-social">
+                                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                        <a href="#"><i class="fab fa-twitter"></i></a>
+                                        <a href="#"><i class="fas fa-envelope"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="alumni-card">
+                                <div class="alumni-img">
+                                    <img src="images/alumni-2.jpg" alt="Jean-Pierre Dubois">
+                                </div>
+                                <div class="alumni-info">
+                                    <h3>Jean-Pierre Dubois</h3>
+                                    <p class="alumni-year">Class of 1998</p>
+                                    <p class="alumni-position">UN Diplomat, Human Rights Division</p>
+                                    <p class="alumni-quote">"My years at Laval taught me to bridge cultural and linguistic divides, a skill that defines my diplomatic work today."</p>
+                                    <div class="alumni-social">
+                                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                        <a href="#"><i class="fab fa-twitter"></i></a>
+                                        <a href="#"><i class="fas fa-envelope"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="alumni-card">
+                                <div class="alumni-img">
+                                    <img src="images/alumni-3.jpg" alt="Maria Rodriguez">
+                                </div>
+                                <div class="alumni-info">
+                                    <h3>Maria Rodriguez</h3>
+                                    <p class="alumni-year">Class of 2010</p>
+                                    <p class="alumni-position">Award-winning Filmmaker</p>
+                                    <p class="alumni-quote">"The creative thinking and cultural awareness I developed at Laval continues to influence my storytelling and artistic vision."</p>
+                                    <div class="alumni-social">
+                                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                        <a href="#"><i class="fab fa-instagram"></i></a>
+                                        <a href="#"><i class="fas fa-envelope"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="alumni-card">
+                                <div class="alumni-img">
+                                    <img src="images/alumni-4.jpg" alt="Dr. James Wilson">
+                                </div>
+                                <div class="alumni-info">
+                                    <h3>Dr. James Wilson</h3>
+                                    <p class="alumni-year">Class of 2000</p>
+                                    <p class="alumni-position">Professor of Economics, Oxford University</p>
+                                    <p class="alumni-quote">"The rigorous academic foundation I received at Laval prepared me exceptionally well for my academic career and research."</p>
+                                    <div class="alumni-social">
+                                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                        <a href="#"><i class="fab fa-twitter"></i></a>
+                                        <a href="#"><i class="fas fa-envelope"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="alumni-card">
+                                <div class="alumni-img">
+                                    <img src="images/alumni-5.jpg" alt="Sophie Martin">
+                                </div>
+                                <div class="alumni-info">
+                                    <h3>Sophie Martin</h3>
+                                    <p class="alumni-year">Class of 2008</p>
+                                    <p class="alumni-position">Environmental Engineer, Sustainable Solutions Inc.</p>
+                                    <p class="alumni-quote">"My passion for environmental science was ignited during my time at Laval, where I learned to approach problems from multiple perspectives."</p>
+                                    <div class="alumni-social">
+                                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                        <a href="#"><i class="fab fa-twitter"></i></a>
+                                        <a href="#"><i class="fas fa-envelope"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="alumni-card">
+                                <div class="alumni-img">
+                                    <img src="images/alumni-6.jpg" alt="Michael Okonkwo">
+                                </div>
+                                <div class="alumni-info">
+                                    <h3>Michael Okonkwo</h3>
+                                    <p class="alumni-year">Class of 2012</p>
+                                    <p class="alumni-position">Tech Entrepreneur, Founder of EduTech Solutions</p>
+                                    <p class="alumni-quote">"The entrepreneurial spirit and global mindset I developed at Laval have been crucial to my success in the tech industry."</p>
+                                    <div class="alumni-social">
+                                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                        <a href="#"><i class="fab fa-twitter"></i></a>
+                                        <a href="#"><i class="fas fa-envelope"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="recentContent">
+                        <div class="alumni-grid">
+                            <div class="alumni-card">
+                                <div class="alumni-img">
+                                    <img src="images/alumni-7.jpg" alt="Emma Thompson">
+                                </div>
+                                <div class="alumni-info">
+                                    <h3>Emma Thompson</h3>
+                                    <p class="alumni-year">Class of 2022</p>
+                                    <p class="alumni-position">Medical Student, Harvard Medical School</p>
+                                    <p class="alumni-quote">"The academic rigor and supportive environment at Laval prepared me perfectly for the challenges of medical school."</p>
+                                    <div class="alumni-social">
+                                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                        <a href="#"><i class="fab fa-instagram"></i></a>
+                                        <a href="#"><i class="fas fa-envelope"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="alumni-card">
+                                <div class="alumni-img">
+                                    <img src="images/alumni-8.jpg" alt="Thomas Laurent">
+                                </div>
+                                <div class="alumni-info">
+                                    <h3>Thomas Laurent</h3>
+                                    <p class="alumni-year">Class of 2023</p>
+                                    <p class="alumni-position">Engineering Student, MIT</p>
+                                    <p class="alumni-quote">"The problem-solving skills and creative thinking I developed at Laval have given me an edge in my engineering studies."</p>
+                                    <div class="alumni-social">
+                                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                        <a href="#"><i class="fab fa-github"></i></a>
+                                        <a href="#"><i class="fas fa-envelope"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="alumni-card">
+                                <div class="alumni-img">
+                                    <img src="images/alumni-9.jpg" alt="Aisha Patel">
+                                </div>
+                                <div class="alumni-info">
+                                    <h3>Aisha Patel</h3>
+                                    <p class="alumni-year">Class of 2021</p>
+                                    <p class="alumni-position">Law Student, Columbia University</p>
+                                    <p class="alumni-quote">"My bilingual education at Laval has been invaluable in my legal studies, especially in international law."</p>
+                                    <div class="alumni-social">
+                                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                        <a href="#"><i class="fab fa-twitter"></i></a>
+                                        <a href="#"><i class="fas fa-envelope"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="alumni-card">
+                                <div class="alumni-img">
+                                    <img src="images/alumni-10.jpg" alt="David Kim">
+                                </div>
+                                <div class="alumni-info">
+                                    <h3>David Kim</h3>
+                                    <p class="alumni-year">Class of 2022</p>
+                                    <p class="alumni-position">Music Student, Juilliard School</p>
+                                    <p class="alumni-quote">"The arts program at Laval nurtured my musical talent while providing a strong academic foundation."</p>
+                                    <div class="alumni-social">
+                                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                        <a href="#"><i class="fab fa-instagram"></i></a>
+                                        <a href="#"><i class="fas fa-envelope"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="alumni-card">
+                                <div class="alumni-img">
+                                    <img src="images/alumni-11.jpg" alt="Marie Leclerc">
+                                </div>
+                                <div class="alumni-info">
+                                    <h3>Marie Leclerc</h3>
+                                    <p class="alumni-year">Class of 2023</p>
+                                    <p class="alumni-position">Business Student, HEC Paris</p>
+                                    <p class="alumni-quote">"The leadership opportunities and global perspective I gained at Laval have been essential in my business studies."</p>
+                                    <div class="alumni-social">
+                                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                        <a href="#"><i class="fab fa-twitter"></i></a>
+                                        <a href="#"><i class="fas fa-envelope"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="alumni-card">
+                                <div class="alumni-img">
+                                    <img src="images/alumni-12.jpg" alt="Carlos Mendez">
+                                </div>
+                                <div class="alumni-info">
+                                    <h3>Carlos Mendez</h3>
+                                    <p class="alumni-year">Class of 2021</p>
+                                    <p class="alumni-position">Computer Science Student, Stanford University</p>
+                                    <p class="alumni-quote">"The technology program and critical thinking skills I developed at Laval gave me a strong foundation for my CS studies."</p>
+                                    <div class="alumni-social">
+                                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                        <a href="#"><i class="fab fa-github"></i></a>
+                                        <a href="#"><i class="fas fa-envelope"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="internationalContent">
+                        <div class="alumni-grid">
+                            <div class="alumni-card">
+                                <div class="alumni-img">
+                                    <img src="images/alumni-13.jpg" alt="Dr. Fatima Al-Hassan">
+                                </div>
+                                <div class="alumni-info">
+                                    <h3>Dr. Fatima Al-Hassan</h3>
+                                    <p class="alumni-year">Class of 2007</p>
+                                    <p class="alumni-position">Research Scientist, CERN, Switzerland</p>
+                                    <p class="alumni-quote">"The international perspective and scientific foundation I received at Laval prepared me for a global career in physics research."</p>
+                                    <div class="alumni-social">
+                                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                        <a href="#"><i class="fab fa-twitter"></i></a>
+                                        <a href="#"><i class="fas fa-envelope"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="alumni-card">
+                                <div class="alumni-img">
+                                    <img src="images/alumni-14.jpg" alt="Hiroshi Tanaka">
+                                </div>
+                                <div class="alumni-info">
+                                    <h3>Hiroshi Tanaka</h3>
+                                    <p class="alumni-year">Class of 2009</p>
+                                    <p class="alumni-position">Architect, Tokyo Design Studio</p>
+                                    <p class="alumni-quote">"My bilingual education at Laval opened doors for me internationally and influenced my architectural approach."</p>
+                                    <div class="alumni-social">
+                                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                        <a href="#"><i class="fab fa-instagram"></i></a>
+                                        <a href="#"><i class="fas fa-envelope"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="alumni-card">
+                                <div class="alumni-img">
+                                    <img src="images/alumni-15.jpg" alt="Isabella Rossi">
+                                </div>
+                                <div class="alumni-info">
+                                    <h3>Isabella Rossi</h3>
+                                    <p class="alumni-year">Class of 2011</p>
+                                    <p class="alumni-position">Fashion Designer, Milan</p>
+                                    <p class="alumni-quote">"The cultural awareness and creative expression I developed at Laval have been fundamental to my success in the fashion industry."</p>
+                                    <div class="alumni-social">
+                                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                        <a href="#"><i class="fab fa-instagram"></i></a>
+                                        <a href="#"><i class="fas fa-envelope"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="alumni-card">
+                                <div class="alumni-img">
+                                    <img src="images/alumni-16.jpg" alt="Alexandre Dupont">
+                                </div>
+                                <div class="alumni-info">
+                                    <h3>Alexandre Dupont</h3>
+                                    <p class="alumni-year">Class of 2006</p>
+                                    <p class="alumni-position">Executive Chef, Paris</p>
+                                    <p class="alumni-quote">"My time at Laval taught me discipline and creativity, qualities that have defined my culinary career."</p>
+                                    <div class="alumni-social">
+                                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                        <a href="#"><i class="fab fa-instagram"></i></a>
+                                        <a href="#"><i class="fas fa-envelope"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="alumni-card">
+                                <div class="alumni-img">
+                                    <img src="images/alumni-17.jpg" alt="Elena Petrova">
+                                </div>
+                                <div class="alumni-info">
+                                    <h3>Elena Petrova</h3>
+                                    <p class="alumni-year">Class of 2010</p>
+                                    <p class="alumni-position">Ballet Dancer, Bolshoi Theatre</p>
+                                    <p class="alumni-quote">"The balance of artistic and academic excellence at Laval prepared me for the discipline and creativity required in professional ballet."</p>
+                                    <div class="alumni-social">
+                                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                        <a href="#"><i class="fab fa-instagram"></i></a>
+                                        <a href="#"><i class="fas fa-envelope"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="alumni-card">
+                                <div class="alumni-img">
+                                    <img src="images/alumni-18.jpg" alt="Kwame Nkrumah">
+                                </div>
+                                <div class="alumni-info">
+                                    <h3>Kwame Nkrumah</h3>
+                                    <p class="alumni-year">Class of 2008</p>
+                                    <p class="alumni-position">Social Entrepreneur, Ghana</p>
+                                    <p class="alumni-quote">"The global citizenship values I learned at Laval inspired me to create sustainable solutions for communities in my home country."</p>
+                                    <div class="alumni-social">
+                                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                        <a href="#"><i class="fab fa-twitter"></i></a>
+                                        <a href="#"><i class="fas fa-envelope"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Testimonials Section -->
+            <section class="section" style="background-color: #f8f9fa;">
+                <div class="container">
+                    <div class="section-title">
+                        <h2 data-i18n="alumni.testimonialsTitle">Alumni Testimonials</h2>
+                    </div>
+                    
+                    <div class="testimonial-slider">
+                        <div class="testimonial active" id="testimonial1">
+                            <div class="testimonial-content">
+                                <p>"My years at Laval Bilingual High School were transformative. The rigorous academic program, combined with the emphasis on bilingualism, prepared me exceptionally well for university and my career in international business. The teachers were dedicated and inspiring, and the diverse student body provided a truly global perspective."</p>
+                                <div class="testimonial-author">
+                                    <img src="images/testimonial-1.jpg" alt="Robert Johnson">
+                                    <div>
+                                        <h4>Robert Johnson</h4>
+                                        <p>Class of 2005, International Business Executive</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="testimonial" id="testimonial2">
+                            <div class="testimonial-content">
+                                <p>"Laval gave me the confidence to pursue my dreams. The supportive environment allowed me to explore my interests in science while developing strong language skills in both English and French. The critical thinking and research skills I gained have been invaluable in my scientific career, and the friendships I formed continue to enrich my life."</p>
+                                <div class="testimonial-author">
+                                    <img src="images/testimonial-2.jpg" alt="Dr. Marie Dubois">
+                                    <div>
+                                        <h4>Dr. Marie Dubois</h4>
+                                        <p>Class of 2007, Research Scientist</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="testimonial" id="testimonial3">
+                            <div class="testimonial-content">
+                                <p>"The bilingual education I received at Laval has opened countless doors in my career. Being able to work seamlessly in both English and French-speaking environments has given me a competitive edge in the diplomatic world. Beyond languages, Laval instilled in me a deep appreciation for cultural diversity and a commitment to global citizenship."</p>
+                                <div class="testimonial-author">
+                                    <img src="images/testimonial-3.jpg" alt="Ahmed Hassan">
+                                    <div>
+                                        <h4>Ahmed Hassan</h4>
+                                        <p>Class of 2010, Diplomat</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="testimonial-nav">
+                            <button id="prevTestimonial"><i class="fas fa-chevron-left"></i></button>
+                            <button id="nextTestimonial"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Alumni Events Section -->
+            <section class="section">
+                <div class="container">
+                    <div class="section-title">
+                        <h2 data-i18n="alumni.eventsTitle">Alumni Events</h2>
+                        <p data-i18n="alumni.eventsIntro">Stay connected with your alma mater and fellow alumni through our regular events and reunions.</p>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <div class="card-img">
+                                    <img src="images/event-1.jpg" alt="Annual Alumni Gala">
+                                </div>
+                                <div class="card-body">
+                                    <h3 class="card-title">Annual Alumni Gala</h3>
+                                    <p class="card-text">Join us for an elegant evening of networking, celebration, and fundraising for student scholarships.</p>
+                                    <p><strong>Date:</strong> November 15, 2025</p>
+                                    <p><strong>Location:</strong> Grand Hotel, City Center</p>
+                                    <a href="#" class="btn btn-primary" data-i18n="alumni.registerButton">Register</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <div class="card-img">
+                                    <img src="images/event-2.jpg" alt="Class Reunions">
+                                </div>
+                                <div class="card-body">
+                                    <h3 class="card-title">Class Reunions</h3>
+                                    <p class="card-text">Celebrating milestone anniversaries for the classes of 2015, 2005, 1995, and 1985.</p>
+                                    <p><strong>Date:</strong> July 8-10, 2025</p>
+                                    <p><strong>Location:</strong> Laval Bilingual High School Campus</p>
+                                    <a href="#" class="btn btn-primary" data-i18n="alumni.registerButton">Register</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <div class="card-img">
+                                    <img src="images/event-3.jpg" alt="Career Mentorship Day">
+                                </div>
+                                <div class="card-body">
+                                    <h3 class="card-title">Career Mentorship Day</h3>
+                                    <p class="card-text">Alumni are invited to share their professional experiences with current students.</p>
+                                    <p><strong>Date:</strong> March 25, 2025</p>
+                                    <p><strong>Location:</strong> Laval Bilingual High School Campus</p>
+                                    <a href="#" class="btn btn-primary" data-i18n="alumni.volunteerButton">Volunteer</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Alumni Registration Section -->
+            <section class="section" style="background-color: #f8f9fa;">
+                <div class="container">
+                    <div class="section-title">
+                        <h2 data-i18n="alumni.registerTitle">Join Our Alumni Network</h2>
+                        <p data-i18n="alumni.registerIntro">Stay connected with your alma mater and fellow alumni by registering with our alumni network.</p>
+                    </div>
+                    
+                    <div class="alumni-form">
+                        <form id="alumniForm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="firstName" class="form-label" data-i18n="alumni.firstName">First Name</label>
+                                        <input type="text" id="firstName" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="lastName" class="form-label" data-i18n="alumni.lastName">Last Name</label>
+                                        <input type="text" id="lastName" class="form-control" required>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="graduationYear" class="form-label" data-i18n="alumni.graduationYear">Graduation Year</label>
+                                        <input type="number" id="graduationYear" class="form-control" min="1985" max="2023" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="email" class="form-label" data-i18n="alumni.email">Email Address</label>
+                                        <input type="email" id="email" class="form-control" required>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="currentOccupation" class="form-label" data-i18n="alumni.currentOccupation">Current Occupation</label>
+                                <input type="text" id="currentOccupation" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="location" class="form-label" data-i18n="alumni.location">Current Location</label>
+                                <input type="text" id="location" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="interests" class="form-label" data-i18n="alumni.interests">Areas of Interest</label>
+                                <select id="interests" class="form-control" multiple>
+                                    <option value="mentoring" data-i18n="alumni.mentoring">Mentoring Current Students</option>
+                                    <option value="events" data-i18n="alumni.events">Attending Alumni Events</option>
+                                    <option value="speaking" data-i18n="alumni.speaking">Speaking Opportunities</option>
+                                    <option value="fundraising" data-i18n="alumni.fundraising">Fundraising</option>
+                                    <option value="networking" data-i18n="alumni.networking">Professional Networking</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message" class="form-label" data-i18n="alumni.message">Message</label>
+                                <textarea id="message" class="form-control" rows="4"></textarea>
+                            </div>
+                            
+                            <div class="text-center mt-4">
+                                <button type="submit" class="btn-submit" data-i18n="alumni.submitRegistration">Submit Registration</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-col">
+                        <h3 data-i18n="footer.about">About Us</h3>
+                        <p data-i18n="footer.aboutText">Laval Bilingual High School is committed to providing quality education in both English and French, preparing students for global opportunities.</p>
+                        <div class="footer-social">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h3 data-i18n="footer.quickLinks">Quick Links</h3>
+                        <ul>
+                            <li><a href="about.html" data-i18n="navigation.about">About</a></li>
+                            <li><a href="academics/overview.html" data-i18n="navigation.academics">Academics</a></li>
+                            <li><a href="admissions.html" data-i18n="navigation.admissions">Admissions</a></li>
+                            <li><a href="gallery.html" data-i18n="navigation.gallery">Gallery</a></li>
+                            <li><a href="contact.html" data-i18n="navigation.contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h3 data-i18n="footer.resources">Resources</h3>
+                        <ul>
+                            <li><a href="students.html" data-i18n="navigation.students">Students</a></li>
+                            <li><a href="books/anglophone.html" data-i18n="navigation.books">Books & Materials</a></li>
+                            <li><a href="faq.html" data-i18n="navigation.faq">FAQ</a></li>
+                            <li><a href="alumni.html" data-i18n="navigation.alumni">Alumni</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h3 data-i18n="footer.contactInfo">Contact Info</h3>
+                        <ul class="contact-info">
+                            <li>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span data-i18n="footer.address">123 Education Street, City, Country</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-phone"></i>
+                                <span data-i18n="footer.phone">+123 456 7890</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-envelope"></i>
+                                <span data-i18n="footer.email">info@lavalbilingual.edu</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-clock"></i>
+                                <span data-i18n="footer.hours">Mon-Fri: 7:30 AM - 4:30 PM</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p data-i18n="footer.copyright">© 2025 Laval Bilingual High School. All Rights Reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="js/translations.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Alumni page specific JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab functionality
+            const featuredTab = document.getElementById('featuredTab');
+            const recentTab = document.getElementById('recentTab');
+            const internationalTab = document.getElementById('internationalTab');
+            const featuredContent = document.getElementById('featuredContent');
+            const recentContent = document.getElementById('recentContent');
+            const internationalContent = document.getElementById('internationalContent');
+            
+            featuredTab.addEventListener('click', function() {
+                featuredTab.classList.add('active');
+                recentTab.classList.remove('active');
+                internationalTab.classList.remove('active');
+                featuredContent.classList.add('active');
+                recentContent.classList.remove('active');
+                internationalContent.classList.remove('active');
+            });
+            
+            recentTab.addEventListener('click', function() {
+                recentTab.classList.add('active');
+                featuredTab.classList.remove('active');
+                internationalTab.classList.remove('active');
+                recentContent.classList.add('active');
+                featuredContent.classList.remove('active');
+                internationalContent.classList.remove('active');
+            });
+            
+            internationalTab.addEventListener('click', function() {
+                internationalTab.classList.add('active');
+                featuredTab.classList.remove('active');
+                recentTab.classList.remove('active');
+                internationalContent.classList.add('active');
+                featuredContent.classList.remove('active');
+                recentContent.classList.remove('active');
+            });
+            
+            // Testimonial slider
+            const testimonials = document.querySelectorAll('.testimonial');
+            const prevButton = document.getElementById('prevTestimonial');
+            const nextButton = document.getElementById('nextTestimonial');
+            let currentTestimonial = 0;
+            
+            function showTestimonial(index) {
+                testimonials.forEach(testimonial => testimonial.classList.remove('active'));
+                testimonials[index].classList.add('active');
+            }
+            
+            prevButton.addEventListener('click', function() {
+                currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+                showTestimonial(currentTestimonial);
+            });
+            
+            nextButton.addEventListener('click', function() {
+                currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+                showTestimonial(currentTestimonial);
+            });
+            
+            // Auto-rotate testimonials
+            setInterval(function() {
+                currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+                showTestimonial(currentTestimonial);
+            }, 8000);
+            
+            // Form submission
+            const alumniForm = document.getElementById('alumniForm');
+            
+            if (alumniForm) {
+                alumniForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Thank you for registering with our alumni network! You will receive a confirmation email shortly.');
+                    this.reset();
+                });
+            }
+            
+            // Add translations for alumni page
+            if (!translations.en.alumni) {
+                translations.en.alumni = {
+                    networkTitle: "Our Alumni Network",
+                    networkIntro: "Our alumni are making significant contributions in various fields around the world. They remain an integral part of our school community, serving as mentors, guest speakers, and supporters of our educational mission.",
+                    featuredAlumni: "Featured Alumni",
+                    recentGraduates: "Recent Graduates",
+                    internationalAlumni: "International Alumni",
+                    testimonialsTitle: "Alumni Testimonials",
+                    eventsTitle: "Alumni Events",
+                    eventsIntro: "Stay connected with your alma mater and fellow alumni through our regular events and reunions.",
+                    registerButton: "Register",
+                    volunteerButton: "Volunteer",
+                    registerTitle: "Join Our Alumni Network",
+                    registerIntro: "Stay connected with your alma mater and fellow alumni by registering with our alumni network.",
+                    firstName: "First Name",
+                    lastName: "Last Name",
+                    graduationYear: "Graduation Year",
+                    email: "Email Address",
+                    currentOccupation: "Current Occupation",
+                    location: "Current Location",
+                    interests: "Areas of Interest",
+                    mentoring: "Mentoring Current Students",
+                    events: "Attending Alumni Events",
+                    speaking: "Speaking Opportunities",
+                    fundraising: "Fundraising",
+                    networking: "Professional Networking",
+                    message: "Message",
+                    submitRegistration: "Submit Registration"
+                };
+            }
+            
+            if (!translations.fr.alumni) {
+                translations.fr.alumni = {
+                    networkTitle: "Notre Réseau d'Anciens Élèves",
+                    networkIntro: "Nos anciens élèves apportent des contributions significatives dans divers domaines à travers le monde. Ils restent une partie intégrante de notre communauté scolaire, servant de mentors, de conférenciers invités et de soutiens à notre mission éducative.",
+                    featuredAlumni: "Anciens Élèves en Vedette",
+                    recentGraduates: "Diplômés Récents",
+                    internationalAlumni: "Anciens Élèves Internationaux",
+                    testimonialsTitle: "Témoignages d'Anciens Élèves",
+                    eventsTitle: "Événements pour Anciens Élèves",
+                    eventsIntro: "Restez connecté avec votre alma mater et vos camarades anciens élèves grâce à nos événements réguliers et réunions.",
+                    registerButton: "S'inscrire",
+                    volunteerButton: "Être Volontaire",
+                    registerTitle: "Rejoignez Notre Réseau d'Anciens Élèves",
+                    registerIntro: "Restez connecté avec votre alma mater et vos camarades anciens élèves en vous inscrivant à notre réseau d'anciens élèves.",
+                    firstName: "Prénom",
+                    lastName: "Nom de Famille",
+                    graduationYear: "Année de Diplôme",
+                    email: "Adresse Email",
+                    currentOccupation: "Profession Actuelle",
+                    location: "Lieu Actuel",
+                    interests: "Domaines d'Intérêt",
+                    mentoring: "Mentorat d'Élèves Actuels",
+                    events: "Participation aux Événements",
+                    speaking: "Opportunités de Conférence",
+                    fundraising: "Collecte de Fonds",
+                    networking: "Réseautage Professionnel",
+                    message: "Message",
+                    submitRegistration: "Soumettre l'Inscription"
+                };
+            }
+            
+            // Apply initial translations based on current language
+            const currentLang = localStorage.getItem('userLanguage') || 'en';
+            applyTranslations(currentLang);
+        });
+    </script>
+</body>
+</html>

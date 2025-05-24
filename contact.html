@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Laval Bilingual High School</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/dropdown-fix.css">
+    <style>
+        .page-banner {
+            background-image: url('images/contact-banner.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .page-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .page-banner .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .page-banner h1 {
+            color: white;
+            font-size: 3rem;
+            font-weight: 700;
+        }
+        
+        .contact-info-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: transform 0.3s;
+        }
+        
+        .contact-info-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .contact-icon {
+            width: 70px;
+            height: 70px;
+            background-color: rgba(0, 70, 173, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .contact-icon i {
+            font-size: 30px;
+            color: var(--primary-color);
+        }
+        
+        .contact-info-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        .contact-info-card p {
+            margin-bottom: 5px;
+        }
+        
+        .contact-form {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: var(--font-primary);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(0, 70, 173, 0.1);
+        }
+        
+        .form-select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: var(--font-primary);
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23333' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+        }
+        
+        .btn-submit {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-submit:hover {
+            background-color: #003da6;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 70, 173, 0.2);
+        }
+        
+        .map-container {
+            height: 450px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .department-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+        
+        .department-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 70, 173, 0.2);
+        }
+        
+        .department-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .department-card p {
+            margin-bottom: 5px;
+        }
+        
+        .department-card .contact-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-color);
+            font-weight: 500;
+            margin-top: 10px;
+            transition: all 0.3s;
+        }
+        
+        .department-card .contact-link i {
+            margin-right: 5px;
+        }
+        
+        .department-card .contact-link:hover {
+            color: var(--secondary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .contact-info-cards {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <header class="site-header">
+            <div class="header-contain">
+                <div class="header-content">
+                    <a href="index.html">
+                        <!-- logo section -->
+                        <div class="nav-logo">
+                            <div class="logo-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div class="logo-text">
+                                <h1 data-i18n="schoolName">Laval School</h1>
+                                <p>Excellence in Education</p>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="nav-toggle" id="navToggle"> <!-- 3 button for phone view-->
+                        <span></span> <span></span><span></span>
+                    </div>
+                    
+                    <nav class="main-nav" id="mainNav">
+                        <ul class="nav-menu">
+                            <li><a href="index.html" data-i18n="navigation.home">Home</a></li>
+                            <li><a href="about.html" data-i18n="navigation.about">About</a></li>
+                            <li><a href="staff.html" data-i18n="navigation.staff">Staff & Faculty</a></li>
+                            <li class="dropdown">
+                                <a href="academics/overview.html" data-i18n="navigation.academics">Academics</a>
+                                <div class="dropdown-content">
+                                    <a href="academics/overview.html" data-i18n="navigation.overview">Overview</a>
+                                    <a href="academics/curriculum.html" data-i18n="navigation.curriculum">Curriculum & Exams</a>
+                                    <a href="academics/results.html" data-i18n="navigation.results">Results</a>
+                                </div>
+                            </li>
+                            <li><a href="admissions.html" data-i18n="navigation.admissions">Admissions</a></li>
+                            <li class="dropdown">
+                                <a href="books/anglophone.html" data-i18n="navigation.books">Books & Materials</a>
+                                <div class="dropdown-content">
+                                    <a href="books/anglophone.html" data-i18n="navigation.anglophone">Anglophone Section</a>
+                                    <a href="books/francophone.html" data-i18n="navigation.francophone">Francophone Section</a>
+                                </div>
+                            </li>
+                            <li><a href="students.html" data-i18n="navigation.students">Students</a></li>
+                            <li><a href="gallery.html" data-i18n="navigation.gallery">Gallery</a></li>
+                            <li><a href="alumni.html" data-i18n="navigation.alumni">Alumni</a></li>
+                            <li><a href="faq.html" data-i18n="navigation.faq">FAQ</a></li>
+                            <li><a href="contact.html" class="active" data-i18n="navigation.contact">Contact</a></li>
+                        </ul>
+                    </nav>
+                    
+                    <div class="language-toggle">
+                        <button class="lang-btn active" data-lang="en">EN</button>
+                        <button class="lang-btn" data-lang="fr">FR</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <!-- Banner Section -->
+            <section class="page-banner">
+                <div class="container">
+                    <h1 data-i18n="navigation.contact">Contact</h1>
+                </div>
+            </section>
+
+            <!-- Contact Info Section -->
+            <section class="section">
+                <div class="container">
+                    <div class="section-title">
+                        <h2 data-i18n="contact.getInTouch">Get in Touch</h2>
+                        <p data-i18n="contact.getInTouchText">We're here to answer any questions you may have about our school, programs, or admissions process. Feel free to reach out to us using any of the contact methods below.</p>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="contact-info-card">
+                                <div class="contact-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <h3 data-i18n="contact.visitUs">Visit Us</h3>
+                                <p data-i18n="contact.address">123 Education Street</p>
+                                <p data-i18n="contact.cityCountry">City, Country</p>
+                                <p data-i18n="contact.postalCode">Postal Code: 12345</p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <div class="contact-info-card">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <h3 data-i18n="contact.callUs">Call Us</h3>
+                                <p data-i18n="contact.mainPhone">Main: +123 456 7890</p>
+                                <p data-i18n="contact.admissionsPhone">Admissions: +123 456 7891</p>
+                                <p data-i18n="contact.fax">Fax: +123 456 7892</p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <div class="contact-info-card">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <h3 data-i18n="contact.emailUs">Email Us</h3>
+                                <p data-i18n="contact.generalEmail">General: info@lavalbilingual.edu</p>
+                                <p data-i18n="contact.admissionsEmail">Admissions: admissions@lavalbilingual.edu</p>
+                                <p data-i18n="contact.supportEmail">Support: support@lavalbilingual.edu</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Contact Form Section -->
+            <section class="section" style="background-color: #f8f9fa;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="section-title text-left">
+                                <h2 data-i18n="contact.sendMessage">Send Us a Message</h2>
+                                <p data-i18n="contact.sendMessageText">Have a question or need more information? Fill out the form below and we'll get back to you as soon as possible.</p>
+                            </div>
+                            
+                            <div class="contact-form">
+                                <form id="contactForm">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="firstName" class="form-label" data-i18n="contact.firstName">First Name</label>
+                                                <input type="text" id="firstName" class="form-control" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="lastName" class="form-label" data-i18n="contact.lastName">Last Name</label>
+                                                <input type="text" id="lastName" class="form-control" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="email" class="form-label" data-i18n="contact.email">Email Address</label>
+                                        <input type="email" id="email" class="form-control" required>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="phone" class="form-label" data-i18n="contact.phone">Phone Number</label>
+                                        <input type="tel" id="phone" class="form-control">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="subject" class="form-label" data-i18n="contact.subject">Subject</label>
+                                        <select id="subject" class="form-select" required>
+                                            <option value="" data-i18n="contact.selectSubject">Select Subject</option>
+                                            <option value="admissions" data-i18n="contact.admissions">Admissions Inquiry</option>
+                                            <option value="academics" data-i18n="contact.academics">Academic Programs</option>
+                                            <option value="events" data-i18n="contact.events">School Events</option>
+                                            <option value="facilities" data-i18n="contact.facilities">Facilities</option>
+                                            <option value="other" data-i18n="contact.other">Other</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="message" class="form-label" data-i18n="contact.message">Message</label>
+                                        <textarea id="message" class="form-control" rows="5" required></textarea>
+                                    </div>
+                                    
+                                    <div class="text-center mt-4">
+                                        <button type="submit" class="btn-submit" data-i18n="contact.sendButton">Send Message</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6">
+                            <div class="section-title text-left">
+                                <h2 data-i18n="contact.findUs">Find Us</h2>
+                                <p data-i18n="contact.findUsText">Our campus is conveniently located in the heart of the city, easily accessible by public transportation.</p>
+                            </div>
+                            
+                            <div class="map-container">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.9916256937604!2d2.292292615509614!3d48.85837007928757!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e2964e34e2d%3A0x8ddca9ee380ef7e0!2sEiffel%20Tower!5e0!3m2!1sen!2sus!4v1621956217408!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+                            </div>
+                            
+                            <div class="mt-4">
+                                <h3 data-i18n="contact.directions">Directions</h3>
+                                <p data-i18n="contact.directionsText">From the city center, take the Metro Line 1 to Education Station. The school is a 5-minute walk from the station. Follow the signs for Laval Bilingual High School.</p>
+                                
+                                <h3 class="mt-4" data-i18n="contact.parking">Parking</h3>
+                                <p data-i18n="contact.parkingText">Visitor parking is available on campus. Please use the main entrance and follow signs to the visitor parking area.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Department Contacts Section -->
+            <section class="section">
+                <div class="container">
+                    <div class="section-title">
+                        <h2 data-i18n="contact.departments">Department Contacts</h2>
+                        <p data-i18n="contact.departmentsText">For specific inquiries, you may contact our departments directly.</p>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="department-card">
+                                <h4 data-i18n="contact.admissionsDept">Admissions Department</h4>
+                                <p><i class="fas fa-user"></i> <span data-i18n="contact.admissionsContact">Mrs. Sarah Johnson</span></p>
+                                <p><i class="fas fa-phone"></i> +123 456 7891</p>
+                                <p><i class="fas fa-envelope"></i> admissions@lavalbilingual.edu</p>
+                                <a href="#" class="contact-link"><i class="fas fa-arrow-right"></i> <span data-i18n="contact.contactNow">Contact Now</span></a>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <div class="department-card">
+                                <h4 data-i18n="contact.academicsDept">Academic Affairs</h4>
+                                <p><i class="fas fa-user"></i> <span data-i18n="contact.academicsContact">Dr. Robert Chen</span></p>
+                                <p><i class="fas fa-phone"></i> +123 456 7893</p>
+                                <p><i class="fas fa-envelope"></i> academics@lavalbilingual.edu</p>
+                                <a href="#" class="contact-link"><i class="fas fa-arrow-right"></i> <span data-i18n="contact.contactNow">Contact Now</span></a>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <div class="department-card">
+                                <h4 data-i18n="contact.studentDept">Student Affairs</h4>
+                                <p><i class="fas fa-user"></i> <span data-i18n="contact.studentContact">Ms. Marie Dupont</span></p>
+                                <p><i class="fas fa-phone"></i> +123 456 7894</p>
+                                <p><i class="fas fa-envelope"></i> student.affairs@lavalbilingual.edu</p>
+                                <a href="#" class="contact-link"><i class="fas fa-arrow-right"></i> <span data-i18n="contact.contactNow">Contact Now</span></a>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <div class="department-card">
+                                <h4 data-i18n="contact.financeDept">Finance Department</h4>
+                                <p><i class="fas fa-user"></i> <span data-i18n="contact.financeContact">Mr. James Wilson</span></p>
+                                <p><i class="fas fa-phone"></i> +123 456 7895</p>
+                                <p><i class="fas fa-envelope"></i> finance@lavalbilingual.edu</p>
+                                <a href="#" class="contact-link"><i class="fas fa-arrow-right"></i> <span data-i18n="contact.contactNow">Contact Now</span></a>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <div class="department-card">
+                                <h4 data-i18n="contact.facilitiesDept">Facilities Management</h4>
+                                <p><i class="fas fa-user"></i> <span data-i18n="contact.facilitiesContact">Mr. Thomas Laurent</span></p>
+                                <p><i class="fas fa-phone"></i> +123 456 7896</p>
+                                <p><i class="fas fa-envelope"></i> facilities@lavalbilingual.edu</p>
+                                <a href="#" class="contact-link"><i class="fas fa-arrow-right"></i> <span data-i18n="contact.contactNow">Contact Now</span></a>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <div class="department-card">
+                                <h4 data-i18n="contact.itDept">IT Support</h4>
+                                <p><i class="fas fa-user"></i> <span data-i18n="contact.itContact">Mr. David Kim</span></p>
+                                <p><i class="fas fa-phone"></i> +123 456 7897</p>
+                                <p><i class="fas fa-envelope"></i> it.support@lavalbilingual.edu</p>
+                                <a href="#" class="contact-link"><i class="fas fa-arrow-right"></i> <span data-i18n="contact.contactNow">Contact Now</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Office Hours Section -->
+            <section class="section" style="background-color: #f8f9fa;">
+                <div class="container">
+                    <div class="section-title">
+                        <h2 data-i18n="contact.officeHours">Office Hours</h2>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="contact-info-card">
+                                <h3 data-i18n="contact.termTime">During Term Time</h3>
+                                <p><strong data-i18n="contact.monday">Monday - Friday:</strong> 7:30 AM - 4:30 PM</p>
+                                <p><strong data-i18n="contact.saturday">Saturday:</strong> 9:00 AM - 12:00 PM (Admissions Office only)</p>
+                                <p><strong data-i18n="contact.sunday">Sunday:</strong> Closed</p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="contact-info-card">
+                                <h3 data-i18n="contact.holidays">During School Holidays</h3>
+                                <p><strong data-i18n="contact.monday">Monday - Friday:</strong> 9:00 AM - 3:00 PM</p>
+                                <p><strong data-i18n="contact.saturday">Saturday:</strong> Closed</p>
+                                <p><strong data-i18n="contact.sunday">Sunday:</strong> Closed</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-col">
+                        <h3 data-i18n="footer.about">About Us</h3>
+                        <p data-i18n="footer.aboutText">Laval Bilingual High School is committed to providing quality education in both English and French, preparing students for global opportunities.</p>
+                        <div class="footer-social">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h3 data-i18n="footer.quickLinks">Quick Links</h3>
+                        <ul>
+                            <li><a href="about.html" data-i18n="navigation.about">About</a></li>
+                            <li><a href="academics/overview.html" data-i18n="navigation.academics">Academics</a></li>
+                            <li><a href="admissions.html" data-i18n="navigation.admissions">Admissions</a></li>
+                            <li><a href="gallery.html" data-i18n="navigation.gallery">Gallery</a></li>
+                            <li><a href="contact.html" data-i18n="navigation.contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h3 data-i18n="footer.resources">Resources</h3>
+                        <ul>
+                            <li><a href="students.html" data-i18n="navigation.students">Students</a></li>
+                            <li><a href="books/anglophone.html" data-i18n="navigation.books">Books & Materials</a></li>
+                            <li><a href="faq.html" data-i18n="navigation.faq">FAQ</a></li>
+                            <li><a href="alumni.html" data-i18n="navigation.alumni">Alumni</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h3 data-i18n="footer.contactInfo">Contact Info</h3>
+                        <ul class="contact-info">
+                            <li>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span data-i18n="footer.address">123 Education Street, City, Country</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-phone"></i>
+                                <span data-i18n="footer.phone">+123 456 7890</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-envelope"></i>
+                                <span data-i18n="footer.email">info@lavalbilingual.edu</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-clock"></i>
+                                <span data-i18n="footer.hours">Mon-Fri: 7:30 AM - 4:30 PM</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p data-i18n="footer.copyright">© 2025 Laval Bilingual High School. All Rights Reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="js/translations.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Contact page specific JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Form submission
+            const contactForm = document.getElementById('contactForm');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Thank you for your message! We will get back to you as soon as possible.');
+                    this.reset();
+                });
+            }
+            
+            // Add translations for contact page
+            if (!translations.en.contact) {
+                translations.en.contact = {
+                    getInTouch: "Get in Touch",
+                    getInTouchText: "We're here to answer any questions you may have about our school, programs, or admissions process. Feel free to reach out to us using any of the contact methods below.",
+                    visitUs: "Visit Us",
+                    address: "123 Education Street",
+                    cityCountry: "City, Country",
+                    postalCode: "Postal Code: 12345",
+                    callUs: "Call Us",
+                    mainPhone: "Main: +123 456 7890",
+                    admissionsPhone: "Admissions: +123 456 7891",
+                    fax: "Fax: +123 456 7892",
+                    emailUs: "Email Us",
+                    generalEmail: "General: info@lavalbilingual.edu",
+                    admissionsEmail: "Admissions: admissions@lavalbilingual.edu",
+                    supportEmail: "Support: support@lavalbilingual.edu",
+                    sendMessage: "Send Us a Message",
+                    sendMessageText: "Have a question or need more information? Fill out the form below and we'll get back to you as soon as possible.",
+                    firstName: "First Name",
+                    lastName: "Last Name",
+                    email: "Email Address",
+                    phone: "Phone Number",
+                    subject: "Subject",
+                    selectSubject: "Select Subject",
+                    admissions: "Admissions Inquiry",
+                    academics: "Academic Programs",
+                    events: "School Events",
+                    facilities: "Facilities",
+                    other: "Other",
+                    message: "Message",
+                    sendButton: "Send Message",
+                    findUs: "Find Us",
+                    findUsText: "Our campus is conveniently located in the heart of the city, easily accessible by public transportation.",
+                    directions: "Directions",
+                    directionsText: "From the city center, take the Metro Line 1 to Education Station. The school is a 5-minute walk from the station. Follow the signs for Laval Bilingual High School.",
+                    parking: "Parking",
+                    parkingText: "Visitor parking is available on campus. Please use the main entrance and follow signs to the visitor parking area.",
+                    departments: "Department Contacts",
+                    departmentsText: "For specific inquiries, you may contact our departments directly.",
+                    admissionsDept: "Admissions Department",
+                    admissionsContact: "Mrs. Sarah Johnson",
+                    academicsDept: "Academic Affairs",
+                    academicsContact: "Dr. Robert Chen",
+                    studentDept: "Student Affairs",
+                    studentContact: "Ms. Marie Dupont",
+                    financeDept: "Finance Department",
+                    financeContact: "Mr. James Wilson",
+                    facilitiesDept: "Facilities Management",
+                    facilitiesContact: "Mr. Thomas Laurent",
+                    itDept: "IT Support",
+                    itContact: "Mr. David Kim",
+                    contactNow: "Contact Now",
+                    officeHours: "Office Hours",
+                    termTime: "During Term Time",
+                    holidays: "During School Holidays",
+                    monday: "Monday - Friday",
+                    saturday: "Saturday",
+                    sunday: "Sunday"
+                };
+            }
+            
+            if (!translations.fr.contact) {
+                translations.fr.contact = {
+                    getInTouch: "Contactez-Nous",
+                    getInTouchText: "Nous sommes là pour répondre à toutes vos questions concernant notre école, nos programmes ou notre processus d'admission. N'hésitez pas à nous contacter en utilisant l'une des méthodes ci-dessous.",
+                    visitUs: "Visitez-Nous",
+                    address: "123 Rue de l'Éducation",
+                    cityCountry: "Ville, Pays",
+                    postalCode: "Code Postal: 12345",
+                    callUs: "Appelez-Nous",
+                    mainPhone: "Principal: +123 456 7890",
+                    admissionsPhone: "Admissions: +123 456 7891",
+                    fax: "Fax: +123 456 7892",
+                    emailUs: "Envoyez-Nous un Email",
+                    generalEmail: "Général: info@lavalbilingual.edu",
+                    admissionsEmail: "Admissions: admissions@lavalbilingual.edu",
+                    supportEmail: "Support: support@lavalbilingual.edu",
+                    sendMessage: "Envoyez-Nous un Message",
+                    sendMessageText: "Vous avez une question ou besoin de plus d'informations? Remplissez le formulaire ci-dessous et nous vous répondrons dès que possible.",
+                    firstName: "Prénom",
+                    lastName: "Nom de Famille",
+                    email: "Adresse Email",
+                    phone: "Numéro de Téléphone",
+                    subject: "Sujet",
+                    selectSubject: "Sélectionner un Sujet",
+                    admissions: "Demande d'Admission",
+                    academics: "Programmes Académiques",
+                    events: "Événements Scolaires",
+                    facilities: "Installations",
+                    other: "Autre",
+                    message: "Message",
+                    sendButton: "Envoyer le Message",
+                    findUs: "Trouvez-Nous",
+                    findUsText: "Notre campus est idéalement situé au cœur de la ville, facilement accessible en transports en commun.",
+                    directions: "Directions",
+                    directionsText: "Depuis le centre-ville, prenez la ligne de métro 1 jusqu'à la station Éducation. L'école se trouve à 5 minutes à pied de la station. Suivez les panneaux pour le Lycée Bilingue Laval.",
+                    parking: "Stationnement",
+                    parkingText: "Un parking visiteur est disponible sur le campus. Veuillez utiliser l'entrée principale et suivre les panneaux jusqu'à la zone de stationnement visiteur.",
+                    departments: "Contacts des Départements",
+                    departmentsText: "Pour des demandes spécifiques, vous pouvez contacter nos départements directement.",
+                    admissionsDept: "Département des Admissions",
+                    admissionsContact: "Mme Sarah Johnson",
+                    academicsDept: "Affaires Académiques",
+                    academicsContact: "Dr. Robert Chen",
+                    studentDept: "Affaires Étudiantes",
+                    studentContact: "Mme Marie Dupont",
+                    financeDept: "Département des Finances",
+                    financeContact: "M. James Wilson",
+                    facilitiesDept: "Gestion des Installations",
+                    facilitiesContact: "M. Thomas Laurent",
+                    itDept: "Support Informatique",
+                    itContact: "M. David Kim",
+                    contactNow: "Contacter Maintenant",
+                    officeHours: "Heures d'Ouverture",
+                    termTime: "Pendant la Période Scolaire",
+                    holidays: "Pendant les Vacances Scolaires",
+                    monday: "Lundi - Vendredi",
+                    saturday: "Samedi",
+                    sunday: "Dimanche"
+                };
+            }
+            
+            // Apply initial translations based on current language
+            const currentLang = localStorage.getItem('userLanguage') || 'en';
+            applyTranslations(currentLang);
+        });
+    </script>
+</body>
+</html>
