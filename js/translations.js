@@ -86,6 +86,13 @@ const translations = {
       seconde: "2nd",
       premiere: "1er",
       terminale: "Tle"
+    },
+    stats:{
+      message:"Excellence Backed by Stats",
+            info1 :"College Acceptance",
+      info2 :"Students Enrolled",
+      info3 :"Expert Teachers",
+      info4 :"Programs Offered"
     }
   },
   fr: {
@@ -173,6 +180,15 @@ const translations = {
       seconde: "2nd",
       premiere: "1er",
       terminale: "Tle"
+    },
+    stats:{
+      message:"L’Excellence en Statistiques",
+      info1 :"Taux d’Admission à l’Université",
+      info2 :"Élèves Inscrits",
+      info3 :"Enseignants Experts",
+      info4 :"Matières Proposées"
+
+
     }
   }
 };

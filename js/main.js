@@ -164,3 +164,48 @@ function initAnimations() {
         });
     }
 }
+
+// statistics
+document.addEventListener("DOMContentLoaded", () => {
+  const counters = document.querySelectorAll(".stat-value");
+
+  counters.forEach(counter => {
+    const target = +counter.getAttribute("data-target");
+    const isPercent = counter.textContent.includes("%");
+    const isPlus = counter.textContent.includes("+");
+
+    let count = 0;
+    const speed = 20; // smaller is faster
+
+    const updateCount = () => {
+      const increment = Math.ceil(target / 50);
+      if (count < target) {
+        count += increment;
+        counter.textContent = isPercent ? `${count}%` : isPlus ? `${count}+` : count;
+        setTimeout(updateCount, speed);
+      } else {
+        counter.textContent = isPercent ? `${target}%` : isPlus ? `${target}+` : target;
+      }
+    };
+
+    updateCount();
+  });
+});
+
+// statistics text animation 
+document.addEventListener("DOMContentLoaded", () => {
+  const section = document.querySelector('.fade-in-section');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target); // Only animate once
+      }
+    });
+  }, {
+    threshold: 0.3
+  });
+
+  if (section) observer.observe(section);
+});
