@@ -18,7 +18,14 @@ const translations = {
       gallery: "Gallery",
       alumni: "Alumni",
       faq: "FAQ",
-      contact: "Contact"
+      contact: "Contact",
+      program1: "Academic Excellence",
+      program2: "Cultural Exchange",
+      program3: "Extracurricular Activities",
+      text1: "Our rigorous curriculum challenges students to achieve their highest potential in both English and French.",
+      text2: "Students experience diverse cultural perspectives through our inter-regional exchange programs.",
+      text3: "From sports to arts, our diverse activities help students develop well-rounded personalities.",
+
     },
     buttons: {
       takeAction: "Take Action",
@@ -40,7 +47,7 @@ const translations = {
       subtitle1: "Where young minds grow through language, culture, and innovation",
       subtitle2: "Shaping bright futures through strong values and bilingual instruction",
 
-      
+
       intro: "Providing quality education in both English and French, preparing students for global opportunities.",
       intro1: "Our bilingual programs nurture confidence, creativity, and a global outlook from day one.",
       intro2: "From foundational learning to advanced academics, we prepare students to thrive anywhere in the world.",
@@ -87,12 +94,14 @@ const translations = {
       premiere: "1er",
       terminale: "Tle"
     },
-    stats:{
-      message:"Excellence Backed by Stats",
-            info1 :"College Acceptance",
-      info2 :"Students Enrolled",
-      info3 :"Expert Teachers",
-      info4 :"Programs Offered"
+    stats: {
+      message: "Excellence Backed by Stats",
+      info1: "College Acceptance",
+      info2: "Students Enrolled",
+      info3: "Expert Teachers",
+      info4: "Programs Offered",
+      CTA: "Ready to Join Our Community?",
+      textdata: "Take the first step towards a world-class bilingual education.",
     }
   },
   fr: {
@@ -113,7 +122,14 @@ const translations = {
       gallery: "Galerie",
       alumni: "Anciens Élèves",
       faq: "FAQ",
-      contact: "Contact"
+      program1: "Excellence Académique",
+      program2: "Échanges Culturels",
+      program3: "Activités Périscolaires",
+      text1: "Notre programme rigoureux pousse les élèves à atteindre leur plein potentiel en anglais et en français.",
+      text2: "Les élèves découvrent des perspectives culturelles variées grâce à nos programmes d’échange inter regional.",
+      text3: "Du sport aux arts, nos activités variées aident les élèves à développer une personnalité équilibrée.",
+
+
     },
     buttons: {
       takeAction: "Agir Maintenant",
@@ -181,12 +197,14 @@ const translations = {
       premiere: "1er",
       terminale: "Tle"
     },
-    stats:{
-      message:"L’Excellence en Statistiques",
-      info1 :"Taux d’Admission à l’Université",
-      info2 :"Élèves Inscrits",
-      info3 :"Enseignants Experts",
-      info4 :"Matières Proposées"
+    stats: {
+      message: "L’Excellence en Statistiques",
+      info1: "Taux d’Admission à l’Université",
+      info2: "Élèves Inscrits",
+      info3: "Enseignants Experts",
+      info4: "Matières Proposées",
+      CTA: "Prêt à Rejoindre Notre Communauté ?",
+      textdata: "Faites le premier pas vers une éducation bilingue de classe mondiale.",
 
 
     }
