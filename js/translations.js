@@ -25,13 +25,26 @@ const translations = {
       learnMore: "Learn More",
       download: "Download",
       apply: "Apply Now",
+      apply1: "Academics",
+      apply2: "Contact Us",
+
       contact: "Contact Us",
       readMore: "Read More"
     },
     home: {
       welcome: "Welcome to Laval Bilingual High School",
+      welcome1: "Empowering Tomorrow's Leaders",
+      welcome2: "Academic Excellence Starts Here",
+
       subtitle: "Excellence in Bilingual Education",
+      subtitle1: "Where young minds grow through language, culture, and innovation",
+      subtitle2: "Shaping bright futures through strong values and bilingual instruction",
+
+      
       intro: "Providing quality education in both English and French, preparing students for global opportunities.",
+      intro1: "Our bilingual programs nurture confidence, creativity, and a global outlook from day one.",
+      intro2: "From foundational learning to advanced academics, we prepare students to thrive anywhere in the world.",
+
       mission: "Our Mission",
       missionText: "To provide a high-quality bilingual education that prepares students to succeed in a global society while fostering critical thinking, creativity, and character development.",
       featuredPrograms: "Featured Programs",
@@ -100,13 +113,25 @@ const translations = {
       learnMore: "En Savoir Plus",
       download: "Télécharger",
       apply: "Postuler",
+      apply1: "Academique",
+      apply2: "Contact",
+
       contact: "Contactez-Nous",
       readMore: "Lire Plus"
     },
     home: {
       welcome: "Bienvenue au Lycée Bilingue Laval",
+      welcome1: "Former les leaders de demain",
+      welcome2: "L'excellence académique commence ici",
+
       subtitle: "Excellence en Éducation Bilingue",
+      subtitle1: "Là où les jeunes esprits grandissent grâce à la langue, la culture et l’innovation",
+      subtitle2: "Façonner un avenir brillant grâce aux valeurs fortes et à l’enseignement bilingue",
+
       intro: "Offrant une éducation de qualité en anglais et en français, préparant les élèves aux opportunités mondiales.",
+      intro1: "Nos programmes bilingues développent la confiance, la créativité et une vision mondiale dès le premier jour.",
+      intro2: "De l’apprentissage fondamental aux études avancées, nous préparons les élèves à réussir partout dans le monde.",
+
       mission: "Notre Mission",
       missionText: "Fournir une éducation bilingue de haute qualité qui prépare les élèves à réussir dans une société mondiale tout en favorisant la pensée critique, la créativité et le développement du caractère.",
       featuredPrograms: "Programmes Vedettes",

@@ -453,20 +453,29 @@ img {
   background-position: center;
   display: flex;
   align-items: center;
+  justify-content: center;
   opacity: 0;
-  transition: opacity 1s ease;
+  transform: scale(1.05);
+  z-index: 0;
+  transition: opacity 1s ease, transform 1s ease;
 }
-
 .hero-slide.active {
   opacity: 1;
+    transform: scale(1);
+  z-index: 1;
 }
 
 .hero-content {
-  max-width: 600px;
+  max-width: 1200px;
   padding: 30px;
-  background-color: rgba(255, 255, 255, 0.9);
-  border-radius: 8px;
-  margin-left: 50px;
+  background: rgba(216, 131, 131, 0.2);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.2);
 }
 
 .hero-content h1 {
