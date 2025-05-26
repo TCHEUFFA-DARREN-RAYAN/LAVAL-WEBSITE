@@ -9,6 +9,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/dropdown-fix.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+    <script src="../js/translations.js" defer></script>
+    <script src="../js/main.js" defer></script>
     <style>
         .page-banner {
             background-image: url('../images/results-banner.jpg');
@@ -1234,14 +1239,14 @@
         </main>
 
         <footer class="site-footer">
-            <div class="container">
+            <div class="container-footer">
                 <div class="footer-content">
                     <div class="footer-col">
                         <h3 data-i18n="footer.about">About Us</h3>
-                        <p data-i18n="footer.aboutText">Laval Bilingual High School is committed to providing quality education in both English and French, preparing students for global opportunities.</p>
+                        <p data-i18n="footer.aboutText">Laval Bilingual High School is committed to providing quality
+                            education in both English and French, preparing students for global opportunities.</p>
                         <div class="footer-social">
                             <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
                             <a href="#"><i class="fab fa-instagram"></i></a>
                             <a href="#"><i class="fab fa-linkedin-in"></i></a>
                         </div>
@@ -1249,20 +1254,20 @@
                     <div class="footer-col">
                         <h3 data-i18n="footer.quickLinks">Quick Links</h3>
                         <ul>
-                            <li><a href="../about.html" data-i18n="navigation.about">About</a></li>
-                            <li><a href="overview.html" data-i18n="navigation.academics">Academics</a></li>
-                            <li><a href="../admissions.html" data-i18n="navigation.admissions">Admissions</a></li>
-                            <li><a href="../gallery.html" data-i18n="navigation.gallery">Gallery</a></li>
-                            <li><a href="../contact.html" data-i18n="navigation.contact">Contact</a></li>
+                            <li><a href="about.html" data-i18n="navigation.about">About</a></li>
+                            <li><a href="academics/overview.html" data-i18n="navigation.academics">Academics</a></li>
+                            <li><a href="admissions.html" data-i18n="navigation.admissions">Admissions</a></li>
+                            <li><a href="gallery.html" data-i18n="navigation.gallery">Gallery</a></li>
+                            <li><a href="contact.html" data-i18n="navigation.contact">Contact</a></li>
                         </ul>
                     </div>
                     <div class="footer-col">
                         <h3 data-i18n="footer.resources">Resources</h3>
                         <ul>
-                            <li><a href="../students.html" data-i18n="navigation.students">Students</a></li>
-                            <li><a href="../books/anglophone.html" data-i18n="navigation.books">Books & Materials</a></li>
-                            <li><a href="../faq.html" data-i18n="navigation.faq">FAQ</a></li>
-                            <li><a href="../alumni.html" data-i18n="navigation.alumni">Alumni</a></li>
+                            <li><a href="students.html" data-i18n="navigation.students">Students</a></li>
+                            <li><a href="books/anglophone.html" data-i18n="navigation.books">Books & Materials</a></li>
+                            <li><a href="faq.html" data-i18n="navigation.faq">FAQ</a></li>
+                            <li><a href="alumni.html" data-i18n="navigation.alumni">Alumni</a></li>
                         </ul>
                     </div>
                     <div class="footer-col">
@@ -1287,8 +1292,27 @@
                         </ul>
                     </div>
                 </div>
+            </div>
+            <footer class="site-footer">
                 <div class="footer-bottom">
-                    <p data-i18n="footer.copyright">© 2025 Laval Bilingual High School. All Rights Reserved.</p>
+                    <p data-i18n="footer.copyright">
+                        © 2025 Laval Bilingual High School. All Rights Reserved.
+                    </p>
+                </div>
+            </footer>
+            <div class="footer-credit">
+                <small>&copy; 2025 Designed & Developed by Tcheuffa Darren (ex-Laval Student)</small>
+                <div class="social-icons">
+                    <a href="https://github.com/TCHEUFFA-DARREN-RAYAN" target="_blank" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/tcheuffa-darren-112214327/" target="_blank"
+                        aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="mailto:tcheuffadarren1@gmail.com" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
                 </div>
             </div>
         </footer>

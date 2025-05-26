@@ -113,6 +113,7 @@
   padding: 1rem 0;
   font-size: 0.85rem;
   color: rgba(255, 255, 255, 0.6); /* Light watermark feel */
+  padding-right: 60px;
 }
 
 .site-footer {
@@ -139,7 +140,11 @@
   color: #1e90ff;
 }
 
-
+.container-footer{
+  max-width: 1200px;     
+  margin: 0 auto;        
+  padding: 1.5rem 1rem;  
+  box-sizing: border-box;}
 
 
 
@@ -325,7 +330,7 @@ img {
 .site-footer {
   background-color: var(--dark-color);
   color: var(--light-color);
-  padding: 60px 0 20px;
+  padding: 5px;
 }
 
 .footer-content {
@@ -402,11 +407,27 @@ img {
   margin-right: 10px;
   color: var(--secondary-color);
 }
-
 .footer-bottom {
   text-align: center;
-  padding-top: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.5rem 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  background-color: #706c6c94; /* Dark background for contrast */
+  color: #ccc; /* Soft white text */
+  font-size: 0.95rem;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+.footer-bottom p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+  .footer-bottom {
+    font-size: 0.85rem;
+    padding: 1rem 0.5rem;
+  }
 }
 
 /* Button Styles */
