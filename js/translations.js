@@ -53,7 +53,9 @@ const translations = {
       intro2: "From foundational learning to advanced academics, we prepare students to thrive anywhere in the world.",
 
       mission: "Our Mission",
-      missionText: "To provide a high-quality bilingual education that prepares students to succeed in a global society while fostering critical thinking, creativity, and character development.",
+      missionText1: "At Laval Bilingual High School, we believe every student carries a unique spark, ready to brighten the world. Our mission is to nurture that spark through a bilingual, dynamic environment grounded in excellence, respect, and innovation.",
+      missionText2:"We are committed to providing an inclusive and forward-looking education where curiosity is encouraged, talents are cultivated, and confidence is built. Our passionate educators guide each learner with care and purpose, embracing individuality while fostering collaboration.",
+      missionText3:"Here, diversity is not just welcomed—it’s celebrated. Every voice matters. Together, we shape a future where tomorrow’s leaders learn to think boldly, create fearlessly, and act with purpose.",
       featuredPrograms: "Featured Programs",
       upcomingEvents: "Upcoming Events",
       testimonials: "What Our Community Says",
@@ -156,7 +158,9 @@ const translations = {
       intro2: "De l’apprentissage fondamental aux études avancées, nous préparons les élèves à réussir partout dans le monde.",
 
       mission: "Notre Mission",
-      missionText: "Fournir une éducation bilingue de haute qualité qui prépare les élèves à réussir dans une société mondiale tout en favorisant la pensée critique, la créativité et le développement du caractère.",
+      missionText1: "À Laval Bilingual High School, nous croyons que chaque élève porte en lui une étincelle unique, prête à illuminer le monde. Notre mission est de faire grandir cette lumière dans un environnement bilingue, dynamique et fondé sur l’excellence, le respect et l’innovation.",
+      missionText2:"Nous nous engageons à offrir une éducation inclusive et tournée vers l’avenir, où la curiosité est encouragée, les talents sont cultivés, et la confiance en soi se développe. Nos éducateurs passionnés accompagnent chaque apprenant avec attention et dévouement, en valorisant l’individualité tout en favorisant la collaboration.",
+      missionText3:"Ici, la diversité n’est pas seulement acceptée — elle est célébrée. Chaque voix compte. Ensemble, nous façonnons un avenir où les leaders de demain apprennent à penser avec audace, à créer avec passion et à agir avec conviction.",
       featuredPrograms: "Programmes Vedettes",
       upcomingEvents: "Événements à Venir",
       testimonials: "Ce Que Dit Notre Communauté",
