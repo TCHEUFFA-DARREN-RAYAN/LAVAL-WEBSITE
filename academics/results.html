@@ -14,6 +14,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
     <script src="../js/translations.js" defer></script>
     <script src="../js/main.js" defer></script>
+
     <style>
         .page-banner {
             background-size: cover;
@@ -420,6 +421,7 @@
 </head>
 <body>
     <div id="app">
+        <!-- header -->
         <header class="site-header">
             <div class="header-contain">
                 <div class="header-content">
@@ -498,29 +500,28 @@
             <!-- Results Section -->
             <section class="section">
                 <div class="container">
-                    <div class="section-title">
+                    <div class="section-title-result">
                         <h2 data-i18n="results.resultsTitle">Examination Results</h2>
                         <p data-i18n="results.resultsIntro">Our students consistently achieve outstanding results in external examinations, reflecting our commitment to academic excellence and bilingual education.</p>
                     </div>
                     
                     <div class="results-tabs">
-                        <button class="tab-btn active" id="igcseTab" data-i18n="results.igcse">IGCSE Results</button>
-                        <button class="tab-btn" id="ibTab" data-i18n="results.ib">IB Diploma Results</button>
+                        <button class="tab-btn active" id="igcseTab" data-i18n="results.igcse">BEPC</button>
+                        <button class="tab-btn" id="ibTab" data-i18n="results.ib">Probatoire</button>
                         <button class="tab-btn" id="aLevelsTab" data-i18n="results.aLevels">A-Levels Results</button>
+                        <button class="tab-btn" id="oLevelsTab" data-i18n="results.oLevels">O-Levels Results</button>
                         <button class="tab-btn" id="bacTab" data-i18n="results.bac">Baccalauréat Results</button>
                     </div>
-                    
+                    <!-- BEPC -->
                     <div class="tab-content active" id="igcseContent">
                         <div class="results-card">
-                            <h3 data-i18n="results.igcseTitle">IGCSE Results (2024)</h3>
-                            <p data-i18n="results.igcseDesc">Our Form 5 students have once again achieved exceptional results in their IGCSE examinations, with performance well above global averages.</p>
-                            
+                            <h3 >BEPC Results (2024)</h3>                            
                             <div class="stats-grid">
                                 <div class="stat-card">
                                     <div class="stat-icon">
                                         <i class="fas fa-award"></i>
                                     </div>
-                                    <div class="stat-number">97%</div>
+                                    <div class="stat-number">100%</div>
                                     <div class="stat-label" data-i18n="results.passRate">Pass Rate (A*-C)</div>
                                 </div>
                                 
@@ -571,7 +572,7 @@
                                             <td>31</td>
                                             <td>18</td>
                                             <td>7</td>
-                                            <td>98</td>
+                                            <td>100</td>
                                         </tr>
                                         <tr>
                                             <td data-i18n="results.englishLang">English Language</td>
@@ -580,7 +581,7 @@
                                             <td>35</td>
                                             <td>20</td>
                                             <td>5</td>
-                                            <td>98</td>
+                                            <td>100</td>
                                         </tr>
                                         <tr>
                                             <td data-i18n="results.frenchLang">French Language</td>
@@ -589,7 +590,7 @@
                                             <td>32</td>
                                             <td>15</td>
                                             <td>6</td>
-                                            <td>98</td>
+                                            <td>100</td>
                                         </tr>
                                         <tr>
                                             <td data-i18n="results.mathematics">Mathematics</td>
@@ -598,7 +599,7 @@
                                             <td>28</td>
                                             <td>22</td>
                                             <td>8</td>
-                                            <td>98</td>
+                                            <td>100</td>
                                         </tr>
                                         <tr>
                                             <td data-i18n="results.biology">Biology</td>
@@ -607,7 +608,7 @@
                                             <td>30</td>
                                             <td>22</td>
                                             <td>8</td>
-                                            <td>98</td>
+                                            <td>100</td>
                                         </tr>
                                         <tr>
                                             <td data-i18n="results.chemistry">Chemistry</td>
@@ -616,7 +617,7 @@
                                             <td>32</td>
                                             <td>24</td>
                                             <td>7</td>
-                                            <td>98</td>
+                                            <td>100</td>
                                         </tr>
                                         <tr>
                                             <td data-i18n="results.physics">Physics</td>
@@ -625,7 +626,7 @@
                                             <td>31</td>
                                             <td>23</td>
                                             <td>7</td>
-                                            <td>98</td>
+                                            <td>100</td>
                                         </tr>
                                         <tr>
                                             <td data-i18n="results.history">History</td>
@@ -634,7 +635,7 @@
                                             <td>35</td>
                                             <td>22</td>
                                             <td>8</td>
-                                            <td>98</td>
+                                            <td>100</td>
                                         </tr>
                                         <tr>
                                             <td data-i18n="results.geography">Geography</td>
@@ -643,29 +644,23 @@
                                             <td>33</td>
                                             <td>25</td>
                                             <td>9</td>
-                                            <td>98</td>
+                                            <td>100</td>
                                         </tr>
                                     </tbody>
                                 </table>
-                            </div>
-                            
-                            <div class="chart-container">
-                                <canvas id="igcseChart"></canvas>
-                            </div>
+                            </div>                       
                         </div>
                     </div>
-                    
+                    <!-- Probatoire -->
                     <div class="tab-content" id="ibContent">
                         <div class="results-card">
-                            <h3 data-i18n="results.ibTitle">IB Diploma Results (2024)</h3>
-                            <p data-i18n="results.ibDesc">Our IB Diploma students have achieved outstanding results, with scores significantly above the global average.</p>
-                            
+                            <h3 data-i18n="results.ibTitle">Probatoire Results (2024)</h3>
                             <div class="stats-grid">
                                 <div class="stat-card">
                                     <div class="stat-icon">
                                         <i class="fas fa-award"></i>
                                     </div>
-                                    <div class="stat-number">36.2</div>
+                                    <div class="stat-number">38.2</div>
                                     <div class="stat-label" data-i18n="results.avgScore">Average Score (out of 45)</div>
                                 </div>
                                 
@@ -673,7 +668,7 @@
                                     <div class="stat-icon">
                                         <i class="fas fa-star"></i>
                                     </div>
-                                    <div class="stat-number">28%</div>
+                                    <div class="stat-number">32%</div>
                                     <div class="stat-label" data-i18n="results.top40">40+ Points</div>
                                 </div>
                                 
@@ -701,10 +696,10 @@
                                         <tr>
                                             <th data-i18n="results.subject">Subject</th>
                                             <th data-i18n="results.entries">Entries</th>
-                                            <th data-i18n="results.level7">Level 7 (%)</th>
-                                            <th data-i18n="results.level6">Level 6 (%)</th>
-                                            <th data-i18n="results.level5">Level 5 (%)</th>
-                                            <th data-i18n="results.avgScore">Avg. Score</th>
+                                            <th data-i18n="results.a">10 +</th>
+
+                                            <th data-i18n="results.passRate">Pass Rate (%)</th>
+
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -712,95 +707,80 @@
                                             <td data-i18n="results.englishA">English A Literature</td>
                                             <td>42</td>
                                             <td>38</td>
-                                            <td>40</td>
-                                            <td>17</td>
-                                            <td>6.1</td>
+                                            <td>100</td>
+
                                         </tr>
                                         <tr>
                                             <td data-i18n="results.frenchA">French A Literature</td>
                                             <td>38</td>
                                             <td>42</td>
-                                            <td>37</td>
-                                            <td>16</td>
-                                            <td>6.2</td>
+                                            <td>100</td>
+
                                         </tr>
                                         <tr>
                                             <td data-i18n="results.englishB">English B HL</td>
                                             <td>18</td>
                                             <td>44</td>
-                                            <td>39</td>
-                                            <td>17</td>
-                                            <td>6.3</td>
+                                            <td>100</td>
+
                                         </tr>
                                         <tr>
                                             <td data-i18n="results.frenchB">French B HL</td>
                                             <td>22</td>
                                             <td>41</td>
-                                            <td>41</td>
-                                            <td>14</td>
-                                            <td>6.2</td>
+                                            <td>100</td>
+
                                         </tr>
                                         <tr>
                                             <td data-i18n="results.mathsAA">Mathematics AA HL</td>
                                             <td>28</td>
                                             <td>32</td>
-                                            <td>36</td>
-                                            <td>21</td>
-                                            <td>5.9</td>
+                                             <td>100</td>
+
                                         </tr>
                                         <tr>
                                             <td data-i18n="results.mathsAI">Mathematics AI HL</td>
                                             <td>18</td>
                                             <td>33</td>
-                                            <td>39</td>
-                                            <td>22</td>
-                                            <td>6.0</td>
+                                            <td>100</td>
+
                                         </tr>
                                         <tr>
                                             <td data-i18n="results.biology">Biology HL</td>
                                             <td>24</td>
                                             <td>38</td>
-                                            <td>33</td>
-                                            <td>21</td>
-                                            <td>6.0</td>
+                                            <td>100</td>
+
                                         </tr>
                                         <tr>
                                             <td data-i18n="results.chemistry">Chemistry HL</td>
                                             <td>22</td>
                                             <td>36</td>
-                                            <td>32</td>
-                                            <td>23</td>
-                                            <td>5.9</td>
+                                            <td>100</td>
+
                                         </tr>
                                         <tr>
                                             <td data-i18n="results.physics">Physics HL</td>
                                             <td>20</td>
                                             <td>35</td>
-                                            <td>35</td>
-                                            <td>20</td>
-                                            <td>5.9</td>
+                                            <td>100</td>
+
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
-                            
-                            <div class="chart-container">
-                                <canvas id="ibChart"></canvas>
-                            </div>
                         </div>
                     </div>
-                    
+                    <!-- GCE-A-Level-->
                     <div class="tab-content" id="aLevelsContent">
                         <div class="results-card">
                             <h3 data-i18n="results.aLevelsTitle">A-Levels Results (2024)</h3>
-                            <p data-i18n="results.aLevelsDesc">Our A-Level students have achieved excellent results, with a high percentage of top grades.</p>
-                            
                             <div class="stats-grid">
                                 <div class="stat-card">
                                     <div class="stat-icon">
                                         <i class="fas fa-award"></i>
                                     </div>
-                                    <div class="stat-number">99%</div>
+                                    <div class="stat-number">99.6%</div>
                                     <div class="stat-label" data-i18n="results.passRateAL">Pass Rate (A*-E)</div>
                                 </div>
                                 
@@ -816,7 +796,7 @@
                                     <div class="stat-icon">
                                         <i class="fas fa-user-graduate"></i>
                                     </div>
-                                    <div class="stat-number">3.4</div>
+                                    <div class="stat-number">3.2</div>
                                     <div class="stat-label" data-i18n="results.avgSubjectsAL">Avg. Subjects per Student</div>
                                 </div>
                                 
@@ -824,7 +804,7 @@
                                     <div class="stat-icon">
                                         <i class="fas fa-trophy"></i>
                                     </div>
-                                    <div class="stat-number">8</div>
+                                    <div class="stat-number">15</div>
                                     <div class="stat-label" data-i18n="results.straightA">Straight A*/A Students</div>
                                 </div>
                             </div>
@@ -928,18 +908,151 @@
                                     </tbody>
                                 </table>
                             </div>
+                        </div>
+                    </div>
+                    <!-- GCE-O-Level-->
+                    <div class="tab-content" id="oLevelsContent">
+                        <div class="results-card">
+                            <h3 data-i18n="results.aLevelsTitle">O-Levels Results (2024)</h3>
+                            <div class="stats-grid">
+                                <div class="stat-card">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-award"></i>
+                                    </div>
+                                    <div class="stat-number">100%</div>
+                                    <div class="stat-label" data-i18n="results.passRateAL">Pass Rate (A*-E)</div>
+                                </div>
+                                
+                                <div class="stat-card">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <div class="stat-number">71%</div>
+                                    <div class="stat-label" data-i18n="results.topGradesAL">Top Grades (A*-B)</div>
+                                </div>
+                                
+                                <div class="stat-card">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-user-graduate"></i>
+                                    </div>
+                                    <div class="stat-number">7.4</div>
+                                    <div class="stat-label" data-i18n="results.avgSubjectsAL">Avg. Subjects per Student</div>
+                                </div>
+                                
+                                <div class="stat-card">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-trophy"></i>
+                                    </div>
+                                    <div class="stat-number">9</div>
+                                    <div class="stat-label" data-i18n="results.straightA">Straight A*/A Students</div>
+                                </div>
+                            </div>
                             
-                            <div class="chart-container">
-                                <canvas id="aLevelsChart"></canvas>
+                            <h4 class="mt-5" data-i18n="results.subjectResults">Subject Results</h4>
+                            <div class="table-responsive">
+                                <table class="results-table">
+                                    <thead>
+                                        <tr>
+                                            <th data-i18n="results.subject">Subject</th>
+                                            <th data-i18n="results.entries">Entries</th>
+                                            <th data-i18n="results.astar">A* (%)</th>
+                                            <th data-i18n="results.a">A (%)</th>
+                                            <th data-i18n="results.b">B (%)</th>
+                                            <th data-i18n="results.c">C (%)</th>
+                                            <th data-i18n="results.passRate">Pass Rate (%)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td data-i18n="results.englishLit">English Literature</td>
+                                            <td>18</td>
+                                            <td>28</td>
+                                            <td>33</td>
+                                            <td>22</td>
+                                            <td>11</td>
+                                            <td>100</td>
+                                        </tr>
+                                        <tr>
+                                            <td data-i18n="results.frenchLang">French</td>
+                                            <td>22</td>
+                                            <td>32</td>
+                                            <td>36</td>
+                                            <td>18</td>
+                                            <td>9</td>
+                                            <td>100</td>
+                                        </tr>
+                                        <tr>
+                                            <td data-i18n="results.mathematics">Mathematics</td>
+                                            <td>24</td>
+                                            <td>33</td>
+                                            <td>29</td>
+                                            <td>21</td>
+                                            <td>13</td>
+                                            <td>100</td>
+                                        </tr>
+                                        <tr>
+                                            <td data-i18n="results.furtherMaths">Further Mathematics</td>
+                                            <td>12</td>
+                                            <td>42</td>
+                                            <td>33</td>
+                                            <td>17</td>
+                                            <td>8</td>
+                                            <td>100</td>
+                                        </tr>
+                                        <tr>
+                                            <td data-i18n="results.biology">Biology</td>
+                                            <td>20</td>
+                                            <td>30</td>
+                                            <td>30</td>
+                                            <td>25</td>
+                                            <td>10</td>
+                                            <td>100</td>
+                                        </tr>
+                                        <tr>
+                                            <td data-i18n="results.chemistry">Chemistry</td>
+                                            <td>18</td>
+                                            <td>28</td>
+                                            <td>33</td>
+                                            <td>22</td>
+                                            <td>11</td>
+                                            <td>100</td>
+                                        </tr>
+                                        <tr>
+                                            <td data-i18n="results.physics">Physics</td>
+                                            <td>16</td>
+                                            <td>31</td>
+                                            <td>31</td>
+                                            <td>25</td>
+                                            <td>13</td>
+                                            <td>100</td>
+                                        </tr>
+                                        <tr>
+                                            <td data-i18n="results.economics">Economics</td>
+                                            <td>14</td>
+                                            <td>29</td>
+                                            <td>29</td>
+                                            <td>29</td>
+                                            <td>13</td>
+                                            <td>100</td>
+                                        </tr>
+                                        <tr>
+                                            <td data-i18n="results.history">History</td>
+                                            <td>12</td>
+                                            <td>25</td>
+                                            <td>33</td>
+                                            <td>25</td>
+                                            <td>17</td>
+                                            <td>100</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
-                    
+                    <!-- Bac -->
                     <div class="tab-content" id="bacContent">
                         <div class="results-card">
                             <h3 data-i18n="results.bacTitle">Baccalauréat Results (2024)</h3>
-                            <p data-i18n="results.bacDesc">Our French Baccalauréat students have achieved excellent results, with a high percentage of honors.</p>
-                            
                             <div class="stats-grid">
                                 <div class="stat-card">
                                     <div class="stat-icon">
@@ -1008,10 +1121,6 @@
                                     </tbody>
                                 </table>
                             </div>
-                            
-                            <div class="chart-container">
-                                <canvas id="bacChart"></canvas>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -1028,10 +1137,10 @@
                     <div class="university-grid">
                         <div class="university-card">
                             <div class="university-image">
-                                <img src="../images/university-uk.jpg" alt="UK Universities">
+                                <img src="../images/template-color-pink.jpg" alt="UK Universities">
                             </div>
                             <div class="university-content">
-                                <h3 data-i18n="results.ukUniversities">UK Universities</h3>
+                                <h3 data-i18n="results.ukUniversities">ICU (Institut Universitaire de la Cote )</h3>
                                 <p data-i18n="results.ukDesc">Our graduates have been accepted to top universities in the United Kingdom, including Oxford, Cambridge, Imperial College London, and LSE.</p>
                                 <div class="university-stats">
                                     <div class="university-stat">
@@ -1052,7 +1161,7 @@
                         
                         <div class="university-card">
                             <div class="university-image">
-                                <img src="../images/university-france.jpg" alt="French Universities">
+                                <img src="../images/template-color-pink.jpg" alt="French Universities">
                             </div>
                             <div class="university-content">
                                 <h3 data-i18n="results.frenchUniversities">French Universities</h3>
@@ -1076,11 +1185,11 @@
                         
                         <div class="university-card">
                             <div class="university-image">
-                                <img src="../images/university-us.jpg" alt="US Universities">
+                                <img src="../images/template-color-pink.jpg" alt="US Universities">
                             </div>
                             <div class="university-content">
-                                <h3 data-i18n="results.usUniversities">US Universities</h3>
-                                <p data-i18n="results.usDesc">Our graduates have been accepted to prestigious universities across the United States, including Ivy League institutions.</p>
+                                <h3 data-i18n="results.usUniversities">Polytechnique</h3>
+                                <p data-i18n="results.usDesc">Our graduates have been accepted to prestigious Polytechnique universities.</p>
                                 <div class="university-stats">
                                     <div class="university-stat">
                                         <div class="university-stat-number">20%</div>
@@ -1100,7 +1209,7 @@
                         
                         <div class="university-card">
                             <div class="university-image">
-                                <img src="../images/university-canada.jpg" alt="Canadian Universities">
+                                <img src="../images/template-color-pink.jpg" alt="Canadian Universities">
                             </div>
                             <div class="university-content">
                                 <h3 data-i18n="results.canadianUniversities">Canadian Universities</h3>
@@ -1124,7 +1233,7 @@
                         
                         <div class="university-card">
                             <div class="university-image">
-                                <img src="../images/university-europe.jpg" alt="European Universities">
+                                <img src="../images/template-color-pink.jpg" alt="European Universities">
                             </div>
                             <div class="university-content">
                                 <h3 data-i18n="results.europeanUniversities">European Universities</h3>
@@ -1148,7 +1257,7 @@
                         
                         <div class="university-card">
                             <div class="university-image">
-                                <img src="../images/university-global.jpg" alt="Global Universities">
+                                <img src="../images/template-color-pink.jpg" alt="Global Universities">
                             </div>
                             <div class="university-content">
                                 <h3 data-i18n="results.globalUniversities">Other Global Destinations</h3>
@@ -1184,7 +1293,7 @@
                     <div class="testimonial-slider">
                         <div class="testimonial-slide active" id="testimonial1">
                             <div class="testimonial-image">
-                                <img src="../images/testimonial-1.jpg" alt="Sophie Martin">
+                                <img src="../images/template-color-mixed.jpg" alt="Sophie Martin">
                             </div>
                             <p class="testimonial-quote" data-i18n="results.testimonial1">"The bilingual education I received at Laval prepared me exceptionally well for my studies at Oxford. Being able to think, analyze, and express complex ideas in both English and French has given me a unique perspective that sets me apart from my peers."</p>
                             <h4 class="testimonial-author">Sophie Martin</h4>
@@ -1193,7 +1302,7 @@
                         
                         <div class="testimonial-slide" id="testimonial2">
                             <div class="testimonial-image">
-                                <img src="../images/testimonial-2.jpg" alt="Thomas Dubois">
+                                <img src="../images/template-medium-black.jpg" alt="Thomas Dubois">
                             </div>
                             <p class="testimonial-quote" data-i18n="results.testimonial2">"The IB Diploma Programme at Laval was challenging but incredibly rewarding. The teachers were supportive and pushed us to achieve our best. The international perspective I gained has been invaluable for my studies at Sciences Po."</p>
                             <h4 class="testimonial-author">Thomas Dubois</h4>
@@ -1202,7 +1311,7 @@
                         
                         <div class="testimonial-slide" id="testimonial3">
                             <div class="testimonial-image">
-                                <img src="../images/testimonial-3.jpg" alt="Emma Johnson">
+                                <img src="../images/template-medium-yellow.jpg" alt="Emma Johnson">
                             </div>
                             <p class="testimonial-quote" data-i18n="results.testimonial3">"The A-Level programme at Laval allowed me to focus deeply on the sciences while maintaining my French language skills. This combination was perfect preparation for my medical studies at Imperial College London."</p>
                             <h4 class="testimonial-author">Emma Johnson</h4>
@@ -1211,7 +1320,7 @@
                         
                         <div class="testimonial-slide" id="testimonial4">
                             <div class="testimonial-image">
-                                <img src="../images/testimonial-4.jpg" alt="Lucas Moreau">
+                                <img src="../images/template-large-pink.jpg" alt="Lucas Moreau">
                             </div>
                             <p class="testimonial-quote" data-i18n="results.testimonial4">"The French Baccalauréat at Laval provided me with a solid foundation in mathematics and physics, which has been essential for my engineering studies. The bilingual aspect of my education has also opened doors for international opportunities."</p>
                             <h4 class="testimonial-author">Lucas Moreau</h4>
@@ -1318,11 +1427,7 @@
         </footer>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="../js/translations.js"></script>
-    <script src="../js/main.js"></script>
+
     <script>
         // Results page specific JavaScript
         document.addEventListener('DOMContentLoaded', function() {
@@ -1330,6 +1435,8 @@
             const igcseTab = document.getElementById('igcseTab');
             const ibTab = document.getElementById('ibTab');
             const aLevelsTab = document.getElementById('aLevelsTab');
+            const oLevelsTab = document.getElementById('oLevelsTab');
+
             const bacTab = document.getElementById('bacTab');
             
             const igcseContent = document.getElementById('igcseContent');
@@ -1348,18 +1455,20 @@
             aLevelsTab.addEventListener('click', function() {
                 setActiveTab(aLevelsTab, aLevelsContent);
             });
-            
+                        oLevelsTab.addEventListener('click', function() {
+                setActiveTab(oLevelsTab, oLevelsContent);
+            });
             bacTab.addEventListener('click', function() {
                 setActiveTab(bacTab, bacContent);
             });
             
             function setActiveTab(activeTab, activeContent) {
                 // Remove active class from all tabs and content
-                [igcseTab, ibTab, aLevelsTab, bacTab].forEach(tab => {
+                [igcseTab, ibTab, aLevelsTab, bacTab,oLevelsTab].forEach(tab => {
                     tab.classList.remove('active');
                 });
                 
-                [igcseContent, ibContent, aLevelsContent, bacContent].forEach(content => {
+                [igcseContent, ibContent, aLevelsContent, bacContent,oLevelsContent].forEach(content => {
                     content.classList.remove('active');
                 });
                 
@@ -1368,15 +1477,7 @@
                 activeContent.classList.add('active');
                 
                 // Initialize charts for the active tab
-                if (activeTab === igcseTab) {
-                    initIGCSEChart();
-                } else if (activeTab === ibTab) {
-                    initIBChart();
-                } else if (activeTab === aLevelsTab) {
-                    initALevelsChart();
-                } else if (activeTab === bacTab) {
-                    initBacChart();
-                }
+
             }
             
             // Testimonial slider functionality
@@ -1697,11 +1798,11 @@
                     title: "Academic Results",
                     resultsTitle: "Examination Results",
                     resultsIntro: "Our students consistently achieve outstanding results in external examinations, reflecting our commitment to academic excellence and bilingual education.",
-                    igcse: "IGCSE Results",
-                    ib: "IB Diploma Results",
+                    igcse: "BEPC",
+                    ib: "Probatoire",
                     aLevels: "A-Levels Results",
                     bac: "Baccalauréat Results",
-                    igcseTitle: "IGCSE Results (2024)",
+                    igcseTitle: "BEPC (2024)",
                     igcseDesc: "Our Form 5 students have once again achieved exceptional results in their IGCSE examinations, with performance well above global averages.",
                     passRate: "Pass Rate (A*-C)",
                     topGrades: "Top Grades (A*-A)",
@@ -1723,7 +1824,7 @@
                     physics: "Physics",
                     history: "History",
                     geography: "Geography",
-                    ibTitle: "IB Diploma Results (2024)",
+                    ibTitle: "Probatoire Results (2024)",
                     ibDesc: "Our IB Diploma students have achieved outstanding results, with scores significantly above the global average.",
                     avgScore: "Average Score (out of 45)",
                     top40: "40+ Points",
@@ -1799,11 +1900,11 @@
                     title: "Résultats Académiques",
                     resultsTitle: "Résultats d'Examens",
                     resultsIntro: "Nos élèves obtiennent constamment des résultats exceptionnels aux examens externes, reflétant notre engagement envers l'excellence académique et l'éducation bilingue.",
-                    igcse: "Résultats IGCSE",
-                    ib: "Résultats du Diplôme IB",
+                    igcse: "Résultats BEPC",
+                    ib: "Probatoire",
                     aLevels: "Résultats A-Levels",
                     bac: "Résultats du Baccalauréat",
-                    igcseTitle: "Résultats IGCSE (2024)",
+                    igcseTitle: "Résultats BEPC (2024)",
                     igcseDesc: "Nos élèves de Form 5 ont une fois de plus obtenu des résultats exceptionnels à leurs examens IGCSE, avec des performances bien au-dessus des moyennes mondiales.",
                     passRate: "Taux de Réussite (A*-C)",
                     topGrades: "Meilleures Notes (A*-A)",
@@ -1825,7 +1926,7 @@
                     physics: "Physique",
                     history: "Histoire",
                     geography: "Géographie",
-                    ibTitle: "Résultats du Diplôme IB (2024)",
+                    ibTitle: "Résultats du Probatoire IB (2024)",
                     ibDesc: "Nos élèves du Diplôme IB ont obtenu des résultats exceptionnels, avec des scores significativement supérieurs à la moyenne mondiale.",
                     avgScore: "Score Moyen (sur 45)",
                     top40: "40+ Points",
