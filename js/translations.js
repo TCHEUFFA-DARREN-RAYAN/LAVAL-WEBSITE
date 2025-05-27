@@ -4,7 +4,7 @@ const translations = {
     schoolName: "Laval Bilingual High School",
     navigation: {
       home: "Home",
-      about: "About",
+      about: "ABOUT",
       staff: "Staff & Faculty",
       academics: "Academics",
       overview: "Overview",

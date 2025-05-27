@@ -11,6 +11,8 @@
     --accent: #F59E0B;
     --white: #ffffff;
 }
+
+
 /* added content*/
 /**/
 .logo-icon {
@@ -44,6 +46,41 @@
 .header-contain{
   padding: 10px 20px ;
 }
+        .page-banner {
+            background-size: cover;
+            background-position: center;
+            height: 75px;
+            padding-top: 0.5%;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .page-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(48, 33, 33, 0.5);
+        }
+        
+        .page-banner .container {
+          text-align: center;
+          z-index: 1;
+        }
+        
+        .page-banner h1 {
+            color: white;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        
+
+
+
+
 /* Stats Section */
 .stats {
   padding: 4rem 0;
