@@ -77,6 +77,44 @@
             font-weight: 700;
         }
         
+.about-content-pos{
+  display: flex;
+  justify-content: center;
+ align-items: center;
+ 
+}
+.section-about-pad{
+   padding-bottom:50px ;
+}
+.features-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.features-list li {
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 0.8rem;
+  font-size: 1rem;
+  line-height: 1;
+
+}
+
+.features-list li:hover {
+  background: rgba(0, 128, 255, 0.05);
+  border-radius: 5px;
+  cursor:pointer;
+}
+
+.features-list .icon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: green;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
 
 
 
@@ -565,7 +603,7 @@ img {
 
 .section-title {
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
 }
 
 .section-title h2 {

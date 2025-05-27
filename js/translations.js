@@ -1,7 +1,14 @@
 // Translations dictionary
 const translations = {
   en: {
+    ourStory:"Our Story",
     schoolName: "Laval Bilingual High School",
+     missionText:"At Laval Bilingual High School, we believe that education goes beyond academic excellence. Our philosophy is centered on developing the whole person—intellectually, socially, emotionally, and ethically. / À Laval Bilingual High School, nous croyons que l’éducation va au-delà de l’excellence académique. Notre philosophie vise à développer l’individu dans sa globalité – intellectuellement, socialement, émotionnellement et éthiquement.",
+    ourMission:"Our Philosophy",
+ourVision:"Our Campus",
+    visionText:"Our 15-acre campus offers modern facilities, including high-tech labs, computer centers, spacious classrooms, and vibrant recreational areas—designed to support learning and growth. / Notre campus de 15 acres offre des installations modernes, notamment des laboratoires technologiques, des centres informatiques, des salles de classe spacieuses et des espaces de loisirs dynamiques – conçus pour favoriser l’apprentissage et l’épanouissement.",
+    campusdetail:" The campus includes:",
+    
     navigation: {
       home: "Home",
       about: "ABOUT",
@@ -104,11 +111,28 @@ const translations = {
       info4: "Programs Offered",
       CTA: "Ready to Join Our Community?",
       textdata: "Take the first step towards a world-class bilingual education.",
+    },
+    About:{
+      history1 :" Founded in 1985, Laval Bilingual High School has a rich history of delivering exceptional bilingual education to students from diverse backgrounds. What began as a small institution with just 50 students has grown into a prestigious educational establishment serving over 12,000 students today.",
+      history2 :"Our school was founded with the vision of creating a truly bilingual learning environment—one where students could become fluent in both English and French while receiving a world-class education. Over the decades, we have continuously evolved our curriculum and teaching methods to meet the changing needs of our students and the global society.",
+
     }
   },
   fr: {
     schoolName: "Lycée Bilingue Laval",
-    navigation: {
+     ourStory:"Notre histoire",
+     missionText:"À Laval Bilingual High School, nous croyons que l’éducation va au-delà de l’excellence académique. Notre philosophie vise à développer l’individu dans sa globalité – intellectuellement, socialement, émotionnellement et éthiquement.",
+    ourMission:"Notre philosophie",
+ourVision:"Notre campus",
+   visionText:"Notre campus de 15 acres offre des installations modernes, notamment des laboratoires technologiques, des centres informatiques, des salles de classe spacieuses et des espaces de loisirs dynamiques – conçus pour favoriser l’apprentissage et l’épanouissement.",
+    campusdetail:" Le campus comprend",
+campusdetail1:"Modern classrooms with interactive technology / Salles de classe modernes avec technologie interactive",
+campusdetail2:"Science and computer laboratories / Laboratoires de sciences et d’informatique",
+campusdetail13:"Library with extensive resources in both English and French / Bibliothèque avec de nombreuses ressources en anglais et en français",
+campusdetail4:"Sports facilities including a gymnasium and playing fields / Installations sportives avec gymnase et terrains de jeu",
+campusdetail5:"Chemistry and Physics well-equipped labs / Laboratoires de chimie et de physique bien équipés",
+
+     navigation: {
       home: "Accueil",
       about: "À Propos",
       staff: "Personnel & Faculté",
@@ -211,6 +235,18 @@ const translations = {
       textdata: "Faites le premier pas vers une éducation bilingue de classe mondiale.",
 
 
-    }
+    },
+    About:{
+      history1 :"Fondée en 1985, Laval Bilingual High School possède une riche histoire d’excellence dans l’enseignement bilingue auprès d’élèves issus de divers horizons. Ce qui avait commencé comme une petite institution de 50 élèves est devenu aujourd’hui un établissement prestigieux accueillant plus de 12 000 élèves.",
+      history2 :"Notre école a été créée avec la vision d’offrir un véritable environnement d’apprentissage bilingue, permettant aux élèves de maîtriser à la fois l’anglais et le français tout en bénéficiant d’une éducation de classe mondiale. Au fil des décennies, nous avons continuellement fait évoluer notre programme et nos méthodes pédagogiques pour répondre aux besoins changeants de nos élèves et de la société globale.",
+
+    },
+campusdetail1: "Salles de classe modernes avec technologie interactive",
+campusdetail2: "Laboratoires de sciences et d’informatique",
+campusdetail3: "Bibliothèque avec de nombreuses ressources en anglais et en français",
+campusdetail4: "Installations sportives avec gymnase et terrains de jeu",
+campusdetail5: "Laboratoires de chimie et de physique bien équipés",
+
+
   }
 };
