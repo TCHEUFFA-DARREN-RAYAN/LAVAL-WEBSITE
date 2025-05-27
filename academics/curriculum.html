@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Curriculum & Exams - Laval Bilingual High School</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/dropdown-fix.css">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js" defer></script>
     <script src="../js/translations.js" defer></script>
     <script src="../js/main.js" defer></script>
     <style>
@@ -23,7 +26,7 @@
             align-items: center;
             position: relative;
         }
-        
+
         .page-banner::before {
             content: '';
             position: absolute;
@@ -33,24 +36,24 @@
             height: 100%;
             background-color: rgba(48, 33, 33, 0.5);
         }
-        
+
         .page-banner .container {
-          text-align: center;
-          z-index: 1;
+            text-align: center;
+            z-index: 1;
         }
-        
+
         .page-banner h1 {
             color: white;
             font-size: 2rem;
             font-weight: 700;
         }
-        
+
         .academics-nav {
             background-color: #f8f9fa;
             padding: 15px 0;
             margin-bottom: 40px;
         }
-        
+
         .academics-nav ul {
             display: flex;
             justify-content: center;
@@ -59,11 +62,11 @@
             padding: 0;
             flex-wrap: wrap;
         }
-        
+
         .academics-nav li {
             margin: 0 15px;
         }
-        
+
         .academics-nav a {
             text-decoration: none;
             color: var(--dark-color);
@@ -72,7 +75,7 @@
             position: relative;
             transition: color 0.3s;
         }
-        
+
         .academics-nav a::after {
             content: '';
             position: absolute;
@@ -83,30 +86,30 @@
             background-color: var(--primary-color);
             transition: width 0.3s;
         }
-        
+
         .academics-nav a:hover {
             color: var(--primary-color);
         }
-        
+
         .academics-nav a:hover::after {
             width: 100%;
         }
-        
+
         .academics-nav a.active {
             color: var(--primary-color);
         }
-        
+
         .academics-nav a.active::after {
             width: 100%;
         }
-        
+
         .curriculum-tabs {
             display: flex;
             justify-content: center;
             margin-bottom: 30px;
             flex-wrap: wrap;
         }
-        
+
         .tab-btn {
             padding: 10px 20px;
             background: none;
@@ -117,20 +120,20 @@
             transition: all 0.3s;
             margin: 0 10px 10px;
         }
-        
+
         .tab-btn.active {
             border-bottom-color: var(--primary-color);
             color: var(--primary-color);
         }
-        
+
         .tab-content {
             display: none;
         }
-        
+
         .tab-content.active {
             display: block;
         }
-        
+
         .curriculum-card {
             background-color: #fff;
             border-radius: 8px;
@@ -138,25 +141,25 @@
             padding: 30px;
             margin-bottom: 30px;
         }
-        
+
         .curriculum-card h3 {
             color: var(--primary-color);
             margin-bottom: 20px;
             font-weight: 600;
         }
-        
+
         .curriculum-card p {
             margin-bottom: 20px;
             color: var(--dark-color);
         }
-        
+
         .subject-list {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 20px;
             margin-top: 20px;
         }
-        
+
         .subject-item {
             display: flex;
             align-items: center;
@@ -165,12 +168,12 @@
             border-radius: 4px;
             transition: transform 0.3s, background-color 0.3s;
         }
-        
+
         .subject-item:hover {
             transform: translateY(-5px);
             background-color: #e9ecef;
         }
-        
+
         .subject-icon {
             width: 40px;
             height: 40px;
@@ -183,12 +186,12 @@
             margin-right: 10px;
             flex-shrink: 0;
         }
-        
+
         .subject-name {
             font-weight: 500;
             color: var(--dark-color);
         }
-        
+
         .language-indicator {
             display: inline-block;
             padding: 2px 8px;
@@ -197,33 +200,33 @@
             font-weight: 500;
             margin-left: 10px;
         }
-        
+
         .english {
             background-color: #e3f2fd;
             color: #0d47a1;
         }
-        
+
         .french {
             background-color: #e8f5e9;
             color: #1b5e20;
         }
-        
+
         .both {
             background-color: #fff3e0;
             color: #e65100;
         }
-        
+
         .exam-section {
-            margin-top: 60px;
+            margin-top: 10px;
         }
-        
+
         .exam-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
             margin-top: 40px;
         }
-        
+
         .exam-card {
             background-color: #fff;
             border-radius: 8px;
@@ -231,55 +234,55 @@
             overflow: hidden;
             transition: transform 0.3s, box-shadow 0.3s;
         }
-        
+
         .exam-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
-        
+
         .exam-header {
             background-color: var(--primary-color);
             color: white;
             padding: 20px;
             text-align: center;
         }
-        
+
         .exam-header h3 {
             margin-bottom: 5px;
             font-weight: 600;
         }
-        
+
         .exam-header p {
             margin-bottom: 0;
             font-size: 0.9rem;
             opacity: 0.9;
         }
-        
+
         .exam-content {
             padding: 20px;
         }
-        
+
         .exam-content p {
             margin-bottom: 15px;
             color: var(--dark-color);
         }
-        
+
         .exam-content ul {
             padding-left: 20px;
             margin-bottom: 15px;
         }
-        
+
         .exam-content li {
             margin-bottom: 5px;
             color: var(--dark-color);
         }
-        
+
         .exam-footer {
             padding: 15px 20px;
             background-color: #f8f9fa;
             text-align: center;
         }
-        
+
         .exam-link {
             display: inline-flex;
             align-items: center;
@@ -288,66 +291,66 @@
             text-decoration: none;
             transition: color 0.3s;
         }
-        
+
         .exam-link i {
             margin-left: 5px;
             transition: transform 0.3s;
         }
-        
+
         .exam-link:hover {
             color: #003da6;
         }
-        
+
         .exam-link:hover i {
             transform: translateX(5px);
         }
-        
+
         .bilingual-section {
             margin-top: 60px;
             background-color: #f8f9fa;
             padding: 60px 0;
             border-radius: 8px;
         }
-        
+
         .bilingual-content {
             display: flex;
             align-items: center;
             gap: 40px;
         }
-        
+
         .bilingual-image {
             flex: 0 0 40%;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
-        
+
         .bilingual-image img {
             width: 100%;
             height: auto;
             display: block;
         }
-        
+
         .bilingual-text {
             flex: 0 0 60%;
         }
-        
+
         .bilingual-text h3 {
             margin-bottom: 20px;
             color: var(--primary-color);
             font-weight: 600;
         }
-        
+
         .bilingual-text p {
             margin-bottom: 15px;
             color: var(--dark-color);
         }
-        
+
         .language-distribution {
             display: flex;
             margin-top: 30px;
         }
-        
+
         .language-chart {
             flex: 0 0 50%;
             height: 20px;
@@ -356,7 +359,7 @@
             border-radius: 10px 0 0 10px;
             overflow: hidden;
         }
-        
+
         .language-chart::after {
             content: '';
             position: absolute;
@@ -366,54 +369,56 @@
             width: 50%;
             background-color: #0d47a1;
         }
-        
+
         .language-chart.french {
             background-color: #e8f5e9;
             border-radius: 0 10px 10px 0;
         }
-        
+
         .language-chart.french::after {
             left: auto;
             right: 0;
             background-color: #1b5e20;
         }
-        
+
         .language-label {
             text-align: center;
             font-size: 0.9rem;
             margin-top: 5px;
             font-weight: 500;
         }
-        
+
         @media (max-width: 992px) {
             .subject-list {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
+
             .exam-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
+
             .bilingual-content {
                 flex-direction: column;
             }
-            
-            .bilingual-image, .bilingual-text {
+
+            .bilingual-image,
+            .bilingual-text {
                 flex: 0 0 100%;
             }
         }
-        
+
         @media (max-width: 768px) {
             .subject-list {
                 grid-template-columns: 1fr;
             }
-            
+
             .exam-grid {
                 grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
+
 <body>
     <div id="app">
         <!-- header -->
@@ -435,7 +440,7 @@
                     <div class="nav-toggle" id="navToggle"> <!-- 3 button for phone view-->
                         <span></span> <span></span><span></span>
                     </div>
-                    
+
                     <nav class="main-nav" id="mainNav">
                         <ul class="nav-menu">
                             <li><a href="../index.html" data-i18n="navigation.home">Home</a></li>
@@ -445,7 +450,8 @@
                                 <a href="overview.html" class="active" data-i18n="navigation.academics">Academics</a>
                                 <div class="dropdown-content">
                                     <a href="overview.html" data-i18n="navigation.overview">Overview</a>
-                                    <a href="curriculum.html" class="active" data-i18n="navigation.curriculum">Curriculum & Exams</a>
+                                    <a href="curriculum.html" class="active"
+                                        data-i18n="navigation.curriculum">Curriculum & Exams</a>
                                     <a href="results.html" data-i18n="navigation.results">Results</a>
                                 </div>
                             </li>
@@ -453,8 +459,10 @@
                             <li class="dropdown">
                                 <a href="../books/anglophone.html" data-i18n="navigation.books">Books & Materials</a>
                                 <div class="dropdown-content">
-                                    <a href="../books/anglophone.html" data-i18n="navigation.anglophone">Anglophone Section</a>
-                                    <a href="../books/francophone.html" data-i18n="navigation.francophone">Francophone Section</a>
+                                    <a href="../books/anglophone.html" data-i18n="navigation.anglophone">Anglophone
+                                        Section</a>
+                                    <a href="../books/francophone.html" data-i18n="navigation.francophone">Francophone
+                                        Section</a>
                                 </div>
                             </li>
                             <li><a href="../students.html" data-i18n="navigation.students">Students</a></li>
@@ -464,7 +472,7 @@
                             <li><a href="../contact.html" data-i18n="navigation.contact">Contact</a></li>
                         </ul>
                     </nav>
-                    
+
                     <div class="language-toggle">
                         <button class="lang-btn active" data-lang="en">EN</button>
                         <button class="lang-btn" data-lang="fr">FR</button>
@@ -486,7 +494,8 @@
                 <div class="container">
                     <ul>
                         <li><a href="overview.html" data-i18n="navigation.overview">Overview</a></li>
-                        <li><a href="curriculum.html" class="active" data-i18n="navigation.curriculum">Curriculum & Exams</a></li>
+                        <li><a href="curriculum.html" class="active" data-i18n="navigation.curriculum">Curriculum &
+                                Exams</a></li>
                         <li><a href="results.html" data-i18n="navigation.results">Results</a></li>
                     </ul>
                 </div>
@@ -497,28 +506,41 @@
                 <div class="container">
                     <div class="section-title">
                         <h2 data-i18n="curriculum.curriculumTitle">Our Curriculum</h2>
-                        <p data-i18n="curriculum.curriculumIntro">Our comprehensive curriculum is designed to provide a balanced education that develops both academic excellence and bilingual proficiency, preparing students for success in a global context.</p>
+                        <p data-i18n="curriculum.curriculumIntro">Our comprehensive curriculum is designed to provide a
+                            balanced education that develops both academic excellence and bilingual proficiency,
+                            preparing students for success in a global context.</p>
                     </div>
-                    
+
                     <div class="curriculum-tabs">
-                        <button class="tab-btn active" id="juniorTab" data-i18n="curriculum.junior">Junior Forms (1-3)</button>
+                        <button class="tab-btn active" id="juniorTab" data-i18n="curriculum.junior">Junior Forms
+                            (1-3)</button>
                         <button class="tab-btn" id="seniorTab" data-i18n="curriculum.senior">Senior Forms (4-5)</button>
-                        <button class="tab-btn" id="sixthTab" data-i18n="curriculum.sixth">Sixth Form</button>
+                        <button class="tab-btn" id="sixthTab" data-i18n="curriculum.sixth">lowerSixth &
+                            upperSixth</button>
                     </div>
-                    
+
                     <div class="tab-content active" id="juniorContent">
                         <div class="curriculum-card">
                             <h3 data-i18n="curriculum.juniorTitle">Junior Forms Curriculum (Forms 1-3)</h3>
-                            <p data-i18n="curriculum.juniorDesc1">In the Junior Forms, our curriculum focuses on building strong foundations in both English and French, while developing essential knowledge and skills across a broad range of subjects. Students are immersed in a bilingual environment where subjects are taught in both languages throughout the week.</p>
+                            <p data-i18n="curriculum.juniorDesc1">In the Junior Forms, our curriculum focuses on
+                                building strong foundations in both English and French, while developing essential
+                                knowledge and skills across a broad range of subjects. Students are immersed in a
+                                bilingual environment where subjects are taught in both languages throughout the week.
+                            </p>
                             <p data-i18n="curriculum.juniorDesc2">The Junior curriculum is designed to:</p>
                             <ul>
-                                <li data-i18n="curriculum.juniorPoint1">Develop strong literacy and numeracy skills in both English and French</li>
-                                <li data-i18n="curriculum.juniorPoint2">Build a solid foundation of knowledge across core academic subjects</li>
-                                <li data-i18n="curriculum.juniorPoint3">Foster curiosity, critical thinking, and problem-solving abilities</li>
-                                <li data-i18n="curriculum.juniorPoint4">Encourage creativity and self-expression through arts and activities</li>
-                                <li data-i18n="curriculum.juniorPoint5">Promote physical development and healthy lifestyle habits</li>
+                                <li data-i18n="curriculum.juniorPoint1">Develop strong literacy and numeracy skills in
+                                    both English and French</li>
+                                <li data-i18n="curriculum.juniorPoint2">Build a solid foundation of knowledge across
+                                    core academic subjects</li>
+                                <li data-i18n="curriculum.juniorPoint3">Foster curiosity, critical thinking, and
+                                    problem-solving abilities</li>
+                                <li data-i18n="curriculum.juniorPoint4">Encourage creativity and self-expression through
+                                    arts and activities</li>
+                                <li data-i18n="curriculum.juniorPoint5">Promote physical development and healthy
+                                    lifestyle habits</li>
                             </ul>
-                            
+
                             <h4 data-i18n="curriculum.juniorSubjects">Core Subjects</h4>
                             <div class="subject-list">
                                 <div class="subject-item">
@@ -530,7 +552,7 @@
                                         <span class="language-indicator english">EN</span>
                                     </div>
                                 </div>
-                                
+
                                 <div class="subject-item">
                                     <div class="subject-icon">
                                         <i class="fas fa-book"></i>
@@ -540,7 +562,7 @@
                                         <span class="language-indicator french">FR</span>
                                     </div>
                                 </div>
-                                
+
                                 <div class="subject-item">
                                     <div class="subject-icon">
                                         <i class="fas fa-calculator"></i>
@@ -550,7 +572,7 @@
                                         <span class="language-indicator both">EN/FR</span>
                                     </div>
                                 </div>
-                                
+
                                 <div class="subject-item">
                                     <div class="subject-icon">
                                         <i class="fas fa-flask"></i>
@@ -560,7 +582,7 @@
                                         <span class="language-indicator both">EN/FR</span>
                                     </div>
                                 </div>
-                                
+
                                 <div class="subject-item">
                                     <div class="subject-icon">
                                         <i class="fas fa-globe-americas"></i>
@@ -570,7 +592,7 @@
                                         <span class="language-indicator english">EN</span>
                                     </div>
                                 </div>
-                                
+
                                 <div class="subject-item">
                                     <div class="subject-icon">
                                         <i class="fas fa-landmark"></i>
@@ -580,7 +602,7 @@
                                         <span class="language-indicator french">FR</span>
                                     </div>
                                 </div>
-                                
+
                                 <div class="subject-item">
                                     <div class="subject-icon">
                                         <i class="fas fa-palette"></i>
@@ -590,7 +612,7 @@
                                         <span class="language-indicator both">EN/FR</span>
                                     </div>
                                 </div>
-                                
+
                                 <div class="subject-item">
                                     <div class="subject-icon">
                                         <i class="fas fa-music"></i>
@@ -600,7 +622,7 @@
                                         <span class="language-indicator both">EN/FR</span>
                                     </div>
                                 </div>
-                                
+
                                 <div class="subject-item">
                                     <div class="subject-icon">
                                         <i class="fas fa-running"></i>
@@ -613,20 +635,29 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="tab-content" id="seniorContent">
                         <div class="curriculum-card">
                             <h3 data-i18n="curriculum.seniorTitle">Senior Forms Curriculum (Forms 4-5)</h3>
-                            <p data-i18n="curriculum.seniorDesc1">In the Senior Forms, our curriculum becomes more specialized while maintaining the bilingual approach. Students prepare for internationally recognized qualifications while developing deeper knowledge in their chosen subjects. The curriculum is aligned with both British IGCSE and French Brevet standards.</p>
+                            <p data-i18n="curriculum.seniorDesc1">In the Senior Forms, our curriculum becomes more
+                                specialized while maintaining the bilingual approach. Students prepare for
+                                internationally recognized qualifications while developing deeper knowledge in their
+                                chosen subjects. The curriculum is aligned with both British IGCSE and French Brevet
+                                standards.</p>
                             <p data-i18n="curriculum.seniorDesc2">The Senior curriculum aims to:</p>
                             <ul>
-                                <li data-i18n="curriculum.seniorPoint1">Deepen knowledge and understanding in core and optional subjects</li>
-                                <li data-i18n="curriculum.seniorPoint2">Develop advanced analytical and critical thinking skills</li>
-                                <li data-i18n="curriculum.seniorPoint3">Prepare students for external examinations and further education</li>
-                                <li data-i18n="curriculum.seniorPoint4">Enhance bilingual proficiency in academic contexts</li>
-                                <li data-i18n="curriculum.seniorPoint5">Foster independence and self-directed learning</li>
+                                <li data-i18n="curriculum.seniorPoint1">Deepen knowledge and understanding in core and
+                                    optional subjects</li>
+                                <li data-i18n="curriculum.seniorPoint2">Develop advanced analytical and critical
+                                    thinking skills</li>
+                                <li data-i18n="curriculum.seniorPoint3">Prepare students for external examinations and
+                                    further education</li>
+                                <li data-i18n="curriculum.seniorPoint4">Enhance bilingual proficiency in academic
+                                    contexts</li>
+                                <li data-i18n="curriculum.seniorPoint5">Foster independence and self-directed learning
+                                </li>
                             </ul>
-                            
+
                             <h4 data-i18n="curriculum.seniorSubjects">Core and Optional Subjects</h4>
                             <div class="subject-list">
                                 <div class="subject-item">
@@ -638,7 +669,7 @@
                                         <span class="language-indicator english">EN</span>
                                     </div>
                                 </div>
-                                
+
                                 <div class="subject-item">
                                     <div class="subject-icon">
                                         <i class="fas fa-book"></i>
@@ -648,7 +679,7 @@
                                         <span class="language-indicator french">FR</span>
                                     </div>
                                 </div>
-                                
+
                                 <div class="subject-item">
                                     <div class="subject-icon">
                                         <i class="fas fa-calculator"></i>
@@ -658,7 +689,7 @@
                                         <span class="language-indicator both">EN/FR</span>
                                     </div>
                                 </div>
-                                
+
                                 <div class="subject-item">
                                     <div class="subject-icon">
                                         <i class="fas fa-atom"></i>
@@ -668,7 +699,7 @@
                                         <span class="language-indicator english">EN</span>
                                     </div>
                                 </div>
-                                
+
                                 <div class="subject-item">
                                     <div class="subject-icon">
                                         <i class="fas fa-flask"></i>
@@ -678,7 +709,7 @@
                                         <span class="language-indicator french">FR</span>
                                     </div>
                                 </div>
-                                
+
                                 <div class="subject-item">
                                     <div class="subject-icon">
                                         <i class="fas fa-dna"></i>
@@ -688,7 +719,7 @@
                                         <span class="language-indicator both">EN/FR</span>
                                     </div>
                                 </div>
-                                
+
                                 <div class="subject-item">
                                     <div class="subject-icon">
                                         <i class="fas fa-globe-americas"></i>
@@ -698,7 +729,7 @@
                                         <span class="language-indicator english">EN</span>
                                     </div>
                                 </div>
-                                
+
                                 <div class="subject-item">
                                     <div class="subject-icon">
                                         <i class="fas fa-landmark"></i>
@@ -708,7 +739,7 @@
                                         <span class="language-indicator french">FR</span>
                                     </div>
                                 </div>
-                                
+
                                 <div class="subject-item">
                                     <div class="subject-icon">
                                         <i class="fas fa-chart-line"></i>
@@ -718,7 +749,7 @@
                                         <span class="language-indicator english">EN</span>
                                     </div>
                                 </div>
-                                
+
                                 <div class="subject-item">
                                     <div class="subject-icon">
                                         <i class="fas fa-laptop-code"></i>
@@ -728,7 +759,7 @@
                                         <span class="language-indicator both">EN/FR</span>
                                     </div>
                                 </div>
-                                
+
                                 <div class="subject-item">
                                     <div class="subject-icon">
                                         <i class="fas fa-palette"></i>
@@ -738,7 +769,7 @@
                                         <span class="language-indicator both">EN/FR</span>
                                     </div>
                                 </div>
-                                
+
                                 <div class="subject-item">
                                     <div class="subject-icon">
                                         <i class="fas fa-music"></i>
@@ -751,13 +782,16 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="tab-content" id="sixthContent">
                         <div class="curriculum-card">
                             <h3 data-i18n="curriculum.sixthTitle">Sixth Form Curriculum</h3>
-                            <p data-i18n="curriculum.sixthDesc1">Our Sixth Form offers advanced studies through multiple pathways, allowing students to choose the qualification that best suits their academic strengths and university aspirations. All pathways maintain our commitment to bilingualism while preparing students for higher education.</p>
+                            <p data-i18n="curriculum.sixthDesc1">Our Sixth Form offers advanced studies through multiple
+                                pathways, allowing students to choose the qualification that best suits their academic
+                                strengths and university aspirations. All pathways maintain our commitment to
+                                bilingualism while preparing students for higher education.</p>
                             <p data-i18n="curriculum.sixthDesc2">Students can choose from the following pathways:</p>
-                            
+
                             <div class="row mt-4">
                                 <div class="col-md-4">
                                     <div class="card h-100">
@@ -765,48 +799,62 @@
                                             <h4 class="mb-0" data-i18n="curriculum.ibDiploma">IB Diploma Programme</h4>
                                         </div>
                                         <div class="card-body">
-                                            <p data-i18n="curriculum.ibDesc">A comprehensive two-year curriculum that includes:</p>
+                                            <p data-i18n="curriculum.ibDesc">A comprehensive two-year curriculum that
+                                                includes:</p>
                                             <ul>
-                                                <li data-i18n="curriculum.ibPoint1">Six subjects from different subject groups</li>
+                                                <li data-i18n="curriculum.ibPoint1">Six subjects from different subject
+                                                    groups</li>
                                                 <li data-i18n="curriculum.ibPoint2">Theory of Knowledge (TOK)</li>
                                                 <li data-i18n="curriculum.ibPoint3">Extended Essay</li>
-                                                <li data-i18n="curriculum.ibPoint4">Creativity, Activity, Service (CAS)</li>
+                                                <li data-i18n="curriculum.ibPoint4">Creativity, Activity, Service (CAS)
+                                                </li>
                                             </ul>
-                                            <p data-i18n="curriculum.ibLanguage">Students must take both English and French, with options to study subjects in either language.</p>
+                                            <p data-i18n="curriculum.ibLanguage">Students must take both English and
+                                                French, with options to study subjects in either language.</p>
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <div class="col-md-4">
                                     <div class="card h-100">
                                         <div class="card-header bg-primary text-white">
                                             <h4 class="mb-0" data-i18n="curriculum.aLevels">A-Levels</h4>
                                         </div>
                                         <div class="card-body">
-                                            <p data-i18n="curriculum.aLevelsDesc">A specialized two-year program where students typically:</p>
+                                            <p data-i18n="curriculum.aLevelsDesc">A specialized two-year program where
+                                                students typically:</p>
                                             <ul>
-                                                <li data-i18n="curriculum.aLevelsPoint1">Study 3-4 subjects in depth</li>
-                                                <li data-i18n="curriculum.aLevelsPoint2">Focus on academic subjects aligned with university plans</li>
-                                                <li data-i18n="curriculum.aLevelsPoint3">Complete an Extended Project Qualification (EPQ)</li>
+                                                <li data-i18n="curriculum.aLevelsPoint1">Study 3-4 subjects in depth
+                                                </li>
+                                                <li data-i18n="curriculum.aLevelsPoint2">Focus on academic subjects
+                                                    aligned with university plans</li>
+                                                <li data-i18n="curriculum.aLevelsPoint3">Complete an Extended Project
+                                                    Qualification (EPQ)</li>
                                             </ul>
-                                            <p data-i18n="curriculum.aLevelsLanguage">Students must continue French language studies alongside their A-Level subjects.</p>
+                                            <p data-i18n="curriculum.aLevelsLanguage">Students must continue French
+                                                language studies alongside their A-Level subjects.</p>
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <div class="col-md-4">
                                     <div class="card h-100">
                                         <div class="card-header bg-primary text-white">
                                             <h4 class="mb-0" data-i18n="curriculum.frenchBac">French Baccalauréat</h4>
                                         </div>
                                         <div class="card-body">
-                                            <p data-i18n="curriculum.frenchBacDesc">A comprehensive two-year program with:</p>
+                                            <p data-i18n="curriculum.frenchBacDesc">A comprehensive two-year program
+                                                with:</p>
                                             <ul>
-                                                <li data-i18n="curriculum.frenchBacPoint1">Core subjects including French, Philosophy, and History-Geography</li>
-                                                <li data-i18n="curriculum.frenchBacPoint2">Specialization in three subjects in Year 1, continuing with two in Year 2</li>
-                                                <li data-i18n="curriculum.frenchBacPoint3">Continuous assessment and final examinations</li>
+                                                <li data-i18n="curriculum.frenchBacPoint1">Core subjects including
+                                                    French, Philosophy, and History-Geography</li>
+                                                <li data-i18n="curriculum.frenchBacPoint2">Specialization in three
+                                                    subjects in Year 1, continuing with two in Year 2</li>
+                                                <li data-i18n="curriculum.frenchBacPoint3">Continuous assessment and
+                                                    final examinations</li>
                                             </ul>
-                                            <p data-i18n="curriculum.frenchBacLanguage">Students must continue English language studies alongside their Baccalauréat subjects.</p>
+                                            <p data-i18n="curriculum.frenchBacLanguage">Students must continue English
+                                                language studies alongside their Baccalauréat subjects.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -817,119 +865,153 @@
             </section>
 
             <!-- Examinations Section -->
-            <section class="section exam-section">
+            <section class="exam-section">
                 <div class="container">
                     <div class="section-title">
                         <h2 data-i18n="curriculum.examsTitle">External Examinations</h2>
-                        <p data-i18n="curriculum.examsIntro">Our students prepare for internationally recognized qualifications that provide pathways to universities worldwide.</p>
+                        <p data-i18n="curriculum.examsIntro">Our students prepare for internationally recognized
+                            qualifications that provide pathways to universities worldwide.</p>
                     </div>
-                    
+
                     <div class="exam-grid">
                         <div class="exam-card">
                             <div class="exam-header">
                                 <h3 data-i18n="curriculum.igcse">IGCSE</h3>
-                                <p data-i18n="curriculum.igcseSubtitle">International General Certificate of Secondary Education</p>
+                                <p data-i18n="curriculum.igcseSubtitle">International General Certificate of Secondary
+                                    Education</p>
                             </div>
                             <div class="exam-content">
-                                <p data-i18n="curriculum.igcseDesc">Taken by students in Form 5 (age 16), the IGCSE provides a strong foundation for further studies.</p>
+                                <p data-i18n="curriculum.igcseDesc">Taken by students in Form 5 (age 16), the IGCSE
+                                    provides a strong foundation for further studies.</p>
                                 <ul>
                                     <li data-i18n="curriculum.igcsePoint1">Students typically take 8-10 subjects</li>
                                     <li data-i18n="curriculum.igcsePoint2">Graded from 9 to 1 (9 being the highest)</li>
-                                    <li data-i18n="curriculum.igcsePoint3">Recognized by universities and employers worldwide</li>
+                                    <li data-i18n="curriculum.igcsePoint3">Recognized by universities and employers
+                                        worldwide</li>
                                 </ul>
                             </div>
                             <div class="exam-footer">
-                                <a href="https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-upper-secondary/cambridge-igcse/" target="_blank" class="exam-link" data-i18n="curriculum.learnMoreExam">Learn More <i class="fas fa-external-link-alt"></i></a>
+                                <a href="https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-upper-secondary/cambridge-igcse/"
+                                    target="_blank" class="exam-link" data-i18n="curriculum.learnMoreExam">Learn More <i
+                                        class="fas fa-external-link-alt"></i></a>
                             </div>
                         </div>
-                        
+
                         <div class="exam-card">
                             <div class="exam-header">
                                 <h3 data-i18n="curriculum.ibExam">IB Diploma</h3>
-                                <p data-i18n="curriculum.ibExamSubtitle">International Baccalaureate Diploma Programme</p>
+                                <p data-i18n="curriculum.ibExamSubtitle">International Baccalaureate Diploma Programme
+                                </p>
                             </div>
                             <div class="exam-content">
-                                <p data-i18n="curriculum.ibExamDesc">A comprehensive two-year program for students in Sixth Form (ages 16-18).</p>
+                                <p data-i18n="curriculum.ibExamDesc">A comprehensive two-year program for students in
+                                    Sixth Form (ages 16-18).</p>
                                 <ul>
-                                    <li data-i18n="curriculum.ibExamPoint1">Scored out of 45 points (42 from six subjects, 3 from core)</li>
+                                    <li data-i18n="curriculum.ibExamPoint1">Scored out of 45 points (42 from six
+                                        subjects, 3 from core)</li>
                                     <li data-i18n="curriculum.ibExamPoint2">Combines breadth and depth of study</li>
-                                    <li data-i18n="curriculum.ibExamPoint3">Highly regarded by universities worldwide</li>
+                                    <li data-i18n="curriculum.ibExamPoint3">Highly regarded by universities worldwide
+                                    </li>
                                 </ul>
                             </div>
                             <div class="exam-footer">
-                                <a href="https://www.ibo.org/programmes/diploma-programme/" target="_blank" class="exam-link" data-i18n="curriculum.learnMoreExam">Learn More <i class="fas fa-external-link-alt"></i></a>
+                                <a href="https://www.ibo.org/programmes/diploma-programme/" target="_blank"
+                                    class="exam-link" data-i18n="curriculum.learnMoreExam">Learn More <i
+                                        class="fas fa-external-link-alt"></i></a>
                             </div>
                         </div>
-                        
+
                         <div class="exam-card">
                             <div class="exam-header">
                                 <h3 data-i18n="curriculum.aLevelsExam">A-Levels</h3>
                                 <p data-i18n="curriculum.aLevelsExamSubtitle">Advanced Level Qualifications</p>
                             </div>
                             <div class="exam-content">
-                                <p data-i18n="curriculum.aLevelsExamDesc">A specialized two-year program for students in Sixth Form (ages 16-18).</p>
+                                <p data-i18n="curriculum.aLevelsExamDesc">A specialized two-year program for students in
+                                    Sixth Form (ages 16-18).</p>
                                 <ul>
                                     <li data-i18n="curriculum.aLevelsExamPoint1">Graded from A* to E</li>
-                                    <li data-i18n="curriculum.aLevelsExamPoint2">Focuses on in-depth study of 3-4 subjects</li>
-                                    <li data-i18n="curriculum.aLevelsExamPoint3">Widely accepted by UK universities and recognized internationally</li>
+                                    <li data-i18n="curriculum.aLevelsExamPoint2">Focuses on in-depth study of 3-4
+                                        subjects</li>
+                                    <li data-i18n="curriculum.aLevelsExamPoint3">Widely accepted by UK universities and
+                                        recognized internationally</li>
                                 </ul>
                             </div>
                             <div class="exam-footer">
-                                <a href="https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-advanced/cambridge-international-as-and-a-levels/" target="_blank" class="exam-link" data-i18n="curriculum.learnMoreExam">Learn More <i class="fas fa-external-link-alt"></i></a>
+                                <a href="https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-advanced/cambridge-international-as-and-a-levels/"
+                                    target="_blank" class="exam-link" data-i18n="curriculum.learnMoreExam">Learn More <i
+                                        class="fas fa-external-link-alt"></i></a>
                             </div>
                         </div>
-                        
+
                         <div class="exam-card">
                             <div class="exam-header">
                                 <h3 data-i18n="curriculum.brevet">Brevet</h3>
                                 <p data-i18n="curriculum.brevetSubtitle">Diplôme National du Brevet</p>
                             </div>
                             <div class="exam-content">
-                                <p data-i18n="curriculum.brevetDesc">Taken by students in Form 3 (age 14), the Brevet assesses knowledge and skills acquired in lower secondary education.</p>
+                                <p data-i18n="curriculum.brevetDesc">Taken by students in Form 3 (age 14), the Brevet
+                                    assesses knowledge and skills acquired in lower secondary education.</p>
                                 <ul>
-                                    <li data-i18n="curriculum.brevetPoint1">Combines continuous assessment and final examinations</li>
-                                    <li data-i18n="curriculum.brevetPoint2">Covers French, Mathematics, History-Geography, Science, and more</li>
-                                    <li data-i18n="curriculum.brevetPoint3">Provides a foundation for upper secondary studies</li>
+                                    <li data-i18n="curriculum.brevetPoint1">Combines continuous assessment and final
+                                        examinations</li>
+                                    <li data-i18n="curriculum.brevetPoint2">Covers French, Mathematics,
+                                        History-Geography, Science, and more</li>
+                                    <li data-i18n="curriculum.brevetPoint3">Provides a foundation for upper secondary
+                                        studies</li>
                                 </ul>
                             </div>
                             <div class="exam-footer">
-                                <a href="https://www.education.gouv.fr/le-diplome-national-du-brevet-10613" target="_blank" class="exam-link" data-i18n="curriculum.learnMoreExam">Learn More <i class="fas fa-external-link-alt"></i></a>
+                                <a href="https://www.education.gouv.fr/le-diplome-national-du-brevet-10613"
+                                    target="_blank" class="exam-link" data-i18n="curriculum.learnMoreExam">Learn More <i
+                                        class="fas fa-external-link-alt"></i></a>
                             </div>
                         </div>
-                        
+
                         <div class="exam-card">
                             <div class="exam-header">
                                 <h3 data-i18n="curriculum.frenchBacExam">French Baccalauréat</h3>
                                 <p data-i18n="curriculum.frenchBacExamSubtitle">Baccalauréat Général</p>
                             </div>
                             <div class="exam-content">
-                                <p data-i18n="curriculum.frenchBacExamDesc">A comprehensive two-year program for students in Sixth Form (ages 16-18).</p>
+                                <p data-i18n="curriculum.frenchBacExamDesc">A comprehensive two-year program for
+                                    students in Sixth Form (ages 16-18).</p>
                                 <ul>
-                                    <li data-i18n="curriculum.frenchBacExamPoint1">Scored out of 20, with honors awarded for scores above 12</li>
-                                    <li data-i18n="curriculum.frenchBacExamPoint2">Combines continuous assessment (40%) and final examinations (60%)</li>
-                                    <li data-i18n="curriculum.frenchBacExamPoint3">Highly regarded by French and international universities</li>
+                                    <li data-i18n="curriculum.frenchBacExamPoint1">Scored out of 20, with honors awarded
+                                        for scores above 12</li>
+                                    <li data-i18n="curriculum.frenchBacExamPoint2">Combines continuous assessment (40%)
+                                        and final examinations (60%)</li>
+                                    <li data-i18n="curriculum.frenchBacExamPoint3">Highly regarded by French and
+                                        international universities</li>
                                 </ul>
                             </div>
                             <div class="exam-footer">
-                                <a href="https://www.education.gouv.fr/le-baccalaureat-general-10457" target="_blank" class="exam-link" data-i18n="curriculum.learnMoreExam">Learn More <i class="fas fa-external-link-alt"></i></a>
+                                <a href="https://www.education.gouv.fr/le-baccalaureat-general-10457" target="_blank"
+                                    class="exam-link" data-i18n="curriculum.learnMoreExam">Learn More <i
+                                        class="fas fa-external-link-alt"></i></a>
                             </div>
                         </div>
-                        
+
                         <div class="exam-card">
                             <div class="exam-header">
                                 <h3 data-i18n="curriculum.delf">DELF/DALF</h3>
                                 <p data-i18n="curriculum.delfSubtitle">Diplôme d'Études en Langue Française</p>
                             </div>
                             <div class="exam-content">
-                                <p data-i18n="curriculum.delfDesc">Official French language certifications that assess proficiency according to the Common European Framework of Reference for Languages (CEFR).</p>
+                                <p data-i18n="curriculum.delfDesc">Official French language certifications that assess
+                                    proficiency according to the Common European Framework of Reference for Languages
+                                    (CEFR).</p>
                                 <ul>
                                     <li data-i18n="curriculum.delfPoint1">DELF covers levels A1 to B2</li>
                                     <li data-i18n="curriculum.delfPoint2">DALF covers levels C1 and C2</li>
-                                    <li data-i18n="curriculum.delfPoint3">Internationally recognized qualifications for French language proficiency</li>
+                                    <li data-i18n="curriculum.delfPoint3">Internationally recognized qualifications for
+                                        French language proficiency</li>
                                 </ul>
                             </div>
                             <div class="exam-footer">
-                                <a href="https://www.france-education-international.fr/en/delf-dalf" target="_blank" class="exam-link" data-i18n="curriculum.learnMoreExam">Learn More <i class="fas fa-external-link-alt"></i></a>
+                                <a href="https://www.france-education-international.fr/en/delf-dalf" target="_blank"
+                                    class="exam-link" data-i18n="curriculum.learnMoreExam">Learn More <i
+                                        class="fas fa-external-link-alt"></i></a>
                             </div>
                         </div>
                     </div>
@@ -941,35 +1023,37 @@
                 <div class="container">
                     <div class="section-title">
                         <h2 data-i18n="curriculum.bilingualTitle">Our Bilingual Approach</h2>
-                        <p data-i18n="curriculum.bilingualIntro">Our unique bilingual methodology integrates both English and French across the curriculum, creating a truly immersive environment.</p>
+                        <p data-i18n="curriculum.bilingualIntro">Our unique bilingual methodology integrates both
+                            English and French across the curriculum, creating a truly immersive environment.</p>
                     </div>
-                    
+
                     <div class="bilingual-content">
                         <div class="bilingual-image">
-                            <img src="../images/bilingual-approach.jpg" alt="Bilingual Approach">
+                            <img src="../images/template-color-pink.jpg" alt="Bilingual Approach">
                         </div>
                         <div class="bilingual-text">
                             <h3 data-i18n="curriculum.bilingualMethodology">Bilingual Methodology</h3>
-                            <p data-i18n="curriculum.bilingualText1">At Laval Bilingual High School, bilingualism is not just about learning two languages; it's about learning through two languages. Our approach goes beyond traditional language instruction to create an immersive environment where students develop true bilingual proficiency.</p>
+                            <p data-i18n="curriculum.bilingualText1">At Laval Bilingual High School, bilingualism is not
+                                just about learning two languages; it's about learning through two languages. Our
+                                approach goes beyond traditional language instruction to create an immersive environment
+                                where students develop true bilingual proficiency.</p>
                             <p data-i18n="curriculum.bilingualText2">Key features of our bilingual approach include:</p>
                             <ul>
-                                <li data-i18n="curriculum.bilingualPoint1">Subject rotation between languages: Core subjects alternate between English and French throughout the week</li>
-                                <li data-i18n="curriculum.bilingualPoint2">Dual-language resources: Learning materials are provided in both languages</li>
-                                <li data-i18n="curriculum.bilingualPoint3">Language support: Additional support for students who need to strengthen either language</li>
-                                <li data-i18n="curriculum.bilingualPoint4">Cultural integration: Cultural aspects of both languages are incorporated into the curriculum</li>
-                                <li data-i18n="curriculum.bilingualPoint5">Balanced exposure: Approximately equal time is dedicated to each language</li>
+                                <li data-i18n="curriculum.bilingualPoint1">Subject rotation between languages: Core
+                                    subjects alternate between English and French throughout the week</li>
+                                <li data-i18n="curriculum.bilingualPoint2">Dual-language resources: Learning materials
+                                    are provided in both languages</li>
+                                <li data-i18n="curriculum.bilingualPoint3">Language support: Additional support for
+                                    students who need to strengthen either language</li>
+                                <li data-i18n="curriculum.bilingualPoint4">Cultural integration: Cultural aspects of
+                                    both languages are incorporated into the curriculum</li>
+                                <li data-i18n="curriculum.bilingualPoint5">Balanced exposure: Approximately equal time
+                                    is dedicated to each language</li>
                             </ul>
-                            
-                            <p data-i18n="curriculum.bilingualText3">This approach ensures that students develop not just language skills but also the ability to think, analyze, and express complex ideas in both languages.</p>
-                            
-                            <div class="language-distribution">
-                                <div class="language-chart">
-                                    <div class="language-label" data-i18n="curriculum.english">English</div>
-                                </div>
-                                <div class="language-chart french">
-                                    <div class="language-label" data-i18n="curriculum.french">French</div>
-                                </div>
-                            </div>
+
+                            <p data-i18n="curriculum.bilingualText3">This approach ensures that students develop not
+                                just language skills but also the ability to think, analyze, and express complex ideas
+                                in both languages.</p>
                         </div>
                     </div>
                 </div>
@@ -1057,43 +1141,43 @@
     </div>
     <script>
         // Curriculum page specific JavaScript
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Tab functionality
             const juniorTab = document.getElementById('juniorTab');
             const seniorTab = document.getElementById('seniorTab');
             const sixthTab = document.getElementById('sixthTab');
-            
+
             const juniorContent = document.getElementById('juniorContent');
             const seniorContent = document.getElementById('seniorContent');
             const sixthContent = document.getElementById('sixthContent');
-            
-            juniorTab.addEventListener('click', function() {
+
+            juniorTab.addEventListener('click', function () {
                 setActiveTab(juniorTab, juniorContent);
             });
-            
-            seniorTab.addEventListener('click', function() {
+
+            seniorTab.addEventListener('click', function () {
                 setActiveTab(seniorTab, seniorContent);
             });
-            
-            sixthTab.addEventListener('click', function() {
+
+            sixthTab.addEventListener('click', function () {
                 setActiveTab(sixthTab, sixthContent);
             });
-            
+
             function setActiveTab(activeTab, activeContent) {
                 // Remove active class from all tabs and content
                 [juniorTab, seniorTab, sixthTab].forEach(tab => {
                     tab.classList.remove('active');
                 });
-                
+
                 [juniorContent, seniorContent, sixthContent].forEach(content => {
                     content.classList.remove('active');
                 });
-                
+
                 // Add active class to selected tab and content
                 activeTab.classList.add('active');
                 activeContent.classList.add('active');
             }
-            
+
             // Check URL hash for direct tab access
             function checkHash() {
                 const hash = window.location.hash;
@@ -1108,13 +1192,13 @@
                     document.getElementById('bilingual').scrollIntoView({ behavior: 'smooth' });
                 }
             }
-            
+
             // Check hash on page load
             checkHash();
-            
+
             // Check hash on hash change
             window.addEventListener('hashchange', checkHash);
-            
+
             // Add translations for curriculum page
             if (!translations.en.curriculum) {
                 translations.en.curriculum = {
@@ -1123,7 +1207,7 @@
                     curriculumIntro: "Our comprehensive curriculum is designed to provide a balanced education that develops both academic excellence and bilingual proficiency, preparing students for success in a global context.",
                     junior: "Junior Forms (1-3)",
                     senior: "Senior Forms (4-5)",
-                    sixth: "Sixth Form",
+                    sixth: "lowerSixth & upperSixth",
                     juniorTitle: "Junior Forms Curriculum (Forms 1-3)",
                     juniorDesc1: "In the Junior Forms, our curriculum focuses on building strong foundations in both English and French, while developing essential knowledge and skills across a broad range of subjects. Students are immersed in a bilingual environment where subjects are taught in both languages throughout the week.",
                     juniorDesc2: "The Junior curriculum is designed to:",
@@ -1158,7 +1242,7 @@
                     biology: "Biology",
                     economics: "Economics",
                     computerScience: "Computer Science",
-                    sixthTitle: "Sixth Form Curriculum",
+                    sixthTitle: "LowerSixth & UpperSixth",
                     sixthDesc1: "Our Sixth Form offers advanced studies through multiple pathways, allowing students to choose the qualification that best suits their academic strengths and university aspirations. All pathways maintain our commitment to bilingualism while preparing students for higher education.",
                     sixthDesc2: "Students can choose from the following pathways:",
                     ibDiploma: "IB Diploma Programme",
@@ -1232,16 +1316,16 @@
                     bilingualText3: "This approach ensures that students develop not just language skills but also the ability to think, analyze, and express complex ideas in both languages."
                 };
             }
-            
+
             if (!translations.fr.curriculum) {
                 translations.fr.curriculum = {
                     title: "Programme & Examens",
                     curriculumTitle: "Notre Programme",
                     curriculumIntro: "Notre programme complet est conçu pour offrir une éducation équilibrée qui développe à la fois l'excellence académique et la maîtrise bilingue, préparant les élèves au succès dans un contexte mondial.",
-                    junior: "Classes Junior (1-3)",
-                    senior: "Classes Senior (4-5)",
-                    sixth: "Sixième",
-                    juniorTitle: "Programme des Classes Junior (Forms 1-3)",
+                    junior: "Classes Junior (6 eme - 4 eme )",
+                    senior: "Classes Senior (3 eme & 2 nd)",
+                    sixth: "1ere & Tle",
+                    juniorTitle: "Programme des Classes Junior (6 eme - 4 eme)",
                     juniorDesc1: "Dans les Classes Junior, notre programme se concentre sur la construction de bases solides en anglais et en français, tout en développant des connaissances et compétences essentielles dans un large éventail de matières. Les élèves sont immergés dans un environnement bilingue où les matières sont enseignées dans les deux langues tout au long de la semaine.",
                     juniorDesc2: "Le programme Junior est conçu pour:",
                     juniorPoint1: "Développer de solides compétences en littératie et en numératie en anglais et en français",
@@ -1259,7 +1343,7 @@
                     art: "Art",
                     music: "Musique",
                     pe: "Éducation Physique",
-                    seniorTitle: "Programme des Classes Senior (Forms 4-5)",
+                    seniorTitle: "Programme des Classes Senior (3 eme & 2 nd)",
                     seniorDesc1: "Dans les Classes Senior, notre programme devient plus spécialisé tout en maintenant l'approche bilingue. Les élèves se préparent pour des qualifications reconnues internationalement tout en développant une connaissance plus approfondie dans leurs matières choisies. Le programme est aligné avec les normes britanniques IGCSE et le Brevet français.",
                     seniorDesc2: "Le programme Senior vise à:",
                     seniorPoint1: "Approfondir les connaissances et la compréhension dans les matières principales et optionnelles",
@@ -1275,7 +1359,7 @@
                     biology: "Biologie",
                     economics: "Économie",
                     computerScience: "Informatique",
-                    sixthTitle: "Programme de Sixième",
+                    sixthTitle: "Programme de Sixième (1 ere & Tle)",
                     sixthDesc1: "Notre Sixième offre des études avancées à travers plusieurs voies, permettant aux élèves de choisir la qualification qui convient le mieux à leurs forces académiques et à leurs aspirations universitaires. Toutes les voies maintiennent notre engagement envers le bilinguisme tout en préparant les élèves à l'enseignement supérieur.",
                     sixthDesc2: "Les élèves peuvent choisir parmi les voies suivantes:",
                     ibDiploma: "Programme du Diplôme IB",
@@ -1349,11 +1433,12 @@
                     bilingualText3: "Cette approche garantit que les élèves développent non seulement des compétences linguistiques mais aussi la capacité de penser, d'analyser et d'exprimer des idées complexes dans les deux langues."
                 };
             }
-            
+
             // Apply initial translations based on current language
             const currentLang = localStorage.getItem('userLanguage') || 'en';
             applyTranslations(currentLang);
         });
     </script>
 </body>
+
 </html>

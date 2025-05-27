@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About - Laval Bilingual High School</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/dropdown-fix.css">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js" defer></script>
-    <script src="js/translations.js"defer ></script>
+    <script src="js/translations.js" defer></script>
     <script src="js/main.js" defer></script>
 </head>
+
 <body>
     <div id="app">
         <!-- header -->
@@ -35,7 +39,7 @@
                     <div class="nav-toggle" id="navToggle"> <!-- 3 button for phone view-->
                         <span></span> <span></span><span></span>
                     </div>
-                    
+
                     <nav class="main-nav" id="mainNav">
                         <ul class="nav-menu">
                             <li><a href="index.html" data-i18n="navigation.home">Home</a></li>
@@ -45,7 +49,8 @@
                                 <a href="academics/overview.html" data-i18n="navigation.academics">Academics</a>
                                 <div class="dropdown-content">
                                     <a href="academics/overview.html" data-i18n="navigation.overview">Overview</a>
-                                    <a href="academics/curriculum.html" data-i18n="navigation.curriculum">Curriculum & Exams</a>
+                                    <a href="academics/curriculum.html" data-i18n="navigation.curriculum">Curriculum &
+                                        Exams</a>
                                     <a href="academics/results.html" data-i18n="navigation.results">Results</a>
                                 </div>
                             </li>
@@ -53,8 +58,10 @@
                             <li class="dropdown">
                                 <a href="books/anglophone.html" data-i18n="navigation.books">Books & Materials</a>
                                 <div class="dropdown-content">
-                                    <a href="books/anglophone.html" data-i18n="navigation.anglophone">Anglophone Section</a>
-                                    <a href="books/francophone.html" data-i18n="navigation.francophone">Francophone Section</a>
+                                    <a href="books/anglophone.html" data-i18n="navigation.anglophone">Anglophone
+                                        Section</a>
+                                    <a href="books/francophone.html" data-i18n="navigation.francophone">Francophone
+                                        Section</a>
                                 </div>
                             </li>
                             <li><a href="students.html" data-i18n="navigation.students">Students</a></li>
@@ -64,7 +71,7 @@
                             <li><a href="contact.html" data-i18n="navigation.contact">Contact</a></li>
                         </ul>
                     </nav>
-                    
+
                     <div class="language-toggle">
                         <button class="lang-btn active" data-lang="en">EN</button>
                         <button class="lang-btn" data-lang="fr">FR</button>
@@ -81,37 +88,88 @@
                 </div>
             </section>
 
-            <!-- About Content -->
-            <section class="section">
-                <div class="container">
+            <!--  Content section -->
+            <section class="section">               
                     <div class="about-content">
-                        <h2>Our History</h2>
-                        <p>Founded in 1985, Laval Bilingual High School has a rich history of providing exceptional bilingual education to students from diverse backgrounds. What began as a small institution with just 50 students has grown into a prestigious educational establishment serving over 1,200 students today.</p>
-                        
-                        <p>Our school was established with the vision of creating a truly bilingual learning environment where students could become fluent in both English and French while receiving a world-class education. Over the decades, we have continuously evolved our curriculum and teaching methodologies to meet the changing needs of our students and the global society.</p>
-                        
-                        <h2>Our Philosophy</h2>
-                        <p>At Laval Bilingual High School, we believe that education goes beyond academic excellence. Our educational philosophy is centered around developing the whole person – intellectually, socially, emotionally, and ethically.</p>
-                        
-                        <p>We are committed to fostering critical thinking, creativity, and character development in our students. We believe that by providing a supportive and challenging environment, we can help each student discover their unique potential and develop the skills they need to succeed in an increasingly interconnected world.</p>
-                        
-                        <h2>Our Campus</h2>
-                        <p>Our modern campus spans 15 acres and features state-of-the-art facilities designed to enhance the learning experience. From well-equipped science laboratories and computer centers to spacious classrooms and recreational areas, our campus provides the perfect setting for academic and personal growth.</p>
-                        
-                        <p>The campus includes:</p>
-                        <ul>
-                            <li>Modern classrooms with interactive technology</li>
-                            <li>Science and computer laboratories</li>
-                            <li>Library with extensive resources in both English and French</li>
-                            <li>Sports facilities including a gymnasium, swimming pool, and playing fields</li>
-                            <li>Performing arts center</li>
-                            <li>Student cafeteria serving nutritious meals</li>
-                        </ul>
-                    </div>
+                        <!-- about section -->
+                        <section class="section-about-pad">
+                            <div class="container">
+                                <div class="section-title">
+                                    <h2 data-i18n="ourStory">Our Story</h2>
+                                </div>
+                                <div class="grid-2">
+                                    <div class="about-image" data-aos="fade-right">
+                                        <img src="../images/template-color-rainbow.jpg" alt="Our Story">
+                                    </div>
+                                    <div class="about-content" data-aos="fade-left">
+                                        <p data-i18n="About.history1">Founded in 1985, Laval Bilingual High School has a rich history of providing
+                                            exceptional
+                                            bilingual education to students from diverse backgrounds. What began as a
+                                            small
+                                            institution with just 50 students has grown into a prestigious educational
+                                            establishment
+                                            serving over 12,000+ students today.</p>
+
+                                        <p data-i18n="About.history2">Our school was established with the vision of creating a truly bilingual
+                                            learning
+                                            environment where students could become fluent in both English and French
+                                            while
+                                            receiving a world-class education. Over the decades, we have continuously
+                                            evolved our
+                                            curriculum and teaching methodologies to meet the changing needs of our
+                                            students and the
+                                            global society.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Mission & Vision Section -->
+                        <section class="section" style="background-color: #f8f9fa;">
+                            <div class="container">
+                                <div class="grid-2">
+                                    <div class="mission-box">
+                                        <div class="section-title" style="text-align: left;">
+                                            <h2 data-i18n="ourMission">Our Philosophy</h2>
+                                        </div>
+                                        <p data-i18n="missionText">At Laval Bilingual High School, we believe that
+                                            education goes beyond academic excellence.
+                                            Our educational philosophy is centered around developing the whole person –
+                                            intellectually,
+                                            socially, emotionally, and ethically.</p>
+                                        <p>We are committed to fostering critical thinking, creativity, and character
+                                            development in our
+                                            students. We believe that by providing a supportive and challenging
+                                            environment, we can help
+                                            each student discover their unique potential and develop the skills they
+                                            need to succeed in
+                                            an increasingly interconnected world.</p>
+                                    </div>
+                                    <div class="vision-box">
+                                        <div class="section-title" style="text-align: left;">
+                                            <h2 data-i18n="ourVision">Our Campus</h2>
+                                        </div>
+                                        <p data-i18n="visionText">Our 15-acre campus offers modern facilities, including
+                                            high-tech labs, computer centers, spacious classrooms, and vibrant
+                                            recreational areas—designed to support learning and growth.</p>
+                                        <p data-i18n="campusdetail">The campus includes:</p>
+                                        <ul class="features-list">
+                                            <li ><span class="icon" >✔</span><span data-i18n="campusdetail1"></span> Modern classrooms with interactive
+                                                technology</li>
+                                            <li><span class="icon" >✔</span><span data-i18n="campusdetail2"></span> Science and computer laboratories</li>
+                                            <li><span class="icon" >✔</span><span data-i18n="campusdetail3"></span> Library with extensive resources in both
+                                                English and French</li>
+                                            <li><span class="icon" >✔</span><span data-i18n="campusdetail4"></span> Sports facilities including a gymnasium and playing fields</li>
+                                        <li><span class="icon" >✔</span><span data-i18n="campusdetail5"></span>Chemistry and Physics well-equiped Labs</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
                 </div>
             </section>
         </main>
-
+<!-- footer -->
         <footer class="site-footer">
             <div class="container-footer">
                 <div class="footer-content">
@@ -192,4 +250,5 @@
         </footer>
     </div>
 </body>
+
 </html>
