@@ -508,18 +508,18 @@
                     </div>
                     
                     <div class="application-form">
-                        <form id="admissionsForm">
+                        <form id="admissionsForm" action="send_email.php" method="POST">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="firstName" class="form-label" data-i18n="admissions.firstName">First Name</label>
-                                        <input type="text" id="firstName" class="form-control" required>
+                                        <input type="text" id="firstName" name="firstName" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="lastName" class="form-label" data-i18n="admissions.lastName">Last Name</label>
-                                        <input type="text" id="lastName" class="form-control" required>
+                                        <input type="text" id="lastName" name="lastName" class="form-control" required>
                                     </div>
                                 </div>
                             </div>
@@ -528,13 +528,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="dob" class="form-label" data-i18n="admissions.dob">Date of Birth</label>
-                                        <input type="date" id="dob" class="form-control" required>
+                                        <input type="date" id="dob" name="dob" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="gender" class="form-label" data-i18n="admissions.gender">Gender</label>
-                                        <select id="gender" class="form-select" required>
+                                        <select id="gender"  name="gender" class="form-select" required>
                                             <option value="" data-i18n="admissions.selectGender">Select Gender</option>
                                             <option value="male" data-i18n="admissions.male">Male</option>
                                             <option value="female" data-i18n="admissions.female">Female</option>
@@ -546,27 +546,27 @@
                             
                             <div class="form-group">
                                 <label for="email" class="form-label" data-i18n="admissions.email">Email Address</label>
-                                <input type="email" id="email" class="form-control" required>
+                                <input type="email" id="email" name="email" class="form-control" required>
                             </div>
                             
                             <div class="form-group">
                                 <label for="phone" class="form-label" data-i18n="admissions.phone">Phone Number</label>
-                                <input type="tel" id="phone" class="form-control" required>
+                                <input type="tel" id="phone" name="phone" class="form-control" required>
                             </div>
                             
                             <div class="form-group">
                                 <label for="address" class="form-label" data-i18n="admissions.address">Address</label>
-                                <textarea id="address" class="form-control" rows="3" required></textarea>
+                                <textarea id="address" class="form-control" name="address" rows="3" required></textarea>
                             </div>
                             
                             <div class="form-group">
                                 <label for="currentSchool" class="form-label" data-i18n="admissions.currentSchool">Current School</label>
-                                <input type="text" id="currentSchool" class="form-control" required>
+                                <input type="text" id="currentSchool" name="currentSchool" class="form-control" required>
                             </div>
                             
                             <div class="form-group">
                                 <label for="gradeApplying" class="form-label" data-i18n="admissions.gradeApplying">Grade Applying For</label>
-                                <select id="gradeApplying" class="form-select" required>
+                                <select id="gradeApplying"  name="gradeApplying" class="form-select" required>
                                     <option value="" data-i18n="admissions.selectGrade">Select Grade</option>
                                     <option value="form1" data-i18n="admissions.form1">Form 1</option>
                                     <option value="form2" data-i18n="admissions.form2">Form 2</option>
@@ -580,7 +580,7 @@
                             
                             <div class="form-group">
                                 <label for="section" class="form-label" data-i18n="admissions.section">Preferred Section</label>
-                                <select id="section" class="form-select" required>
+                                <select id="section"  name="section" class="form-select" required>
                                     <option value="" data-i18n="admissions.selectSection">Select Section</option>
                                     <option value="anglophone" data-i18n="admissions.anglophone">Anglophone</option>
                                     <option value="francophone" data-i18n="admissions.francophone">Francophone</option>
@@ -589,13 +589,13 @@
                             
                             <div class="form-group">
                                 <label for="message" class="form-label" data-i18n="admissions.additionalInfo">Additional Information</label>
-                                <textarea id="message" class="form-control" rows="5"></textarea>
+                                <textarea id="message" class="form-control"  name="message" rows="5"></textarea>
                                 <div class="form-text" data-i18n="admissions.additionalInfoHelp">Please share any additional information that might be relevant to your application.</div>
                             </div>
                             
                             <div class="form-group">
                                 <div class="form-check">
-                                    <input type="checkbox" id="termsCheck" class="form-check-input" required>
+                                    <input type="checkbox" id="termsCheck" name="termsCheck" class="form-check-input" required>
                                     <label for="termsCheck" class="form-check-label" data-i18n="admissions.termsCheck">I agree to the terms and conditions and privacy policy.</label>
                                 </div>
                             </div>
