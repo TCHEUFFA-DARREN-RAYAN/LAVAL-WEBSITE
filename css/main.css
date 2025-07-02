@@ -918,13 +918,18 @@ img {
   .btn-centering{
   margin-left: 25%;
   }
+  .header-centering{
+    margin-left: 22%;
+  }
 }
 
 @media (max-width: 768px) {
     .btn-centering{
   margin-left: 25%;
   }
-  
+    .header-centering{
+    margin-left: 22%;
+  }
   .header-content {
     position: relative;
     flex-wrap: nowrap;
