@@ -915,9 +915,15 @@ img {
   .footer-content {
     grid-template-columns: repeat(2, 1fr);
   }
+  .btn{
+  margin-left: 25%;
+  }
 }
 
 @media (max-width: 768px) {
+    .btn{
+  margin-left: 25%;
+  }
   .header-content {
     position: relative;
     flex-wrap: nowrap;
