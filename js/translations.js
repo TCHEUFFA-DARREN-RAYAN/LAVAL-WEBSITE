@@ -136,7 +136,7 @@ ourVision:"Our Campus",
     }
   },
   fr: {
-    schoolName: "Lycée Bilingue Laval",
+    schoolName: "Collège Bilingue Laval",
     ourStory:"Notre histoire",
     students: {
       resultsTitle: "Résultats d'Examen",
