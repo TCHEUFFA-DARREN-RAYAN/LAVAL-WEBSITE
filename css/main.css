@@ -915,13 +915,13 @@ img {
   .footer-content {
     grid-template-columns: repeat(2, 1fr);
   }
-  .btn{
+  .btn-centering{
   margin-left: 25%;
   }
 }
 
 @media (max-width: 768px) {
-    .btn{
+    .btn-centering{
   margin-left: 25%;
   }
   .header-content {
