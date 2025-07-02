@@ -920,9 +920,6 @@ img {
 @media (max-width: 768px) {
   .header-content {
     position: relative;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    align-items: center;
   }
   
   .main-nav {
@@ -993,40 +990,6 @@ img {
   
   .nav-toggle {
     display: flex;
-    order: 3;
-    margin-left: 10px;
-  }
-  
-  .nav-toggle.active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-  }
-  
-  .nav-toggle.active span:nth-child(2) {
-    opacity: 0;
-  }
-  
-  .nav-toggle.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -6px);
-  }
-  
-  .language-toggle {
-    order: 2;
-    margin-right: 10px;
-    display: flex;
-    gap: 5px;
-  }
-  
-  .nav-logo {
-    order: 1;
-    flex-shrink: 0;
-  }
-  
-  /* Create a right-side container for language toggle and hamburger */
-  .header-content::after {
-    content: '';
-    display: flex;
-    align-items: center;
-    order: 4;
   }
   
   .grid-2 {
