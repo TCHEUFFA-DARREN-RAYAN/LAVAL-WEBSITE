@@ -13,6 +13,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js" defer></script>
     <script src="js/translations.js" defer></script>
     <script src="js/main.js" defer></script>
+    <script src="js/results-search.js" defer></script>
     <style>
         .page-banner {
             background-size: cover;
@@ -159,172 +160,120 @@
             color: var(--dark-color);
         }
         
-        .calendar-section {
+        .results-search-section {
             margin-top: 60px;
             background-color: #f8f9fa;
             padding: 50px 0;
             border-radius: 8px;
         }
         
-        .calendar-container {
+        .results-container {
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             padding: 30px;
         }
         
-        .calendar-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .search-form {
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        
+        .form-group {
             margin-bottom: 20px;
         }
         
-        .calendar-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--primary-color);
-        }
-        
-        .calendar-nav {
-            display: flex;
-            align-items: center;
-        }
-        
-        .calendar-nav button {
-            background: none;
-            border: none;
-            font-size: 1.2rem;
-            color: var(--primary-color);
-            cursor: pointer;
-            padding: 5px 10px;
-            transition: color 0.3s;
-        }
-        
-        .calendar-nav button:hover {
-            color: #003da6;
-        }
-        
-        .calendar-month {
-            margin: 0 15px;
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
             font-weight: 500;
-        }
-        
-        .calendar-grid {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 10px;
-        }
-        
-        .calendar-day-header {
-            text-align: center;
-            font-weight: 500;
-            padding: 10px;
             color: var(--dark-color);
         }
         
-        .calendar-day {
-            height: 80px;
-            border: 1px solid #e9ecef;
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ced4da;
             border-radius: 4px;
-            padding: 5px;
-            position: relative;
+            font-size: 1rem;
+            transition: border-color 0.3s;
         }
         
-        .calendar-day.other-month {
-            background-color: #f8f9fa;
-            color: #adb5bd;
-        }
-        
-        .calendar-day.today {
-            background-color: rgba(0, 70, 173, 0.1);
+        .form-control:focus {
             border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 70, 173, 0.1);
         }
         
-        .day-number {
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-        
-        .event-dot {
+        .btn {
             display: inline-block;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            margin-right: 5px;
-        }
-        
-        .event-academic {
-            background-color: #0046ad;
-        }
-        
-        .event-sports {
-            background-color: #28a745;
-        }
-        
-        .event-cultural {
-            background-color: #fd7e14;
-        }
-        
-        .event-holiday {
-            background-color: #dc3545;
-        }
-        
-        .calendar-legend {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-            flex-wrap: wrap;
-        }
-        
-        .legend-item {
-            display: flex;
-            align-items: center;
-            margin: 0 15px;
-        }
-        
-        .legend-item span {
-            font-size: 0.9rem;
-            margin-left: 5px;
-        }
-        
-        .event-list {
-            margin-top: 30px;
-        }
-        
-        .event-list h4 {
-            margin-bottom: 15px;
-            color: var(--primary-color);
-        }
-        
-        .event-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-            padding: 10px;
+            font-weight: 500;
+            text-align: center;
+            vertical-align: middle;
+            cursor: pointer;
+            padding: 12px 24px;
+            font-size: 1rem;
+            line-height: 1.5;
             border-radius: 4px;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
+            border: none;
         }
         
-        .event-item:hover {
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #003da6;
+        }
+        
+        .results-display {
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 8px;
             background-color: #f8f9fa;
+            min-height: 100px;
         }
         
-        .event-date {
-            flex: 0 0 100px;
+        .result-item {
+            padding: 15px;
+            margin-bottom: 15px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .result-name {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .result-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .result-subject {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .result-subject-name {
             font-weight: 500;
         }
         
-        .event-name {
-            flex: 1;
+        .result-grade {
+            font-weight: 600;
         }
         
-        .event-type {
-            flex: 0 0 100px;
-            text-align: right;
+        .no-result {
+            text-align: center;
+            padding: 20px;
+            color: #6c757d;
+            font-style: italic;
         }
         
         @media (max-width: 992px) {
@@ -549,60 +498,37 @@
                 </div>
             </section>
 
-            <!-- Calendar Section -->
-            <section id="calendar" class="section calendar-section">
+            <!-- Student Results Search Section -->
+            <section id="results-search" class="section results-search-section">
                 <div class="container">
                     <div class="section-title">
-                        <h2 data-i18n="students.calendarTitle">School Calendar</h2>
-                        <p data-i18n="students.calendarIntro">Stay informed about important dates, events, and activities throughout the academic year.</p>
+                        <h2 data-i18n="students.resultsTitle">Exam Results</h2>
+                        <p data-i18n="students.resultsIntro">Search for your examination results by selecting the exam type and entering your name or ID.</p>
                     </div>
                     
-                    <div class="calendar-container">
-                        <div class="calendar-header">
-                            <div class="calendar-title" data-i18n="students.calendarHeading">Academic Calendar</div>
-                            <div class="calendar-nav">
-                                <button id="prevMonth"><i class="fas fa-chevron-left"></i></button>
-                                <div class="calendar-month" id="currentMonth">May 2025</div>
-                                <button id="nextMonth"><i class="fas fa-chevron-right"></i></button>
+                    <div class="results-container">
+                        <div class="search-form">
+                            <div class="form-group">
+                                <label for="examType" data-i18n="students.examType">Exam Type</label>
+                                <select id="examType" class="form-control">
+                                    <option value="gce-a" data-i18n="students.gceA">GCE A Level</option>
+                                    <option value="gce-o" data-i18n="students.gceO">GCE O Level</option>
+                                    <option value="probatoire" data-i18n="students.probatoire">Probatoire</option>
+                                    <option value="bac" data-i18n="students.bac">Bac</option>
+                                    <option value="bepc" data-i18n="students.bepc">BEPC</option>
+                                </select>
                             </div>
-                        </div>
-                        
-                        <div class="calendar-grid">
-                            <div class="calendar-day-header" data-i18n="students.sunday">Sun</div>
-                            <div class="calendar-day-header" data-i18n="students.monday">Mon</div>
-                            <div class="calendar-day-header" data-i18n="students.tuesday">Tue</div>
-                            <div class="calendar-day-header" data-i18n="students.wednesday">Wed</div>
-                            <div class="calendar-day-header" data-i18n="students.thursday">Thu</div>
-                            <div class="calendar-day-header" data-i18n="students.friday">Fri</div>
-                            <div class="calendar-day-header" data-i18n="students.saturday">Sat</div>
                             
-                            <!-- Calendar days will be generated by JavaScript -->
+                            <div class="form-group">
+                                <label for="studentName" data-i18n="students.studentName">Student Name or ID</label>
+                                <input type="text" id="studentName" class="form-control" placeholder="Enter your name or ID" data-i18n-placeholder="students.namePlaceholder">
+                            </div>
+                            
+                            <button id="searchButton" class="btn btn-primary" data-i18n="students.search">Search Results</button>
                         </div>
                         
-                        <div class="calendar-legend">
-                            <div class="legend-item">
-                                <span class="event-dot event-academic"></span>
-                                <span data-i18n="students.academic">Academic</span>
-                            </div>
-                            <div class="legend-item">
-                                <span class="event-dot event-sports"></span>
-                                <span data-i18n="students.sports">Sports</span>
-                            </div>
-                            <div class="legend-item">
-                                <span class="event-dot event-cultural"></span>
-                                <span data-i18n="students.cultural">Cultural</span>
-                            </div>
-                            <div class="legend-item">
-                                <span class="event-dot event-holiday"></span>
-                                <span data-i18n="students.holiday">Holiday</span>
-                            </div>
-                        </div>
-                        
-                        <div class="event-list">
-                            <h4 data-i18n="students.upcomingEvents">Upcoming Events</h4>
-                            <div id="eventsList">
-                                <!-- Events will be generated by JavaScript -->
-                            </div>
+                        <div id="searchResults" class="results-display">
+                            <!-- Results will be displayed here -->
                         </div>
                     </div>
                 </div>
