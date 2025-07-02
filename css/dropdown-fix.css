@@ -9,13 +9,18 @@
   background-color: #fff;
   min-width: 200px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  z-index: 1;
+  z-index: 1000;
   border-radius: 4px;
   overflow: hidden;
+  top: 100%;
+  left: 0;
 }
 
-.dropdown:hover .dropdown-content {
-  display: block;
+/* Desktop hover behavior */
+@media (min-width: 769px) {
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
 }
 
 .dropdown-content a {
@@ -23,6 +28,7 @@
   padding: 12px 16px;
   display: block;
   border-bottom: 1px solid #ccc;
+  transition: background-color 0.3s ease;
 }
 
 .dropdown-content a:last-child {
@@ -33,14 +39,49 @@
   background-color: rgba(0, 70, 173, 0.1);
 }
 
+/* Mobile specific styles */
 @media (max-width: 768px) {
   .dropdown-content {
     position: static;
     box-shadow: none;
     padding-left: 20px;
     min-width: auto;
+    background-color: #f8f9fa;
+    border-radius: 0;
   }
   
+  .dropdown:hover .dropdown-content {
+    display: none;
+  }
+  
+  .dropdown.active .dropdown-content {
+    display: block;
+  }
+  
+  .dropdown-content a {
+    padding: 10px 16px;
+    font-size: 0.95rem;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: rgba(0, 70, 173, 0.05);
+  }
+  
+  /* Add touch-friendly styling */
+  .dropdown > a {
+    position: relative;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .dropdown > a:active {
+    background-color: rgba(0, 70, 173, 0.1);
+  }
+}
+
+/* Ensure dropdowns work on touch devices */
+@media (hover: none) and (pointer: coarse) {
   .dropdown:hover .dropdown-content {
     display: none;
   }
