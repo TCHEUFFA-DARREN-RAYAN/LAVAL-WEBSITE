@@ -920,6 +920,9 @@ img {
 @media (max-width: 768px) {
   .header-content {
     position: relative;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
   }
   
   .main-nav {
@@ -931,6 +934,8 @@ img {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
     display: none;
+    z-index: 1000;
+    border-top: 1px solid var(--medium-color);
   }
   
   .main-nav.active {
@@ -939,7 +944,27 @@ img {
   
   .main-nav ul {
     flex-direction: column;
-    gap: 10px;
+    gap: 0;
+  }
+  
+  .main-nav li {
+    border-bottom: 1px solid var(--medium-color);
+  }
+  
+  .main-nav li:last-child {
+    border-bottom: none;
+  }
+  
+  .main-nav a {
+    display: block;
+    padding: 15px 10px;
+    color: var(--dark-color);
+    font-weight: 500;
+  }
+  
+  .main-nav a:hover {
+    background-color: rgba(0, 70, 173, 0.1);
+    color: var(--primary-color);
   }
   
   .dropdown-content {
@@ -947,10 +972,61 @@ img {
     box-shadow: none;
     padding-left: 20px;
     min-width: auto;
+    background-color: #f8f9fa;
+    display: none;
+  }
+  
+  .dropdown.active .dropdown-content {
+    display: block;
+  }
+  
+  .dropdown > a::after {
+    content: ' ▼';
+    font-size: 0.8rem;
+    float: right;
+    transition: transform 0.3s;
+  }
+  
+  .dropdown.active > a::after {
+    transform: rotate(180deg);
   }
   
   .nav-toggle {
     display: flex;
+    order: 3;
+    margin-left: 10px;
+  }
+  
+  .nav-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  
+  .nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .nav-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+  }
+  
+  .language-toggle {
+    order: 2;
+    margin-right: 10px;
+    display: flex;
+    gap: 5px;
+  }
+  
+  .nav-logo {
+    order: 1;
+    flex-shrink: 0;
+  }
+  
+  /* Create a right-side container for language toggle and hamburger */
+  .header-content::after {
+    content: '';
+    display: flex;
+    align-items: center;
+    order: 4;
   }
   
   .grid-2 {
