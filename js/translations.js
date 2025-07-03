@@ -25,7 +25,15 @@ const translations = {
 ourVision:"Our Campus",
     visionText:"Our 15-acre campus offers modern facilities, including high-tech labs, computer centers, spacious classrooms, and vibrant recreational areas—designed to support learning and growth. / Notre campus de 15 acres offre des installations modernes, notamment des laboratoires technologiques, des centres informatiques, des salles de classe spacieuses et des espaces de loisirs dynamiques – conçus pour favoriser l’apprentissage et l’épanouissement.",
     campusdetail:" The campus includes:",
-    
+    admissions:{
+    form1 : "Form 1",
+    form2 : "Form 2",
+    form3 : "Form 3",
+    form4 : "Form 4",
+    form5 : "Form 5",
+    lowerSixth :"LowerSixth",
+    upperSixth: "UpperSixth",
+    },
     navigation: {
       home: "Home",
       about: "ABOUT",
@@ -165,6 +173,16 @@ campusdetail2:"Science and computer laboratories / Laboratoires de sciences et d
 campusdetail13:"Library with extensive resources in both English and French / Bibliothèque avec de nombreuses ressources en anglais et en français",
 campusdetail4:"Sports facilities including a gymnasium and playing fields / Installations sportives avec gymnase et terrains de jeu",
 campusdetail5:"Chemistry and Physics well-equipped labs / Laboratoires de chimie et de physique bien équipés",
+
+ admissions:{
+    form1 : "6 eme",
+    form2 : "5 eme",
+    form3 : "4 eme",
+    form4 : "3 eme",
+    form5 : "2 nd",
+    lowerSixth :"1 ere",
+    upperSixth: "Tle",
+ },
 
      navigation: {
       home: "Accueil",

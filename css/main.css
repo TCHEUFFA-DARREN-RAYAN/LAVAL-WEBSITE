@@ -923,9 +923,7 @@ img {
   .header-centering{
     margin-left: 22%;
   }
-    .page-banner {
-    margin: 2%;
-  }
+
 }
 
 @media (max-width: 768px) {
@@ -936,9 +934,6 @@ img {
     margin-left: 22%;
   }
 
-  .page-banner {
-    margin: 2%;
-  }
   .header-content {
     position: relative;
     flex-wrap: nowrap;
