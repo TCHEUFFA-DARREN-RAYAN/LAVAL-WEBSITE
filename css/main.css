@@ -693,7 +693,9 @@ img {
   position: relative;
   display: inline-block;
 }
-
+.icon-listing::before{
+  content: "➕ ";
+}
 .section-title h2::after {
   content: '';
   position: absolute;
