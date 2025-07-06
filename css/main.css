@@ -18,7 +18,7 @@
 .logo-icon {
     width: 2.5rem;
     height: 2.5rem;
-    background: var(--primary);
+    background: var(  --white);
     border-radius: 0.5rem;
     display: flex;
     align-items: center;
