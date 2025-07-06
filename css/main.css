@@ -328,6 +328,12 @@ body {
   padding: 0 15px;
 }
 
+.about-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 12px;
+}
 a {
   text-decoration: none;
   color: var(--primary-color);
