@@ -264,3 +264,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (section) observer.observe(section);
 });
+
+            const elements = document.querySelectorAll('.fade-in');
+            const windowHeight = window.innerHeight;
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+                    // Interactive Card Effects
+        function addCardInteractions() {
+            const cards = document.querySelectorAll('.interactive-element');
+            
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        }
+        
