@@ -1,7 +1,7 @@
 // Translations dictionary
 const translations = {
   en: {
-    ourStory:"Our Story",
+    ourStory:"A Brief History",
     schoolName: "Laval Bilingual High School",
     students: {
       resultsTitle: "Exam Results",
@@ -137,9 +137,9 @@ ourVision:"Our Campus",
       CTA: "Ready to Join Our Community?",
       textdata: "Take the first step towards a world-class bilingual education.",
     },
-    About:{
-      history1 :" Founded in 1985, Laval Bilingual High School has a rich history of delivering exceptional bilingual education to students from diverse backgrounds. What began as a small institution with just 50 students has grown into a prestigious educational establishment serving over 12,000 students today.",
-      history2 :"Our school was founded with the vision of creating a truly bilingual learning environment—one where students could become fluent in both English and French while receiving a world-class education. Over the decades, we have continuously evolved our curriculum and teaching methods to meet the changing needs of our students and the global society.",
+     About:{
+      history1 :"College Bilingue LAVAL is a general education institution located in Cite-Makepe, near St. Monique Catholic Parish in Douala, Cameroon. Established with the authorization N°19/1MINESEC/SG/DESG/SDEPEG/SGEPESG on 10/12/07 and 15/01/10, the school has been committed to bilingual education, offering both Anglophone and Francophone sections.",
+      history2 :"Over the years, we have grown to include a wide range of classes from Form I to Upper Sixths and 6e to Terminale, continually adapting to provide quality education that meets international standards.",
 
     },
     faq:{
@@ -208,7 +208,7 @@ ourVision:"Our Campus",
   },
   fr: {
     schoolName: "Collège Bilingue Laval",
-    ourStory:"Notre histoire",
+    ourStory:"Notre Histoire",
     students: {
       resultsTitle: "Résultats d'Examen",
       resultsIntro: "Recherchez vos résultats d'examen en sélectionnant le type d'examen et en saisissant votre nom ou identifiant.",
@@ -351,10 +351,10 @@ campusdetail5:"Chemistry and Physics well-equipped labs / Laboratoires de chimie
 
 
     },
-    About:{
-      history1 :"Fondée en 1985, Laval Bilingual High School possède une riche histoire d’excellence dans l’enseignement bilingue auprès d’élèves issus de divers horizons. Ce qui avait commencé comme une petite institution de 50 élèves est devenu aujourd’hui un établissement prestigieux accueillant plus de 12 000 élèves.",
-      history2 :"Notre école a été créée avec la vision d’offrir un véritable environnement d’apprentissage bilingue, permettant aux élèves de maîtriser à la fois l’anglais et le français tout en bénéficiant d’une éducation de classe mondiale. Au fil des décennies, nous avons continuellement fait évoluer notre programme et nos méthodes pédagogiques pour répondre aux besoins changeants de nos élèves et de la société globale.",
-
+     About:{
+      history1 :" Le Collège Bilingue LAVAL est un établissement d’enseignement général situé à Cité-Makepe, près de la paroisse catholique Sainte Monique à Douala, Cameroun.Créé avec l’autorisation N°19/1MINESEC/SG/DESG/SDEPEG/SGEPESG en date du 10/12/07 et du 15/01/10, l’établissement s’engage à offrir un enseignement bilingue, avec des sections anglophone et francophone.",
+      history2 :"Au fil des années, nous avons élargi notre offre pour inclure un large éventail de classes allant de la Form I à Upper Sixth et de la 6e à la Terminale, en nous adaptant continuellement afin de fournir un enseignement de qualité conforme aux normes internationales.",
+  }
     },
 campusdetail1: "Salles de classe modernes avec technologie interactive",
 campusdetail2: "Laboratoires de sciences et d’informatique",
@@ -425,5 +425,6 @@ faq : {
  moreQuestionsText: "Si vous n'avez pas trouvé la réponse à votre question, n'hésitez pas à nous contacter directement.",
  contactButton: "Contactez-Nous"
                 }
+                
   }
-};
+;
