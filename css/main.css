@@ -4,7 +4,7 @@
   --light-color: #ffffff; /* White */
   --dark-color: #333333; /* Dark Grey */
   --medium-color: #cccccc; /* Light Grey */
-  --font-primary: 'Roboto', sans-serif;
+  /* --font-primary: 'Roboto', sans-serif; */
   --font-secondary: 'Montserrat', sans-serif;
   --transition-speed: 0.3s;
       --primary: #1E3A8A;
@@ -63,7 +63,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(48, 33, 33, 0.5);
+            background: linear-gradient(to right, #04315f, #427bb3);
+            font-family: 'Lato', sans-serif;
         }
         
         .page-banner .container {
@@ -267,10 +268,6 @@
   padding-right: 60px;
 }
 
-.site-footer {
-  background-color: #111; /* Adjust based on your design */
-  color: white;
-}
 
 .footer-credit {
   text-align: center;
@@ -305,7 +302,7 @@
             border-radius: 15px;
             padding: 25px;
             transition: all 0.3s ease;
-            border-left: 5px solid #51616c;
+            border-left: 5px solid #136499;
             position: relative;
             overflow: hidden;
         }
@@ -350,7 +347,7 @@
         }
          /* Principal's Message */
         .principal-message {
-            background: linear-gradient(135deg, #bcc1d4 0%, #8b889d 100%);
+            background: linear-gradient(to right, #04315f, #427bb3);
             color: white;
             border-radius: 15px;
             padding: 40px;
@@ -572,10 +569,11 @@ img {
 }
 
 /* Footer Styles */
+
 .site-footer {
-  background-color: var(--dark-color);
+  background: linear-gradient(to right, #04315f, #427bb3); /* Matches header */
   color: var(--light-color);
-  padding: 5px;
+  padding: 40px 20px 20px;
 }
 
 .footer-content {
@@ -656,8 +654,8 @@ img {
   text-align: center;
   padding: 1.5rem 1rem;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
-  background-color: #706c6c94; /* Dark background for contrast */
-  color: #ccc; /* Soft white text */
+ background: linear-gradient(to right, #04315f, #0854a1);/* Dark background for contrast */
+  color: #5295b9; /* Soft white text */
   font-size: 0.95rem;
   font-weight: 300;
   letter-spacing: 0.5px;
@@ -915,7 +913,7 @@ img {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(103, 44, 44, 0.7);
+background-color: #04315f;
 }
 
 .cta-content {
