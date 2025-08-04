@@ -836,15 +836,16 @@ img {
 .hero-content {
   max-width: 1200px;
   padding: 30px;
-  background: rgba(216, 131, 131, 0.2);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(10px);
+  background: rgba(173, 216, 230, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border-radius: 20px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
   text-align: center;
-  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
+  color: #1a1a1a; 
 }
+
 
 .hero-content h1 {
   font-size: 3rem;
